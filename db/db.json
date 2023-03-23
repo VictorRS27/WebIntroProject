@@ -1,0 +1,12 @@
+{
+    "produtos":[
+        {
+            "id": 1,
+            "name": "Coleira enforcadora",
+            "price": 34.90,
+            "image":[
+                "banana.png"
+            ]
+        }
+    ]
+}
