@@ -3,9 +3,9 @@
     <form @submit="redirect($event)">
       <div class="box">
         <h1>Login</h1>
-        <InputText class="text-field" v-model="login"></InputText>
-        <!-- <InputText class="text-field"></InputText> -->
-        <input type="text" v-model="senha"/>
+        <InputText v-model="login"></InputText>
+        <InputText v-model="senha"></InputText>
+        <!-- <input type="text" v-model="senha"/> -->
         <InputSubmit class="submit-btn"></InputSubmit>
       </div>
     </form>
@@ -31,7 +31,7 @@ export default {
     redirect(e) {
 
       e.preventDefault();
-      
+
       const data = {
         login: this.login,
         senha: this.senha
