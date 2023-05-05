@@ -1,15 +1,24 @@
 <template>
     <div v-if="!mobile" class="nav">
-        <div class="logo"></div>
-        <div class="navbar">
-            <RouterLink id="iscrito" to="/">Shop</RouterLink>
-            <RouterLink id="iscrito" to="/about">Services</RouterLink>
+        <div class="navWeb">
+            <div class="logo">
+                <div class="pet">Pet</div>
+                <div class="the_shop">the shop</div>
+            </div>
+            <div class="navbar">
+                <RouterLink id="iscrito" to="/">Shop</RouterLink>
+                <RouterLink id="iscrito" to="/about">Services</RouterLink>
+            </div>
         </div>
     </div>
-    <div v-else>
+    <div v-else class="nav">
         <div class="navMob">
+            <div class="logo">
+                <div class="pet">Pet</div>
+                <div class="the_shop">the shop</div>
+            </div>
             <button @click="switchDropBox">
-                <img src="https://assets.stickpng.com/images/588a6507d06f6719692a2d15.png" alt="menu">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png" alt="menu">
             </button>
         </div>
         <div v-if="dropBox" class="dropBox">
@@ -27,35 +36,67 @@ export default {
     data() {
         return {
             mobile: false,
-            dropBox: false
+            dropBox: false,
         }
     },
     methods: {
         defineWindow() {
-            var wWindow = window.innerWidth;
-            if (wWindow < 700) {
+            if (window.innerWidth < 700) {
                 this.mobile = true
+            } else {
+                this.mobile = false
             }
-            console.log(this.mobile)
+            console.log(window.innerWidth)
         },
         switchDropBox() {
             this.dropBox = !this.dropBox;
             console.log(this.dropBox)
         }
     },
-    created() {
+    mounted() {
         this.defineWindow()
-    }
+        window.addEventListener("resize", this.defineWindow)
+    },
+
+
 }
 </script>
 
 
 <style scoped>
-.nav {
+
+.nav{
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.navWeb {
     background-color: #46D115;
     height: 10vh;
     width: 100%;
     display: flex;
+    z-index: 3;
+    top: 0;
+}
+
+.logo {
+    height: 120%;
+    width: 300px;
+    color: #fff;
+    background-color: #46D115;
+    padding-left: 3vw;
+    border-radius: 0 0 1200px 0px;
+    font-size: xx-large;
+}
+
+.pet {
+    font-size: 2.2em;
+}
+
+.the_shop {
+    font-size: 0.8em;
 }
 
 .navbar {
@@ -66,32 +107,24 @@ export default {
     align-items: center;
 }
 
-.logo {
-    height: 120%;
-    background: url("/cart.png");
-    width: 200px;
-}
-
-#iscrito {
-    font-family: 'Courier New', Courier, monospace;
+.navbar a {
     color: aliceblue;
     text-decoration: none;
     font-size: 24px;
-    margin: 5px 30px;
 }
 
-#iscrito:hover {
+.navbar a:hover {
     color: #000;
 }
-
 
 
 .navMob {
     background-color: #46D115;
     height: 10vh;
     width: 100%;
+    min-height: 100px;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
@@ -113,8 +146,21 @@ img {
     flex-direction: column;
     align-items: flex-end;
     background-color: #46D115;
-    height: 10vh;
     width: 100%;
     padding: 20px 0px;
+}
+
+.dropBox a {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.dropBox a:hover {
+    color: #000;
+}
+
+a {
+    margin: 20px;
 }
 </style>
