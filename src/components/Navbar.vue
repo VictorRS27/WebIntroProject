@@ -1,7 +1,7 @@
 <template>
     <div v-if="!mobile" class="nav">
         <div class="navWeb">
-            <div class="logo">
+            <div v-show="!is_home" class="logo">
                 <div class="pet">Pet</div>
                 <div class="the_shop">the shop</div>
             </div>
@@ -39,6 +39,10 @@ export default {
             dropBox: false,
         }
     },
+    props: {
+        is_home:Boolean,
+        default:false
+    },
     methods: {
         defineWindow() {
             if (window.innerWidth < 700) {
@@ -46,11 +50,9 @@ export default {
             } else {
                 this.mobile = false
             }
-            console.log(window.innerWidth)
         },
         switchDropBox() {
             this.dropBox = !this.dropBox;
-            console.log(this.dropBox)
         }
     },
     mounted() {
@@ -70,6 +72,9 @@ export default {
     color: aliceblue;
     text-decoration: none;
     font-size: 24px;
+    z-index: 10;
+    position: fixed;
+    width: 100vw;
 }
 
 .navWeb {
@@ -100,7 +105,6 @@ export default {
 }
 
 .navbar {
-    padding-left: 2vw;
     width: 100vw;
     display: flex;
     justify-content: space-around;

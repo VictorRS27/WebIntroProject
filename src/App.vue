@@ -1,8 +1,7 @@
 <template>
   <div class="app">
-    <Navbar />
     <RouterView />
-    <Footer>Bolha</Footer>
+    <Footer></Footer>
   </div>
 </template>
 
