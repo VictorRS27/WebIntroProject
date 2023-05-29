@@ -1,5 +1,6 @@
 <template>
     <div class="posts">
+      
       <div v-for="post in posts" :key="post.id" class="post">
         <h3>{{ post.title }}</h3>
         <div id="post_back">
@@ -10,10 +11,12 @@
         <p><strong>Address:</strong> {{ post.address }}</p>
         <p><strong>Type:</strong> {{ post.type }}</p>
       </div>
+
     </div>
   </template>
   
   <script>
+
   export default {
     name : "Events",
     data() {
