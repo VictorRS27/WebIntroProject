@@ -1,5 +1,5 @@
 <template>
-    <input type="submit" value="Enviar">
+    <button @click="$emit('submit2')" >Enviar</button>
 </template>
 <script>
 export default {
@@ -7,7 +7,7 @@ export default {
 }
 </script>
 <style>
-    input[type=submit] {
+    button {
         background-color: #46D115;
         border-radius: 30px;
         height: 4vh;
