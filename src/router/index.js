@@ -58,6 +58,23 @@ const router = createRouter({
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/CreateEventView.vue')
+    },
+    {
+      path: '/RegisterClient',
+      name: 'RegisterClient',
+      // route level code-splitting
+      // this generates a separate chunk (login.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/RegisterClientView.vue')
+    }
+    ,
+    {
+      path: '/RegisterAdmin',
+      name: 'RegisterAdmin',
+      // route level code-splitting
+      // this generates a separate chunk (login.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/RegisterAdminView.vue')
     }
   ]
 })
