@@ -1,6 +1,5 @@
 <template>
-    <div class="container">
-        <Card />
+    <div class="card_line_cont">
         <Card />
         <Card />
         <Card />
@@ -25,8 +24,7 @@ export default {
 }
 </script>
 <style scoped>
-.container {
-    margin: 30px;
+.card_line_cont {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
