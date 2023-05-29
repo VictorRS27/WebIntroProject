@@ -1,44 +1,49 @@
 <template>
   <div class="create-products">
-    <h2>Create Product</h2>
 
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Enter product name" v-model="productName" />
-    </div>
+    <div class="box">
+      <h2>Create Product</h2>
 
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" />
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea id="description" placeholder="Enter product description" v-model="productDescription"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="photos">Photos:</label>
-      <input type="file" id="photos" @change="handlePhotoUpload" multiple />
-      <div class="photos-preview">
-        <div v-for="(photo, index) in photos" :key="index" class="photo">
-          <img :src="photo" alt="Product Photo" />
-          <button class="delete-button" @click="deletePhoto(index)">Delete</button>
-        </div>
+      <div class="side_form">
+        <InputText label="Nome" placeholder="A pet friend product" v-model:value="productName" />
+        <InputText label="Preço" placeholder="A pet friend product" v-model:value="productPrice" />
       </div>
-      <button class="upload-button">Upload Photos</button>
-    </div>
+      <InputText label="Descrição" placeholder="A pet friend product" v-model:value="productName" />
 
-    <div class="form-group">
-      <label for="quantity">Quantity in Stock:</label>
-      <input type="number" id="quantity" placeholder="Enter quantity in stock" v-model="quantityInStock" />
-    </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" />
+      </div>
 
-    <button class="submit-button">Submit</button>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" placeholder="Enter product description" v-model="productDescription"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="photos">Photos:</label>
+        <input type="file" id="photos" @change="handlePhotoUpload" multiple />
+        <div class="photos-preview">
+          <div v-for="(photo, index) in photos" :key="index" class="photo">
+            <img :src="photo" alt="Product Photo" />
+            <button class="delete-button" @click="deletePhoto(index)">Delete</button>
+          </div>
+        </div>
+        <button class="upload-button">Upload Photos</button>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Quantity in Stock:</label>
+        <input type="number" id="quantity" placeholder="Enter quantity in stock" v-model="quantityInStock" />
+      </div>
+
+      <button class="submit-button">Submit</button>
+    </div>
   </div>
 </template>
 
 <script>
+import InputText from './InputText.vue';
 export default {
   data() {
     return {
@@ -48,6 +53,9 @@ export default {
       photos: [],
       quantityInStock: ''
     };
+  },
+  components: {
+    InputText
   },
   methods: {
     handlePhotoUpload(event) {
@@ -69,8 +77,18 @@ export default {
 
 <style scoped>
 .create-products {
-  max-width: 500px;
-  margin-top: 10vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side_form {
+  display: flex;
+}
+
+.side_form input {
+  margin: 20px;
 }
 
 h2 {

@@ -21,8 +21,10 @@
 
 
 <template>
-    <label for="this">{{ label }}</label>
-    <input type="text" :value="value" @input="$emit('update:value', $event.target.value)" :placeholder="placeHolder"/>
+    <div class="form-group">
+        <label for="this">{{ label }}</label>
+        <input type="text" :value="value" @input="$emit('update:value', $event.target.value)" :placeholder="placeHolder" />
+    </div>
 </template>
 <script>
 export default {
@@ -32,17 +34,25 @@ export default {
 }
 </script>
 <style>
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
 input[type=text] {
+    width: 100%;
     background-color: #ffffff00;
     border: none;
     border-bottom: 4px solid #46D115;
     border-top: 0px;
     border-radius: 0px;
-    margin: 0 10px 0 10px;
 }
 
 label {
-    margin: 2vh 10px 1vh 10px;
+    margin: 2vh 0 1vh 0;
 }
 
 input[type=text]:focus {

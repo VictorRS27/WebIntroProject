@@ -8,6 +8,7 @@ export default {
 </script>
 <style>
     button {
+        margin: 20px;
         background-color: #46D115;
         border-radius: 30px;
         height: 4vh;
