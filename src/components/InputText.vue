@@ -1,5 +1,5 @@
 <template>
-    <p>{{ something }}</p>
+    <p>{{ InputName}}</p>
     <input @input="$emit('update:modelValue', $event.target.value)" 
     type="text" 
     v-model="login" />
@@ -8,7 +8,7 @@
 export default {
     name: "InputText",
     props: {
-        something: String
+        InputName: String
     },
     inheritAttrs: false
 }
