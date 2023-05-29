@@ -1,8 +1,8 @@
 <template>
-    <div class="sound-player">
+    <!-- <div class="sound-player">
       <h2>Sound Player</h2>
       <button class="play-button" @click="playSound">Play Sound</button>
-    </div>
+    </div> -->
   </template>
   
   <script>
@@ -12,27 +12,23 @@
     data() {
       return {
         audio: new Audio(),
-        intervalId: null
+        interval: null
       };
     },
     mounted() {
       this.setRandomInterval();
-    },
-    beforeDestroy() {
-      clearInterval(this.intervalId);
     },
     methods: {
       setRandomInterval() {
         const minDelay = 4000; // Minimum delay in milliseconds
         const maxDelay = 10000; // Maximum delay in milliseconds
         const delay = Math.floor(Math.random() * (maxDelay - minDelay + 1) + minDelay);
-        this.intervalId = setInterval(() => {
-          this.playSound();
-          this.setRandomInterval();
-        }, delay);
+        this.intervalId = delay
       },
       playSound() {
-        this.audio.src = 'public/cat-meow-6226.mp3'; // Replace with the path to your sound file
+        let soundID = Math.random() % 7
+        const soundsList = ['public/cat-meow-6226.mp3', 'public/zimmermacaco.mp3', 'public/sheep-122256.mp3', 'public/duck-quack-112941.mp3','public/elephant-trumpets-growls-6047.mp3','public/owl-144750.mp3', 'public/pet-squeak-toy-81315.mp3']
+        this.audio.src = soundsList[soundID]; // Replace with the path to your sound file
         this.audio.play();
       }
     }

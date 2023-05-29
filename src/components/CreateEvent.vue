@@ -76,7 +76,7 @@
   <style scoped>
   .create-event {
     max-width: 500px;
-
+    margin-top: 20vh;
   }
   
   h2 {

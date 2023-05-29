@@ -2,15 +2,17 @@
   <div class="app">
     <RouterView />
     <Footer></Footer>
+    <Sound/>
   </div>
 </template>
 
 <script>
-
+import Sound from './components/Sound.vue'
 import Footer from './components/Footer.vue';
 import Navbar from './components/Navbar.vue';
 export default {
   components: {
+    Sound,
     Navbar,
     Footer
   }
