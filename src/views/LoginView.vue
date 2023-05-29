@@ -1,17 +1,15 @@
+<!-- ParentComponent.vue -->
 <template>
   <div class="loginPage">
-    <form @submit="redirect($event)">
-      <div class="box">
-        <h1>Login</h1>
-        <InputText v-model="login"></InputText>
-        <InputText v-model="senha"></InputText>
-        <!-- <input type="text" v-model="senha"/> -->
-        <InputSubmit class="submit-btn"></InputSubmit>
-      </div>
-    </form>
+    <div class="box">
+      <h1>Login</h1>
+      <InputText v-model:value="username" label="Nome de Usuário" placeHolder="petFriend24"/>
+      <InputText v-model:value="password" label="Senha" placeHolder="********"/>
+      <InputSubmit class="submit-btn" @submit2="redirect"></InputSubmit>
+    </div>
   </div>
 </template>
-  
+
 <script>
 import InputSubmit from '../components/InputSubmit.vue';
 import InputText from '../components/InputText.vue';
@@ -19,8 +17,8 @@ import InputText from '../components/InputText.vue';
 export default {
   data() {
     return {
-      login: null,
-      senha: null
+      username: '', 
+      password: '' 
     }
   },
   components: {
@@ -28,20 +26,15 @@ export default {
     InputSubmit
   },
   methods: {
-    redirect(e) {
-
-      e.preventDefault();
-
-      const data = {
-        login: this.login,
-        senha: this.senha
-      }
-      console.log(data)
+    redirect() {
+      console.log(this.username);
+      console.log(this.password);
       /* this.$router.push('/') */
     }
   }
 }
 </script>
+
   
 <style scoped>
 .box {
@@ -51,6 +44,10 @@ export default {
 }
 
 input+input {
+  margin: 4vh 10px 0 10px;
+}
+
+input+button {
   margin: 4vh 10px 0 10px;
 }
 
