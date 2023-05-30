@@ -2,17 +2,17 @@
 	<div class="box">
 		<h2>Shipping Information</h2>
 		<form>
+
 			<div class="form-group">
-				<div class="input-group">
-					<label for="first-name">First Name(s):</label>
-					<input id="first-name" type="text" v-model="firstName" required />
-				</div>
-				<div class="input-group">
-					<label for="last-name">Last Name(s):</label>
-					<input id="last-name" type="text" v-model="lastName" required />
-				</div>
+				<label for="first-name">First Name(s):</label>
+				 <input id="first-name" type="text" v-model="firstName" required /> <!--já não tem o nome da pessoa no cadsatro dela? -->
 			</div>
-			
+			<div class="form-group">
+				<label for="last-name">Last Name(s):</label>
+				<input id="last-name" type="text" v-model="lastName" required />
+			</div>
+
+
 			<div class="form-group">
 				<label for="address">Address:</label>
 				<input id="address" type="text" v-model="address" required />
@@ -84,7 +84,8 @@ input {
 	padding-left: 1vw;
 	border-radius: 0;
 	border: none;
-	border-bottom: 2px solid #46D115; /* Green line */
+	border-bottom: 2px solid #46D115;
+	/* Green line */
 	font-size: 1vw;
 }
 
