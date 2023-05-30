@@ -1,12 +1,19 @@
 <template>
-    <div class="container">
-        <Navbar/>
-        <AdminMenu/>
-        <!-- <Footer/> -->
+<div>
+    <Navbar/>
+    <div class="button-container">
+        
+        <h2> Admin Menu </h2>
+      <div class="grid">
+        <button class="custom-button" style="background-color: #46D115;">Client Management</button>
+        <button class="custom-button" style="background-color: #46D115;">Stock Management</button>
+        <button class="custom-button" style="background-color: #46D115;">Admin Management</button>
+        <button class="custom-button" style="background-color: #46D115;">Event Management</button>
+      </div>
     </div>
-</template>
+</div>
+  </template>
 <script>
-import AdminMenu from '../components/AdminMenu.vue'
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 
@@ -14,17 +21,41 @@ import Footer from '../components/Footer.vue'
 export default {
     components: {
         Navbar,
-        AdminMenu,
         Footer
     }
 
 }
 </script >
 <style scoped>
-.container {
+  .button-container {
+    margin-top: 25vh ;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: stretch;
-}
-</style>
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 30px;
+  }
+
+  .custom-button{
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .custom-button {
+    padding: 40px 80px;
+    background-color: #46D115;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px ;
+    cursor: pointer;
+    margin: 10px;
+  }
+  </style>
