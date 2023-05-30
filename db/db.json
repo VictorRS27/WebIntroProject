@@ -125,25 +125,27 @@
         "https://example.com/dog-bed-photo3.jpg"
       ]
     },
-    {   
+    {
       "id": 6,
       "eventName": "Adoption",
       "eventDate": "2023-11-11",
       "eventDescription": "Adoção galera",
       "eventType": "Pode colar geral",
       "eventAddress": "Na entrada da matemática",
-      "photos": ["https://example.com/dog-bed-photo1.jpg"]
-      
+      "photos": [
+        "https://example.com/dog-bed-photo1.jpg"
+      ]
     },
     {
-    "id": 7,
+      "id": 7,
       "eventName": "Tosa",
       "eventDate": "2023-12-12",
       "eventDescription": "Para seu doguinho uma tosa gratuita",
       "eventType": "De graça",
       "eventAddress": "Avenida São Carlense",
-      "photos": ["https://example.com/dog-bed-photo1.jpg"]
-      
+      "photos": [
+        "https://example.com/dog-bed-photo1.jpg"
+      ]
     }
   ],
   "users": [
@@ -186,6 +188,58 @@
       "email": "pawssquad@example.com",
       "telephone": "+55 17 77777-7777",
       "address": "987 Walnut Ln, City, State"
+    },
+    {
+      "username": "otavio12",
+      "password": "senha",
+      "email": "otaviocoletti@usp.br",
+      "telephone": "17999796969",
+      "address": "Rua Princesa Isabel",
+      "id": 6
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "username": "adminpet",
+      "password": "petpass",
+      "email": "petpet@admin.com"
+    },
+    {
+      "id": 2,
+      "username": "petpet",
+      "password": "mypetsrock",
+      "email": "mypet@edmin.com"
+    },
+    {
+      "id": 3,
+      "username": "admin1",
+      "password": "adminpass1",
+      "email": "admin1@example.com"
+    },
+    {
+      "id": 4,
+      "username": "admin2",
+      "password": "adminpass2",
+      "email": "admin2@example.com"
+    },
+    {
+      "id": 5,
+      "username": "admin3",
+      "password": "adminpass3",
+      "email": "admin3@example.com"
+    },
+    {
+      "id": 6,
+      "username": "admin4",
+      "password": "adminpass4",
+      "email": "admin4@example.com"
+    },
+    {
+      "id": 7,
+      "username": "admin5",
+      "password": "adminpass5",
+      "email": "admin5@example.com"
     }
   ]
 }
