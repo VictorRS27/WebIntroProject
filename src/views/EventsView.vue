@@ -5,7 +5,14 @@
         <div v-for="event in events" :key="event.id" class="post">
           <h3>{{ event.eventName }}</h3>
           <div id="post_back">
-            <p id="post_text">{{ event.eventDescription }}</p>
+            <div class="post_content">
+              <div class="post_text">
+                <p>{{ event.eventDescription }}</p>
+              </div>
+              <div class="post_photos">
+                <img v-for="(photo, index) in event.photos" :src="photo.url" :alt="photo.alt" :key="index" class="post_photo" />
+              </div>
+            </div>
           </div>
           <p class="date">{{ formatDate(event.eventDate) }}</p>
           <p><strong>Address:</strong> {{ event.eventAddress }}</p>
@@ -52,44 +59,65 @@
     }
   }
   </script>
-<style scoped>
-.container {
+  
+  <style scoped>
+  .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
-}
-
-.posts {
+  }
+  
+  .posts {
     margin: 15vw;
     display: flex;
     flex-direction: column;
-}
-
-.post {
+  }
+  
+  .post {
     margin-bottom: 20px;
-}
-
-#post_back {
+  }
+  
+  #post_back {
     background-color: lightgrey;
-    height: 250px;
-    width: 750px;
     border-radius: 30px;
-}
-
-#post_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-}
-
-
-
-h3 {
+  }
+  
+  .post_content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .post_text {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .post_photos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .post_photo {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    object-fit: cover;
+  }
+  
+  h3 {
     font-size: 18px;
     font-weight: bold;
-}
-
-.date {
+  }
+  
+  .date {
     color: #888;
     font-size: 14px;
-}
-</style>
+  }
+  </style>
+  

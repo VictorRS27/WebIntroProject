@@ -66,7 +66,12 @@
             "eventDescription": "Join us for a community event dedicated to pet adoption.",
             "eventDate": "2023-06-10",
             "eventAddress": "456 Elm St, City, State",
-            "eventType": "Open to the public"
+            "eventType": "Open to the public",
+            "photos":[
+                "https://example.com/dog-bed-photo1.jpg",
+                "https://example.com/dog-bed-photo2.jpg",
+                "https://example.com/dog-bed-photo3.jpg"
+              ]
         },
         {
             "id": 2,
@@ -74,7 +79,12 @@
             "eventDescription": "Discover your new furry friend at our adoption fair.",
             "eventDate": "2023-06-15",
             "eventAddress": "789 Oak Ave, City, State",
-            "eventType": "Open to all pet lovers"
+            "eventType": "Open to all pet lovers",
+            "photos":[
+                "https://example.com/dog-bed-photo1.jpg",
+                "https://example.com/dog-bed-photo2.jpg",
+                "https://example.com/dog-bed-photo3.jpg"
+              ]
         },
         {
             "id": 3,
@@ -82,7 +92,12 @@
             "eventDescription": "Help us find forever homes for our adorable pets.",
             "eventDate": "2023-06-20",
             "eventAddress": "321 Pine Rd, City, State",
-            "eventType": "Family-friendly event"
+            "eventType": "Family-friendly event",
+            "photos":[
+                "https://example.com/dog-bed-photo1.jpg",
+                "https://example.com/dog-bed-photo2.jpg",
+                "https://example.com/dog-bed-photo3.jpg"
+              ]
         },
         {
             "id": 4,
@@ -90,7 +105,12 @@
             "eventDescription": "Join us for a fun-filled day of pet adoptions and activities.",
             "eventDate": "2023-06-25",
             "eventAddress": "654 Maple Blvd, City, State",
-            "eventType": "Open to everyone"
+            "eventType": "Open to everyone",
+            "photos":[
+                "https://example.com/dog-bed-photo1.jpg",
+                "https://example.com/dog-bed-photo2.jpg",
+                "https://example.com/dog-bed-photo3.jpg"
+              ]
         },
         {
             "id": 5,
@@ -98,7 +118,12 @@
             "eventDescription": "Explore a variety of pets available for adoption at our expo.",
             "eventDate": "2023-06-30",
             "eventAddress": "987 Walnut Ln, City, State",
-            "eventType": "Pet lovers welcome"
+            "eventType": "Pet lovers welcome",
+            "photos":[
+                "https://example.com/dog-bed-photo1.jpg",
+                "https://example.com/dog-bed-photo2.jpg",
+                "https://example.com/dog-bed-photo3.jpg"
+              ]
         }
     ],
     "users": [
