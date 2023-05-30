@@ -4,8 +4,10 @@
 			<h1>{{ product.name }}</h1>
 			<button class="trash-button" @click="deleteProduct">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="24" height="24">
-					<path d="M0 0h24v24H0z" fill="none"/>
-					<path d="M19 7h-2V6a3 3 0 0 0-3-3H10a3 3 0 0 0-3 3v1H5c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1v9c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V11c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1zm-8-1h4v1h-4V6zm5 14H8v-9h8v9zm-4-8c.55 0 1 .45 1 1s-.45 1-1 1-.997-.45-1-1 .45-1 1-1zM9 15c0 .55.45 1 1 1s1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6z"/>
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path
+					d="M19 7h-2V6a3 3 0 0 0-3-3H10a3 3 0 0 0-3 3v1H5c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1v9c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V11c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1zm-8-1h4v1h-4V6zm5 14H8v-9h8v9zm-4-8c.55 0 1 .45 1 1s-.45 1-1 1-.997-.45-1-1 .45-1 1-1zM9 15c0 .55.45 1 1 1s1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6z"
+					/>
 				</svg>
 				<i class="fas fa-trash"></i>
 			</button>
@@ -27,19 +29,17 @@
 	</div>
 </template>
 
-
-
 <script>
 export default {
 	name: "Product",
+	props: {
+		product: {
+			type: Object,
+			required: true,
+		},
+	},
 	data() {
 		return {
-			product: {
-				name: "Collar",
-				price: 9.99,
-				description: "A comfortable and stylish collar for your pet.",
-				image: "/public/greenCollar.png",
-			},
 			quantity: 1,
 		};
 	},
@@ -53,8 +53,7 @@ export default {
 			}
 		},
 		deleteProduct() {
-			// Add your logic to delete the product here
-			console.log("Product deleted!");
+			this.$emit("delete-product", this.product);
 		},
 	},
 };
@@ -67,14 +66,10 @@ export default {
 }
 
 .box {
-	border-style: solid;
 	align-self: center;
 	width: 40vw;
-	border-width: 0.2vw;
-	border-color: #46D115;
-	border-radius: 2vw;
+	border-width: 0vw;
 	padding: 3vh 3vw;
-	margin-top: 12vh;
 	position: relative; /* Added positioning */
 }
 
@@ -84,8 +79,8 @@ export default {
 }
 
 .image img {
-	width: 7vw;
-	height: 7vw;
+	width: 10vw;
+	height: 10vw;
 	object-fit: cover;
 	border-radius: 2vw;
 	margin-right: 2vw;
