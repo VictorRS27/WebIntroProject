@@ -1,74 +1,57 @@
 <template>
     <div class="container">
-        <Navbar />
-        <div class="posts">
-
-            <div v-for="post in posts" :key="post.id" class="post">
-                <h3>{{ post.title }}</h3>
-                <div id="post_back">
-                    <p id="post_text">{{ post.text }}</p>
-                </div>
-
-                <p class="date">{{ formatDate(post.date) }}</p>
-                <p><strong>Address:</strong> {{ post.address }}</p>
-                <p><strong>Type:</strong> {{ post.type }}</p>
-            </div>
-
+      <Navbar />
+      <div class="posts">
+        <div v-for="event in events" :key="event.id" class="post">
+          <h3>{{ event.eventName }}</h3>
+          <div id="post_back">
+            <p id="post_text">{{ event.eventDescription }}</p>
+          </div>
+          <p class="date">{{ formatDate(event.eventDate) }}</p>
+          <p><strong>Address:</strong> {{ event.eventAddress }}</p>
+          <p><strong>Type:</strong> {{ event.eventType }}</p>
         </div>
-        <!-- <Footer/> -->
+      </div>
+      <!-- <Footer/> -->
     </div>
-</template>
-
-<script>
-
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
-
-
-export default {
+  </template>
+  
+  <script>
+  import Navbar from '../components/Navbar.vue'
+  import Footer from '../components/Footer.vue'
+  import axios from 'axios'
+  
+  export default {
     components: {
-        Navbar,
-        Footer
+      Navbar,
+      Footer
     },
-    name: "Events",
+    name: 'Events',
     data() {
-        return {
-            posts: [
-                {
-                    id: 1,
-                    title: 'Post 1',
-                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                    date: '2023-05-26',
-                    address: '123 Main St, City, State',
-                    type: 'Conference'
-                },
-                {
-                    id: 2,
-                    title: 'Post 2',
-                    text: 'Pellentesque ac lectus fringilla, lacinia diam a, feugiat tortor.',
-                    date: '2023-05-27',
-                    address: '456 Elm St, City, State',
-                    type: 'Workshop'
-                },
-                {
-                    id: 3,
-                    title: 'Post 3',
-                    text: 'Maecenas tempor risus non mi ullamcorper finibus.',
-                    date: '2023-05-28',
-                    address: '789 Oak St, City, State',
-                    type: 'Seminar'
-                }
-            ]
-        };
+      return {
+        events: []
+      };
+    },
+    mounted() {
+      this.fetchEvents();
     },
     methods: {
-        formatDate(date) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(date).toLocaleDateString(undefined, options);
-        }
+      fetchEvents() {
+        axios.get('http://localhost:3000/events')
+          .then(response => {
+            this.events = response.data;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
+      formatDate(date) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(date).toLocaleDateString(undefined, options);
+      }
     }
-}
-</script>
+  }
+  </script>
 <style scoped>
 .container {
     display: flex;
