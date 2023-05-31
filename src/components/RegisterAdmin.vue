@@ -20,8 +20,9 @@
 
       <p class="warning-text" v-show="showWarning">Email or username already exists.</p>
 
-      <button class="submit-button" @click="registerAdmin">Submit</button>
     </div>
+    <button class="submit-button" @click="registerAdmin">Submit</button>
+
   </div>
 </template>
 
@@ -130,7 +131,7 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-  width: 100%;
+  width: 20vw;
   padding: 5px 0;
   border: none;
   border-bottom: 2px solid lightgreen;
@@ -141,7 +142,7 @@ input[type="email"] {
 
 .submit-button {
   display: block;
-  width: 100%;
+  width: 20vw;
   padding: 10px;
   background-color: white;
   border: 1px solid lightgreen;
