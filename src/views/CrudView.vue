@@ -1,11 +1,11 @@
 <template>
     <div class="container_crud">
         <div class="box">
-            <div class="box_head">
+            <!-- <div class="box_head">
                 <RouterLink :to="add_edit_link">
                     <button>Add</button>
                 </RouterLink>
-            </div>
+            </div> -->
             <div v-if="witch === 'products'" class="line">
                 <span class="column">Nome</span>
                 <span class="column">Preço</span>
@@ -19,13 +19,15 @@
                 <span class="column">Endereço</span>
             </div>
             <div v-for="(item, index) in items">
-                <div v-if="witch === 'products'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')" @click="highlight(item)">
+                <div v-if="witch === 'products'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                    @click="highlight(item)">
                     <span class="column">{{ item.productName }}</span>
                     <span class="column">{{ item.productPrice }}</span>
-                    <span class="column">{{ item.productDescription }}</span>
-                    <span class="column">{{ item.productStock }}</span>
+                    <span class="column">{{ item.productShortDescription }}</span>
+                    <span class="column">{{ item.quantityInStock }}</span>
                 </div>
-                <div v-if="witch === 'users'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')" @click="highlight(item)">
+                <div v-if="witch === 'users'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                    @click="highlight(item)">
                     <span class="column">{{ item.username }}</span>
                     <span class="column">{{ item.email }}</span>
                     <span class="column">{{ item.telephone }}</span>
@@ -34,11 +36,23 @@
             </div>
             <div class="box_feet">
                 <div class="data">
-                    <span>{{ focused.productName }}</span>
+                    <div class="line">
+                        <span>Nome: {{ focused.productName }}</span>
+                        <span>Preço: {{ focused.productPrice }}</span>
+                        <span>Quantidade em estoque: {{ focused.quantityInStock }}</span>
+                    </div>
+                    <p>Descrição curta: {{ focused.productShortDescription }}</p>
+                    <p>Descrição longa: {{ focused.productDescription }}</p>
+                    <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
                 </div>
-                <RouterLink :to="add_edit_link">
-                    <button>Add</button>
-                </RouterLink>
+                <div class="btn_column">
+                    <RouterLink :to="add_edit_link">
+                        <button>Add</button>
+                    </RouterLink>
+                    <RouterLink :to="add_edit_link + '?edit=' + focused.id">
+                        <button>Edit</button>
+                    </RouterLink>
+                </div>
             </div>
         </div>
     </div>
@@ -59,11 +73,23 @@ export default {
         witch: "Default"
     },
     methods: {
+        cleanData() {
+            this.items.forEach(item => {
+                for (let key in item) {
+                    if (item.hasOwnProperty(key) && typeof item[key] === 'string') {
+                        if (item[key].length > 120) {
+                            item[key] = item[key].substring(0, 120);
+                        }
+                    }
+                }
+            });
+        },
         fetchItems() {
             let link = 'http://localhost:3000/' + this.witch
             axios.get(link)
                 .then(response => {
                     this.items = response.data;
+                    this.cleanData()
                 })
                 .catch(error => {
                     console.log(error);
@@ -75,7 +101,7 @@ export default {
         highlight(item) {
             console.log(item)
             this.focused = item
-        }
+        },
     },
     mounted() {
         this.fetchItems()
@@ -97,16 +123,15 @@ export default {
     padding: 0;
 }
 
-.box_head {
+/* .box_head {
     height: 8vh;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 10px;
-}
+} */
 
 .box_feet {
-    height: 8vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,6 +141,23 @@ export default {
 button {
     height: 4vh;
     width: 10vw;
+}
+
+.data {
+    padding: 10px;
+}
+
+.data p {
+    padding: 10px;
+}
+
+.img_small {
+    width: 10vw;
+    height: auto;
+}
+
+.btn_column {
+    display: grid;
 }
 
 .column {
