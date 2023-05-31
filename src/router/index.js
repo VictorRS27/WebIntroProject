@@ -102,6 +102,12 @@ const router = createRouter({
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/CartView.vue')
+    },
+    {
+      path: '/crud',
+      name: 'crud',
+      props: (route) => ({ witch: route.query.crud }),
+      component: () => import('../views/CrudView.vue')
     }
   ]
 })
