@@ -2,46 +2,62 @@
     <div class="container_crud">
         <div class="box">
             <div class="box_head">
-                <h1 v-if="witch === 'products'"> Produtos </h1>
-                <h1 v-if="witch === 'users'"> Usuários </h1>
-                <h1 v-if="witch === 'admin'"> Administradores </h1>
+                <h1 v-if="which_table === 'products'"> Produtos </h1>
+                <h1 v-if="which_table === 'users'"> Usuários </h1>
+                <h1 v-if="which_table === 'admin'"> Administradores </h1>
+                <h1 v-if="which_table === 'events'"> Eventos </h1>
             </div>
-            <div v-if="witch === 'products'" class="line">
+            <div v-if="which_table === 'products'" class="line">
                 <span class="column">Nome</span>
                 <span class="column">Preço</span>
                 <span class="column">Descrição</span>
                 <span class="column">Estoque</span>
             </div>
-            <div v-else-if="witch === 'users'" class="line">
+            <div v-else-if="which_table === 'users'" class="line">
                 <span class="column">Nome de usuário</span>
                 <span class="column">Email</span>
                 <span class="column">Telefone</span>
                 <span class="column">Endereço</span>
             </div>
+            <div v-else-if="which_table === 'admin'" class="line">
+                <span class="column">Nome de usuário</span>
+                <span class="column">Senha</span>
+                <span class="column">Email</span>
+                <span class="column">Telefone</span>
+            </div>
             <div v-for="(item, index) in items">
-                <div v-if="witch === 'products'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                <div v-if="which_table === 'products'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
                     @click="highlight(item)">
                     <span class="column">{{ item.productName }}</span>
                     <span class="column">{{ item.productPrice }}</span>
-                    <span class="column">{{ item.productShortDescription }}</span>
                     <span class="column">{{ item.quantityInStock }}</span>
+                    <span class="column">{{ item.productShortDescription }}</span>
                 </div>
-                <div v-if="witch === 'users'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                <div v-if="which_table === 'users'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
                     @click="highlight(item)">
                     <span class="column">{{ item.username }}</span>
                     <span class="column">{{ item.email }}</span>
                     <span class="column">{{ item.telephone }}</span>
                     <span class="column">{{ item.address }}</span>
                 </div>
-                <div v-if="witch === 'admin'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                <div v-if="which_table === 'admin'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
                     @click="highlight(item)">
                     <span class="column">{{ item.username }}</span>
                     <span class="column">{{ item.password }}</span>
+                    <span class="column">{{ item.telephone }}</span>
                     <span class="column">{{ item.email }}</span>
+                </div>
+                <div v-if="which_table === 'events'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                    @click="highlight(item)">
+                    <span class="column">{{ item.eventName }}</span>
+                    <span class="column">{{ item.eventType }}</span>
+                    <span class="column">{{ item.eventDate }}</span>
+                    <span class="column">{{ item.eventAddress }}</span>
+                    <span class="column">{{ item.eventDescription }}</span>
                 </div>
             </div>
             <div class="box_feet">
-                <div v-if="witch === 'products'" class="data">
+                <div v-if="which_table === 'products'" class="data">
                     <div class="line">
                         <span>Nome: {{ focused.productName }}</span>
                         <span>Preço: {{ focused.productPrice }}</span>
@@ -51,7 +67,7 @@
                     <p>Descrição longa: {{ focused.productDescription }}</p>
                     <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
                 </div>
-                <div v-if="witch === 'users'" class="data">
+                <div v-if="which_table === 'users'" class="data">
                     <div class="line">
                         <span>Nome de Usuário: {{ focused.username }}</span>
                         <span>Email: {{ focused.email }}</span>
@@ -59,13 +75,26 @@
                     <p>Endereço: {{ focused.address }}</p>
                     <p>Telefone: {{ focused.telephone }}</p>
                 </div>
+                <div v-if="which_table === 'admin'" class="data">
+                    <div class="line">
+                        <span>Nome de Usuário: {{ focused.username }}</span>
+                        <span>Senha: {{ focused.password }}</span>
+                    </div>
+                    <p>Email: {{ focused.email }}</p>
+                    <p>Telefone: {{ focused.telephone }}</p>
+                </div>
+                <div v-if="which_table === 'events'" class="data">
+                    <div class="line">
+                        <span>Nome: {{ focused.eventName }}</span>
+                        <span>Tipo: {{ focused.eventType }}</span>
+                        <span>Data: {{ focused.eventDate }}</span>
+                    </div>
+                    <p>Descrição longa: {{ focused.eventDescription }}</p>
+                    <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
+                </div>
                 <div class="btn_column">
-                    <RouterLink :to="add_edit_link">
-                        <button>Add</button>
-                    </RouterLink>
-                    <RouterLink :to="add_edit_link + '?edit=' + focused.id">
-                        <button>Edit</button>
-                    </RouterLink>
+                    <button @click="handle_link(0)">Add</button>
+                    <button @click="handle_link(1)">Edit</button>
                 </div>
             </div>
         </div>
@@ -84,7 +113,10 @@ export default {
         }
     },
     props: {
-        witch: "Default"
+        which_table: {
+            type: String,
+            default: "products"
+        }
     },
     methods: {
         cleanData() {
@@ -99,7 +131,7 @@ export default {
             });
         },
         fetchItems() {
-            let link = 'http://localhost:3000/' + this.witch
+            let link = 'http://localhost:3000/' + this.which_table
             axios.get(link)
                 .then(response => {
                     this.items = response.data;
@@ -108,14 +140,35 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-            if (this.witch === "products") {
-                this.add_edit_link = "/createproduct"
-            }
         },
         highlight(item) {
             console.log(item)
             this.focused = item
         },
+        handle_link(add_or_edit) {
+            if (this.focused === {}) {
+                alert("Selecione um item")
+                return -1
+            }
+            if ((this.which_table === "products") || (this.which_table === "events")) {
+                if (add_or_edit) {
+                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length -1) + '?id=' + this.focused.id)
+                }
+                else {
+                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length -1))
+                }
+            }
+            else {
+                if ((this.which_table === "users") || (this.which_table === "admin")) {
+                    if (add_or_edit) {
+                        this.$router.push('/register' + this.which_table + '?id=' + this.focused.id)
+                    }
+                    else {
+                        this.$router.push('/register' + this.which_table)
+                    }
+                }
+            }
+        }
     },
     mounted() {
         this.fetchItems()
@@ -127,7 +180,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -135,6 +187,7 @@ export default {
 .box {
     width: 80vw;
     padding: 0;
+    margin: 10vw;
 }
 
 .box_head {
@@ -198,5 +251,20 @@ button {
 
 span+span {
     margin-right: 10px;
+}
+
+@media (max-width: 858px) {
+    .box_feet{
+        display: grid;
+        justify-content: center;
+    }
+
+    button {
+        width: 50vw;
+    }
+
+    .btn_column {
+        justify-content: center;
+    }
 }
 </style>

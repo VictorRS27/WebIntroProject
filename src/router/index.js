@@ -60,7 +60,7 @@ const router = createRouter({
       component: () => import('../views/CreateEventView.vue')
     },
     {
-      path: '/RegisterClient',
+      path: '/Registerusers',
       name: 'RegisterClient',
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
@@ -106,7 +106,7 @@ const router = createRouter({
     {
       path: '/crud',
       name: 'crud',
-      props: (route) => ({ witch: route.query.crud }),
+      props: (route) => ({ which_table: route.query.crud }),
       component: () => import('../views/CrudView.vue')
     }
     ,
