@@ -41,14 +41,14 @@
                 <button class="upload-button">Upload Photos</button>
             </div>
 
-            <button class="submit-button">Submit</button>
+            <button class="submit-button" @click="createEvent">Submit</button>
         </div>
     </div>
 </template>
 <script>
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
-
+import axios from 'axios'
 
 export default {
     components: {
@@ -78,13 +78,36 @@ export default {
         },
         deletePhoto(index) {
             this.photos.splice(index, 1);
+        },
+        createEvent() {
+            const newEvent = {
+                eventName: this.eventName,
+                eventDate: this.eventDate,
+                eventDescription: this.eventDescription,
+                eventType: this.eventType,
+                eventAddress: this.eventAddress,
+                photos: this.photos
+            };
+
+            axios.post('http://localhost:3000/events', newEvent)
+                .then(response => {
+                    console.log('Event created:', response.data);
+                    // Clear form fields and photo preview
+                    this.eventName = '';
+                    this.eventDate = '';
+                    this.eventDescription = '';
+                    this.eventType = '';
+                    this.eventAddress = '';
+                    this.photos = [];
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     }
-
 }
 </script>
 <style scoped>
-
 .box{
     margin-top: 12vh;
 }

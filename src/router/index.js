@@ -109,6 +109,15 @@ const router = createRouter({
       props: (route) => ({ witch: route.query.crud }),
       component: () => import('../views/CrudView.vue')
     }
+    ,
+    {
+      path: '/ProductPurchase',
+      name: 'ProductPurchase',
+      // route level code-splitting
+      // this generates a separate chunk (login.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/ProductPurchaseView.vue')
+    }
   ]
 })
 
