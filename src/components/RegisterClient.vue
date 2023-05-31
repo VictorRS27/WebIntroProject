@@ -5,6 +5,7 @@
       <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" id="username" placeholder="Enter username" v-model="username" />
+          <p class="warning-text" v-show="usernameExists">Username already exists.</p>
       </div>
 
       <div class="form-group">
@@ -15,6 +16,7 @@
       <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" placeholder="Enter email" v-model="email" />
+          <p class="warning-text" v-show="emailExists">Email already exists.</p>
       </div>
 
       <div class="form-group">
@@ -31,6 +33,8 @@
   </div>
 </template>
 
+
+
 <script>
 import axios from 'axios';
 
@@ -42,7 +46,9 @@ export default {
           password: '',
           email: '',
           telephone: '',
-          address: ''
+          address: '',
+          usernameExists: false, // New data property for username existence check
+          emailExists: false // New data property for email existence check
       };
   },
   methods: {
@@ -55,15 +61,43 @@ export default {
               address: this.address
           };
 
-          axios.post('http://localhost:3000/users', newClient)
-              .then(response => {
-                  console.log('Client registered:', response.data);
-                  // Clear form fields
-                  this.username = '';
-                  this.password = '';
-                  this.email = '';
-                  this.telephone = '';
-                  this.address = '';
+          axios.get('http://localhost:3000/admin')
+              .then(adminResponse => {
+                  axios.get('http://localhost:3000/users')
+                      .then(usersResponse => {
+                          const admins = adminResponse.data;
+                          const users = usersResponse.data;
+                          const usernameExists = admins.some(admin => admin.username === newClient.username) || users.some(user => user.username === newClient.username);
+                          const emailExists = admins.some(admin => admin.email === newClient.email) || users.some(user => user.email === newClient.email);
+                          if (usernameExists) {
+                              this.usernameExists = true;
+                              this.emailExists = false;
+                              return;
+                          }
+                          if (emailExists) {
+                              this.usernameExists = false;
+                              this.emailExists = true;
+                              return;
+                          }
+
+                          axios.post('http://localhost:3000/users', newClient)
+                              .then(response => {
+                                  console.log('Client registered:', response.data);
+                                  this.username = '';
+                                  this.password = '';
+                                  this.email = '';
+                                  this.telephone = '';
+                                  this.address = '';
+                                  this.usernameExists = false;
+                                  this.emailExists = false;
+                              })
+                              .catch(error => {
+                                  console.log(error);
+                              });
+                      })
+                      .catch(error => {
+                          console.log(error);
+                      });
               })
               .catch(error => {
                   console.log(error);
@@ -72,6 +106,8 @@ export default {
   }
 };
 </script>
+
+
 
 <style scoped>
 .register-client {
@@ -115,5 +151,11 @@ input[type="tel"] {
   color: green;
   font-weight: bold;
   cursor: pointer;
+}
+
+.warning-text {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
 }
 </style>

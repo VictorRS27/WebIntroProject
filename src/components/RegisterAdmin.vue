@@ -18,10 +18,13 @@
         <input type="email" id="email" placeholder="Enter email" v-model="email" />
       </div>
 
+      <p class="warning-text" v-show="showWarning">Email or username already exists.</p>
+
       <button class="submit-button" @click="registerAdmin">Submit</button>
     </div>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -33,35 +36,63 @@ export default {
       username: "",
       password: "",
       email: "",
+      showWarning: false, // New data property for showing the warning text
     };
   },
   methods: {
     registerAdmin() {
       const newAdmin = {
-        // Update the ID accordingly
         username: this.username,
         password: this.password,
         email: this.email,
       };
 
-      // Send newAdmin data to the JSON server using your preferred method (e.g., axios, fetch)
-      // Example using axios:
-      axios
-        .post("http://localhost:3000/admin", newAdmin) // Update the URL according to your JSON server endpoint
+      // Check if username or email already exists in 'admin' or 'users' data
+      axios.get("http://localhost:3000/admin")
         .then((response) => {
-          console.log("Admin registered successfully:", response.data);
-          // Clear form fields
-          this.username = "";
-          this.password = "";
-          this.email = "";
+          const admins = response.data;
+          const adminExists = admins.some(admin => admin.username === newAdmin.username || admin.email === newAdmin.email);
+          if (adminExists) {
+            console.error("Admin with the same username or email already exists.");
+            this.showWarning = true; // Set showWarning to true to display the warning text
+            return;
+          }
+
+          axios.get("http://localhost:3000/users")
+            .then((response) => {
+              const users = response.data;
+              const userExists = users.some(user => user.username === newAdmin.username || user.email === newAdmin.email);
+              if (userExists) {
+                console.error("User with the same username or email already exists.");
+                this.showWarning = true; // Set showWarning to true to display the warning text
+                return;
+              }
+
+              axios.post("http://localhost:3000/admin", newAdmin)
+                .then((response) => {
+                  console.log("Admin registered successfully:", response.data);
+                  this.username = "";
+                  this.password = "";
+                  this.email = "";
+                  this.showWarning = false; // Reset showWarning to false after successful registration
+                })
+                .catch((error) => {
+                  console.error("Error registering admin:", error);
+                });
+            })
+            .catch((error) => {
+              console.error("Error retrieving users:", error);
+            });
         })
         .catch((error) => {
-          console.error("Error registering admin:", error);
+          console.error("Error retrieving admins:", error);
         });
     },
   },
 };
 </script>
+
+
 
 <style scoped>
 .box {
@@ -118,5 +149,11 @@ input[type="email"] {
   color: green;
   font-weight: bold;
   cursor: pointer;
+}
+
+.warning-text {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
 }
 </style>

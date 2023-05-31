@@ -196,6 +196,14 @@
       "telephone": "17999796969",
       "address": "Rua Princesa Isabel",
       "id": 6
+    },
+    {
+      "username": "otavio12",
+      "password": "senha",
+      "email": "ooa@Xaz",
+      "telephone": "12",
+      "address": "121",
+      "id": 7
     }
   ],
   "admin": [
@@ -246,6 +254,12 @@
       "password": "pass",
       "email": "otaviocoletti@outlook.com",
       "id": 8
+    },
+    {
+      "username": "otavio13",
+      "password": "senha",
+      "email": "ooa@Xas",
+      "id": 9
     }
   ]
 }
