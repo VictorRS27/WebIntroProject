@@ -94,7 +94,7 @@ export default {
             axios.get('http://localhost:3000/products')
             .then(response => {
                 const numberOfproducts = 20 // Number of suggested products to display
-                this.products = response.data.slice(0, numberOfproducts)
+                this.products = response.data.slice()
                 console.log(this.products)
             })
             .catch(error => {
