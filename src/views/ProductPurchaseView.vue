@@ -84,7 +84,7 @@
           .then((response) => {
             let allProducts = response.data;
             allProducts = allProducts.slice();
-            this.productpurchase = [allProducts[id - 1]];
+            this.productpurchase = allProducts.filter((product) => product.id == id);
           })
           .catch((error) => {
             console.error('Error fetching suggested products:', error);
