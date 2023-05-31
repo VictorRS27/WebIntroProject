@@ -1,5 +1,5 @@
 <template>
-	<div class="box">
+	<div class="box" @click="openProductPurchase">
 		<div class="upper">
 			<div class="image">
 				<img :src="product.photos[0]" alt="Product Image" />
@@ -10,7 +10,6 @@
 			<div class="details">
 				<h1>{{ product.productName }}</h1><br>
 				<p>$ {{ product.productPrice }}</p><br>
-				
 			</div>
 		</div>
 	</div>
@@ -19,23 +18,30 @@
 <script>
 export default {
 	name: "product",
+	data() {
+		return {
+			product: {
+				id: 0,
+				productName: "Dog Collar Puffy Air",
+				productPrice: 9.99,
+				productDescription: "A comfortable and stylish collar for your pet.",
+				productShortDescription: "A comfortable and stylish collar for your pet.",
+				photos: ["/public/greenCollar.png"],
+				quantityInStock : 10,
+			},
+			quantity: 1,
+		};
+	},
+	methods: {
+        openProductPurchase() {
+            this.$router.push('/ProductPurchase?id=' + this.product.id);
+        }
+    },
 	props: {
 		infos: {
 			type: Object,
 			required: true
 		}
-	},
-	data() {
-		return {
-			product: {
-				productName: "Dog Collar Puffy Air",
-				productPrice: 9.99,
-				productDescription: "A comfortable and stylish collar for your pet.",
-				photos: ["/public/greenCollar.png"],
-			},
-			quantity: 1,
-			quantityInStock : 10,
-		};
 	},
 	mounted() {
 		this.product = { ...this.infos };
