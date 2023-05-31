@@ -54,6 +54,16 @@
         "https://cobasi.vteximg.com.br/arquivos/ids/333842-400-400/Sanol-Shampoo-Pelos-Claros.jpg?v=638158017068230000"
       ],
       "quantityInStock": 12
+    },
+    {
+      "id": 1685561981680,
+      "productName": "Cat Bed",
+      "productPrice": 200,
+      "productDescription": "A nice bed for you cat",
+      "productShortDescription": "A nice bed for you cat...",
+      "photos": [
+      ],
+      "quantityInStock": 3
     }
   ],
   "events": [
