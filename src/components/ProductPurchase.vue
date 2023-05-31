@@ -56,9 +56,6 @@ export default {
                 this.quantity--;
             }
         },
-        deleteProduct() {
-            this.$emit("delete-product", this.product);
-        },
     },
     components: {
         Navbar,
@@ -166,7 +163,7 @@ span {
     background-color: white;
     padding: 0 0.8vw;
     border-radius: 0.5vw;
-    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.4);
 }
 
 button.add-to-cart-button {

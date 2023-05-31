@@ -4,7 +4,13 @@
         <h1>Cart</h1>
         <div class="container">
             <div class="product-line"></div>
-            <Product v-for="(product, index) in products" :key="product.id" :product="product" @delete-product="removeProduct" :class="{ 'product-line': index !== 0 }" />
+            <Product v-for="(product, index) in products"
+            :key="product.id"
+            :infos="product"
+            @delete-product="removeProduct"
+            :class="{ 'product-line': index !== 0 }"
+            />
+            
             <div class="product-line"></div>
             <Address/>
             <!-- <Footer/> -->
@@ -14,6 +20,7 @@
 
 <script>
 
+import axios from 'axios'
 import Address from '../components/Address.vue'
 import Product from '../components/ProductQuantity.vue'
 import Navbar from '../components/Navbar.vue'
@@ -31,50 +38,70 @@ export default {
     data() {
         return {
             products: [
-            {
-                id: 1,
-                name: "Collar",
-                price: 19.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
-            {
-                id: 2,
-                name: "Collar2",
-                price: 29.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
-            {
-                id: 3,
-                name: "Collar3",
-                price: 39.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
-            {
-                id: 4,
-                name: "Collar4",
-                price: 49.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
-            {
-                id: 5,
-                name: "Collar5",
-                price: 59.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
+            // {
+            //     id: 1,
+            //     productName: "Collar",
+            //     productPrice: 19.99,
+            //     productDescription: "A comfortable and stylish collar for your pet.",
+            //     productShortDescription : "A comfortable and stylish collar for your pet.",
+            //     photos: ["/public/greenCollar.png"],
+            // },
+            // {
+            //     id: 2,
+            //     productName: "Collar2",
+            //     productPrice: 29.99,
+            //     productDescription: "A comfortable and stylish collar for your pet.",
+            //     productShortDescription : "A comfortable and stylish collar for your pet.",
+            //     photos: ["/public/greenCollar.png"],
+            // },
+            // {
+            //     id: 3,
+            //     productName: "Collar3",
+            //     productPrice: 39.99,
+            //     productDescription: "A comfortable and stylish collar for your pet.",
+            //     productShortDescription : "A comfortable and stylish collar for your pet.",
+            //     photos: ["/public/greenCollar.png"],
+            // },
+            // {
+            //     id: 4,
+            //     productName: "Collar4",
+            //     productPrice: 49.99,
+            //     productDescription: "A comfortable and stylish collar for your pet.",
+            //     productShortDescription : "A comfortable and stylish collar for your pet.",
+            //     photos: ["/public/greenCollar.png"],
+            // },
+            // {
+            //     id: 5,
+            //     productName: "Collar5",
+            //     productPrice: 59.99,
+            //     productDescription: "A comfortable and stylish collar for your pet.",
+            //     productShortDescription : "A comfortable and stylish collar for your pet.",
+            //     photos: ["/public/greenCollar.png"],
+            // },
             ],
         };
     },
-    
+    mounted() {
+        this.loadProductQuantity()
+    },
     methods: {
         removeProduct(deletedProduct) {
-            this.products = this.products.filter((product) => product !== deletedProduct);
+            console.log(this.products)
+            console.log("deleted product : ", deletedProduct)
+            this.products = this.products.filter((product) => product.id !== deletedProduct.id);
         },
-    },
+        loadProductQuantity() {
+            axios.get('http://localhost:3000/products')
+            .then(response => {
+                const numberOfproducts = 5 // Number of suggested products to display
+                this.products = response.data.slice(0, numberOfproducts)
+                console.log(this.products)
+            })
+            .catch(error => {
+                console.error('Error fetching suggested products:', error)
+            });
+        },
+    }
     
 }
 </script >
