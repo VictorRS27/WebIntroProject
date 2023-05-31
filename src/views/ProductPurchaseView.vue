@@ -63,7 +63,7 @@
           .get('http://localhost:3000/products')
           .then((response) => {
             const products = response.data;
-            const numberOfSuggestions = 4; // Number of suggested products to display
+            const numberOfSuggestions = 3; // Number of suggested products to display
             this.suggestedProducts = products.slice();
             this.suggestedProducts = this.suggestedProducts.sort(
               (a, b) => 0.5 - Math.random()

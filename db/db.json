@@ -56,14 +56,169 @@
       "quantityInStock": 12
     },
     {
-      "id": 1685561981680,
-      "productName": "Cat Bed",
-      "productPrice": 200,
-      "productDescription": "A nice bed for you cat",
-      "productShortDescription": "A nice bed for you cat...",
+      "id": 6,
+      "productName": "Cat Scratching Post",
+      "productPrice": "39.99",
+      "productDescription": "Provide your feline friend with the perfect outlet for their natural scratching instincts with our Cat Scratching Post. This sturdy and stylish post offers multiple surfaces for scratching, helping to keep your furniture safe from your cat's claws. The durable construction ensures long-lasting use, while the compact design fits seamlessly into any room. Encourage healthy scratching habits and give your cat a place to stretch, play, and relax. Invest in a scratching post that will satisfy your cat's needs and keep them entertained for hours.",
+      "productShortDescription": "Provide your feline friend with the perfect outlet for their natural scratching instincts.",
       "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/356040-400-400/Arranhador-Bege.jpg?v=638137127056700000"
       ],
-      "quantityInStock": 3
+      "quantityInStock": 10
+    },
+    {
+      "id": 7,
+      "productName": "Cat Litter Box",
+      "productPrice": "49.99",
+      "productDescription": "Simplify the task of maintaining your cat's hygiene with our convenient and spacious Cat Litter Box. Designed with your cat's comfort in mind, this litter box provides ample space for them to move around while ensuring privacy during their business. The durable and odor-resistant materials make cleaning a breeze, while the enclosed design helps contain litter scatter and control odors. Create a designated space for your cat's bathroom needs and give them a clean and comfortable litter box they'll appreciate.",
+      "productShortDescription": "Simplify the task of maintaining your cat's hygiene with our convenient and spacious Cat Litter Box.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/184255-400-400/Bandeja-Higienica-Classic-Preta.jpg?v=638133809156200000"
+      ],
+      "quantityInStock": 15
+    },
+    {
+      "id": 8,
+      "productName": "Bird Cage",
+      "productPrice": "79.99",
+      "productDescription": "Create a safe and comfortable home for your feathered friend with our spacious Bird Cage. This well-ventilated cage provides ample space for your bird to move around, exercise, and spread their wings. The sturdy construction and secure locks ensure their safety, while the removable tray makes cleaning effortless. Enhance your bird's well-being and give them a cage that meets their needs for security and freedom.",
+      "productShortDescription": "Create a safe and comfortable home for your feathered friend with our spacious Bird Cage.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/545069-400-400/N2.jpg?v=637562486544870000"
+      ],
+      "quantityInStock": 20
+    },
+    {
+      "id": 9,
+      "productName": "Fish Tank",
+      "productPrice": "89.99",
+      "productDescription": "Bring the beauty of underwater life into your home with our stunning Fish Tank. Crafted with precision, this tank provides a captivating environment for your fish to thrive. The high-quality glass and advanced filtration system ensure optimal conditions for aquatic life. The sleek design and LED lighting create an enchanting display, adding a touch of elegance to any room. Dive into the world of fishkeeping and create a mesmerizing aquatic paradise.",
+      "productShortDescription": "Bring the beauty of underwater life into your home with our stunning Fish Tank.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/1036393-400-400/aquario-especial-lester-50L-1.jpg?v=638055785815530000"
+      ],
+      "quantityInStock": 8
+    },
+    {
+      "id": 10,
+      "productName": "Rabbit Hutch",
+      "productPrice": "149.99",
+      "productDescription": "Give your adorable pet rabbit a comfortable and secure living space with our spacious Rabbit Hutch. This hutch offers plenty of room for your rabbit to hop, play, and relax. The sturdy construction and predator-resistant design ensure their safety and well-being. The removable tray makes cleaning hassle-free, while the hinged roof provides easy access for feeding and interaction. Create a cozy home for your furry friend and provide them with a place they'll love to call their own.",
+      "productShortDescription": "Give your adorable pet rabbit a comfortable and secure living space with our spacious Rabbit Hutch.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/994052-400-400"
+      ],
+      "quantityInStock": 12
+    },
+    {
+      "id": 11,
+      "productName": "Hamster Wheel",
+      "productPrice": "9.99",
+      "productDescription": "Provide your energetic hamster with endless entertainment and exercise with our Hamster Wheel. The durable and silent design ensures a smooth spinning experience for your furry friend. The solid base prevents tipping, while the non-slip surface provides a secure grip. Encourage your hamster to stay active and healthy with a wheel that will keep them running happily.",
+      "productShortDescription": "Provide your energetic hamster with endless entertainment and exercise with our Hamster Wheel.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/814876-400-400"
+      ],
+      "quantityInStock": 20
+    },
+    {
+      "id": 12,
+      "productName": "Turtle Tank",
+      "productPrice": "69.99",
+      "productDescription": "Create a comfortable and aquatic habitat for your beloved turtle with our spacious Turtle Tank. This tank provides ample space for swimming and basking, allowing your turtle to exhibit natural behaviors. The sturdy construction and secure lid ensure their safety, while the built-in ramp makes it easy for them to access the dry area. Enhance your turtle's well-being and create a captivating aquatic world they'll love.",
+      "productShortDescription": "Create a comfortable and aquatic habitat for your beloved turtle with our spacious Turtle Tank.",
+      "photos": [
+        "https://www.cobasi.com.br/arquivos/ids/901225-180-180/aquario-terrario-ilha-lester-3877077.jpg?v=638134629777700000"
+      ],
+      "quantityInStock": 15
+    },
+    {
+      "id": 13,
+      "productName": "Guinea Pig Cage",
+      "productPrice": "59.99",
+      "productDescription": "Give your adorable guinea pig a cozy and secure home with our spacious Guinea Pig Cage. This cage offers plenty of room for them to move around, play, and explore. The durable construction and easy-to-clean design make it a convenient choice for both you and your pet. The included hay rack and water bottle ensure their essential needs are met. Create a comfortable and inviting environment for your guinea pig and watch them thrive.",
+      "productShortDescription": "Give your adorable guinea pig a cozy and secure home with our spacious Guinea Pig Cage.",
+      "photos": [
+        "https://www.cobasi.com.br/arquivos/ids/447256-180-180/maxi.jpg?v=637498006723770000"
+      ],
+      "quantityInStock": 10
+    },
+    {
+      "id": 14,
+      "productName": "Reptile Heat Lamp",
+      "productPrice": "19.99",
+      "productDescription": "Ensure optimal warmth for your reptile with our reliable Reptile Heat Lamp. This lamp provides the necessary heat to create a comfortable and cozy environment for your cold-blooded companion. The adjustable design allows you to customize the temperature according to your reptile's needs. The sturdy construction and protective cage ensure safety and durability. Keep your reptile warm and content with a heat lamp that replicates their natural habitat.",
+      "productShortDescription": "Ensure optimal warmth for your reptile with our reliable Reptile Heat Lamp.",
+      "photos": [
+        "https://www.cobasi.com.br/arquivos/ids/187635-180-180/Lampada-Halogenea-para-Pequenos-Animais-Zoo-Med.jpg?v=636281269075670000"
+      ],
+      "quantityInStock": 12
+    },
+    {
+      "id": 15,
+      "productName": "Small Animal Carrier",
+      "productPrice": "29.99",
+      "productDescription": "Transport your small pet with ease and comfort using our practical Small Animal Carrier. This carrier provides a secure and well-ventilated space for your pet during travel or visits to the vet. The durable construction and ergonomic handle ensure easy carrying and long-lasting use. The removable top allows for convenient access and cleaning. Give your small pet a safe and comfortable travel experience with a carrier designed specifically for their needs.",
+      "productShortDescription": "Transport your small pet with ease and comfort using our practical Small Animal Carrier.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/1044425-400-400/Caixa-de-Transporte-C-Pet-Lateral-Direita.png?v=638157138902530000"
+      ],
+      "quantityInStock": 8
+    },
+    {
+      "id": 16,
+      "productName": "Horse Grooming Kit",
+      "productPrice": "49.99",
+      "productDescription": "Take care of your majestic horse with our comprehensive Horse Grooming Kit. This kit includes all the essential grooming tools you need to keep your horse looking and feeling their best. From brushes to hoof picks, each tool is designed for effective grooming and gentle care. The sturdy and organized carrying case allows for easy storage and transport. Show your horse the love and attention they deserve with a grooming kit that will help maintain their beauty and well-being.",
+      "productShortDescription": "Take care of your majestic horse with our comprehensive Horse Grooming Kit.",
+      "photos": [
+        "https://decathlonpro.vtexassets.com/arquivos/ids/2576007/kit-grooming-bag-burgundy-indoo-no-size-azul1.jpg?v=637339703644230000"
+      ],
+      "quantityInStock": 10
+    },
+    {
+      "id": 17,
+      "productName": "Snake Terrarium",
+      "productPrice": "179.99",
+      "productDescription": "Create a safe and captivating habitat for your pet snake with our spacious Snake Terrarium. This terrarium provides ample space for your snake to explore and hide. The sturdy construction and secure locks ensure their safety, while the removable tray makes cleaning effortless. The well-ventilated design allows for proper airflow and temperature regulation. Enhance your snake's well-being and give them a comfortable home that meets their needs.",
+      "productShortDescription": "Create a safe and captivating habitat for your pet snake with our spacious Snake Terrarium.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/851031-400-400"
+      ],
+      "quantityInStock": 6
+    },
+    {
+      "id": 18,
+      "productName": "Dog Training Pads",
+      "productPrice": "19.99",
+      "productDescription": "Make potty training easier for your dog with our absorbent and leak-proof Dog Training Pads. These pads provide a convenient and hygienic solution for indoor accidents. The super-absorbent core and quick-drying top layer lock in moisture, while the leak-proof backing protects your floors. The built-in attractant encourages your dog to use the pad, making training more effective. Simplify the potty training process and keep your floors clean with training pads you can rely on.",
+      "productShortDescription": "Make potty training easier for your dog with our absorbent and leak-proof Dog Training Pads.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/536767-400-400/TREINEPET_7UN_FRENTE.jpg?v=638133530517300000"
+      ],
+      "quantityInStock": 30
+    },
+    {
+      "id": 19,
+      "productName": "Ferret Playpen",
+      "productPrice": "79.99",
+      "productDescription": "Give your playful ferret a safe and engaging space to romp and explore with our spacious Ferret Playpen. This playpen offers plenty of room for your ferret to run, jump, and play to their heart's content. The sturdy construction and escape-proof design ensure their safety, while the collapsible feature allows for easy storage and transport. Create a fun and stimulating environment for your ferret and watch them enjoy hours of adventurous play.",
+      "productShortDescription": "Give your playful ferret a safe and engaging space to romp and explore with our spacious Ferret Playpen.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/814934-400-400"
+      ],
+      "quantityInStock": 10
+    },
+    {
+      "id": 20,
+      "productName": "Pet Hair Remover",
+      "productPrice": "9.99",
+      "productDescription": "Keep your furniture and clothes free from pet hair with our efficient Pet Hair Remover. This handy tool easily removes pet hair from various surfaces, including upholstery, carpets, and clothing. The reusable and self-cleaning design makes it a convenient choice for pet owners. Say goodbye to pesky pet hair and maintain a clean and hair-free environment with our pet hair remover.",
+      "productShortDescription": "Keep your furniture and clothes free from pet hair with our efficient Pet Hair Remover.",
+      "photos": [
+        "https://cobasi.vteximg.com.br/arquivos/ids/200034-400-400/Escova-Dupla-HomePet-1.jpg?v=636715588505170000"
+      ],
+      "quantityInStock": 20
     }
   ],
   "events": [
