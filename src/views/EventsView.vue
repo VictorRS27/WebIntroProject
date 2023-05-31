@@ -10,7 +10,7 @@
                 <p>{{ event.eventDescription }}</p>
               </div>
               <div class="post_photos">
-                <img v-for="(photo, index) in event.photos" :src="photo.url" :alt="photo.alt" :key="index" class="post_photo" />
+                <img v-for="(photo, index) in event.photos" :src="photo" :alt="'photo'+index" :key="index" class="post_photo" />
               </div>
             </div>
           </div>

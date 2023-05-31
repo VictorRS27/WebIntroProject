@@ -288,7 +288,7 @@
         "https://http2.mlstatic.com/D_NQ_NP_741411-MLB50028882599_052022-O.webp"
       ],
       "quantityInStock": 333,
-      "id": 26
+      "id": 219827398132
     },
     {
       "productName": "cama",
@@ -390,6 +390,17 @@
       "photos": [
         "https://example.com/dog-bed-photo1.jpg"
       ]
+    },
+    {
+      "eventName": "Tosa",
+      "eventDate": "2222-12-12",
+      "eventDescription": "oiii",
+      "eventType": "tosa",
+      "eventAddress": "rua pqp",
+      "photos": [
+        "https://http2.mlstatic.com/D_NQ_NP_741411-MLB50028882599_052022-O.webp"
+      ],
+      "id": 8
     }
   ],
   "users": [
