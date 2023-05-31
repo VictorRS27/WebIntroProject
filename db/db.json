@@ -232,6 +232,12 @@
       "username": "admin5",
       "password": "adminpass5",
       "email": "admin5@example.com"
+    },
+    {
+      "username": "otavio",
+      "password": "pass",
+      "email": "otaviocoletti@outlook.com",
+      "id": 8
     }
   ]
 }
