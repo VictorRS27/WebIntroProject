@@ -4,11 +4,9 @@
       "id": 1,
       "productName": "Dog Bed",
       "productPrice": "149.99",
-      "productDescription": "A comfortable and cozy bed for your furry friend.",
+      "productDescription": "Treat your furry friend to the ultimate comfort with our luxurious Dog Bed. Designed with their well-being in mind, this bed offers a cozy and secure space for your pet to rest and recharge. Made from high-quality materials and expert craftsmanship, it provides the perfect balance of softness and support. The stylish design blends seamlessly with your home decor, elevating both style and functionality. Give your beloved pet the sleep they deserve and create a haven they'll never want to leave.",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://cobasi.vteximg.com.br/arquivos/ids/356053-400-400/CAMA-PRETA2.jpg?v=638127656252230000"
       ],
       "quantityInStock": 10
     },
@@ -16,10 +14,9 @@
       "id": 2,
       "productName": "Dog Leash",
       "productPrice": "29.99",
-      "productDescription": "A durable and stylish leash for your dog walks.",
+      "productDescription": "Make your dog walks a breeze with our durable and stylish Dog Leash. Engineered for strength and reliability, it ensures the safety and control you need during outdoor adventures. The high-quality materials and ergonomic design provide a comfortable grip and minimize strain on your hands. With its fashionable patterns and vibrant colors, this leash adds a touch of personality to your daily walks. Invest in a leash that combines fashion and functionality, giving you and your furry companion the confidence to explore the world together.",
       "photos": [
-        "https://example.com/dog-leash-photo1.jpg",
-        "https://example.com/dog-leash-photo2.jpg"
+        "https://cobasi.vteximg.com.br/arquivos/ids/1043807-400-400/Coleira-Caes-Puffy-Air-Doco-Laranja.png?v=638149136884770000"
       ],
       "quantityInStock": 15
     },
@@ -27,11 +24,9 @@
       "id": 3,
       "productName": "Dog Food Bowl",
       "productPrice": "9.99",
-      "productDescription": "A sturdy and easy-to-clean bowl for your dog's meals.",
+      "productDescription": "Ensure mealtime is a delightful experience for your furry friend with our sturdy and easy-to-clean Dog Food Bowl. Crafted from premium materials, this bowl is designed to withstand everyday use and provide long-lasting performance. The non-slip base keeps the bowl in place, preventing spills and messes. Its smooth surface and removable design make it effortless to clean and maintain proper hygiene. Choose a bowl that combines functionality and style, offering your pet a reliable and hygienic dining solution.",
       "photos": [
-        "https://example.com/dog-bowl-photo1.jpg",
-        "https://example.com/dog-bowl-photo2.jpg",
-        "https://example.com/dog-bowl-photo3.jpg"
+        "https://cobasi.vteximg.com.br/arquivos/ids/358206-400-400"
       ],
       "quantityInStock": 20
     },
@@ -39,10 +34,9 @@
       "id": 4,
       "productName": "Dog Toy Set",
       "productPrice": "19.99",
-      "productDescription": "A set of fun and interactive toys for your playful dog.",
+      "productDescription": "Ignite your dog's playful spirit with our exciting and interactive Dog Toy Set. This carefully curated collection of toys provides endless entertainment and stimulation for your furry companion. From chew toys to plush squeakers, each toy is designed to cater to different play styles and preferences. Made from durable materials, they are built to withstand vigorous play and promote dental health. Strengthen the bond between you and your pet while fostering their physical and mental well-being. Treat your dog to a set of toys that will keep them wagging their tail with joy.",
       "photos": [
-        "https://example.com/dog-toy-photo1.jpg",
-        "https://example.com/dog-toy-photo2.jpg"
+        "https://cobasi.vteximg.com.br/arquivos/ids/200557-400-400/Brinquedo-Kit-Bolas-Esporte-Vinil-HomePet.jpg?v=638137153043470000"
       ],
       "quantityInStock": 8
     },
@@ -50,11 +44,9 @@
       "id": 5,
       "productName": "Dog Shampoo",
       "productPrice": "12.99",
-      "productDescription": "A gentle and moisturizing shampoo for your dog's bath time.",
+      "productDescription": "Elevate your dog's bath time experience with our gentle and moisturizing Dog Shampoo. Formulated with care, this shampoo provides a luxurious cleanse while maintaining the natural balance of your dog's skin and coat. The nourishing ingredients and soothing scent create a spa-like atmosphere, turning bath time into a relaxing and enjoyable ritual for both you and your furry friend. Pamper your pet with a shampoo that cleanses, conditions, and leaves their coat looking lustrous and smelling fresh. Experience the joy of a clean and happy pup after every bath.",
       "photos": [
-        "https://example.com/dog-shampoo-photo1.jpg",
-        "https://example.com/dog-shampoo-photo2.jpg",
-        "https://example.com/dog-shampoo-photo3.jpg"
+        "https://cobasi.vteximg.com.br/arquivos/ids/333842-400-400/Sanol-Shampoo-Pelos-Claros.jpg?v=638158017068230000"
       ],
       "quantityInStock": 12
     }

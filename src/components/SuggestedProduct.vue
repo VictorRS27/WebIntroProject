@@ -2,14 +2,14 @@
 	<div class="box">
 		<div class="upper">
 			<div class="image">
-				<img :src="product.image" alt="Product Image" />
+				<img :src="product.photos[0]" alt="Product Image" />
 			</div>
 		</div>
 		<div class="divider"></div>
 		<div class="lower">
 			<div class="details">
-				<h1>{{ product.name }}</h1><br>
-				<p>$ {{ product.price }}</p><br>
+				<h1>{{ product.productName }}</h1><br>
+				<p>$ {{ product.productPrice }}</p><br>
 				
 			</div>
 		</div>
@@ -18,31 +18,28 @@
 
 <script>
 export default {
-	name: "SuggestedProduct",
+	name: "product",
+	props: {
+		infos: {
+			type: Object,
+			required: true
+		}
+	},
 	data() {
-        return {
-            product: {
-                name: "Dog Collar Puffy Air",
-                price: 9.99,
-                description: "A comfortable and stylish collar for your pet.",
-                image: "/public/greenCollar.png",
-            },
+		return {
+			product: {
+				productName: "Dog Collar Puffy Air",
+				productPrice: 9.99,
+				productDescription: "A comfortable and stylish collar for your pet.",
+				photos: ["/public/greenCollar.png"],
+			},
 			quantity: 1,
+			quantityInStock : 10,
 		};
 	},
-	methods: {
-		increaseQuantity() {
-			this.quantity++;
-		},
-		decreaseQuantity() {
-			if (this.quantity > 1) {
-				this.quantity--;
-			}
-		},
-		deleteProduct() {
-			this.$emit("delete-product", this.product);
-		},
-	},
+	mounted() {
+		this.product = { ...this.infos };
+	}
 };
 </script>
 
@@ -53,12 +50,12 @@ export default {
 }
 
 .box {
-    border-style: solid;
-    align-self: center;
-    width: 12vw;
-    border-width: 0.2vw;
-    border-color: #46D115;
-    border-radius: 2vw;
+	border-style: solid;
+	align-self: center;
+	width: 12vw;
+	border-width: 0.2vw;
+	border-color: #46D115;
+	border-radius: 2vw;
 }
 
 .image img {
