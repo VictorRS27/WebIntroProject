@@ -1,11 +1,11 @@
 <template>
     <div class="container_crud">
         <div class="box">
-            <!-- <div class="box_head">
-                <RouterLink :to="add_edit_link">
-                    <button>Add</button>
-                </RouterLink>
-            </div> -->
+            <div class="box_head">
+                <h1 v-if="witch === 'products'"> Produtos </h1>
+                <h1 v-if="witch === 'users'"> Usuários </h1>
+                <h1 v-if="witch === 'admin'"> Administradores </h1>
+            </div>
             <div v-if="witch === 'products'" class="line">
                 <span class="column">Nome</span>
                 <span class="column">Preço</span>
@@ -33,9 +33,15 @@
                     <span class="column">{{ item.telephone }}</span>
                     <span class="column">{{ item.address }}</span>
                 </div>
+                <div v-if="witch === 'admin'" :class="'line ' + (index % 2 == 0 ? 'dark' : 'light')"
+                    @click="highlight(item)">
+                    <span class="column">{{ item.username }}</span>
+                    <span class="column">{{ item.password }}</span>
+                    <span class="column">{{ item.email }}</span>
+                </div>
             </div>
             <div class="box_feet">
-                <div class="data">
+                <div v-if="witch === 'products'" class="data">
                     <div class="line">
                         <span>Nome: {{ focused.productName }}</span>
                         <span>Preço: {{ focused.productPrice }}</span>
@@ -44,6 +50,14 @@
                     <p>Descrição curta: {{ focused.productShortDescription }}</p>
                     <p>Descrição longa: {{ focused.productDescription }}</p>
                     <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
+                </div>
+                <div v-if="witch === 'users'" class="data">
+                    <div class="line">
+                        <span>Nome de Usuário: {{ focused.username }}</span>
+                        <span>Email: {{ focused.email }}</span>
+                    </div>
+                    <p>Endereço: {{ focused.address }}</p>
+                    <p>Telefone: {{ focused.telephone }}</p>
                 </div>
                 <div class="btn_column">
                     <RouterLink :to="add_edit_link">
@@ -123,13 +137,14 @@ export default {
     padding: 0;
 }
 
-/* .box_head {
+.box_head {
     height: 8vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    margin: 10px;
-} */
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
 
 .box_feet {
     display: flex;
@@ -145,6 +160,7 @@ button {
 
 .data {
     padding: 10px;
+    width: -webkit-fill-available;
 }
 
 .data p {
@@ -169,6 +185,7 @@ button {
     padding: 0 10px;
     justify-content: space-between;
     width: inherit;
+    cursor: pointer;
 }
 
 .dark {
