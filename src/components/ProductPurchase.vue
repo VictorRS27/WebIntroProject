@@ -2,14 +2,14 @@
     <div class="box">
         <div class="product">
             <div class="image">
-                <img :src="product.image" alt="Product Image" />
+                <img :src="product.photos[0]" alt="Product Image" />
             </div>
             <div class="details">
                 <div class="header">
-                    <h1>{{ product.name }}</h1>
+                    <h1>{{ product.productName }}</h1>
                 </div>
-                <p>${{ product.price }}</p>
-                <p class="quantity-stock">In Stock: {{ quantityInStock }}</p>
+                <p>${{ product.productPrice }}</p>
+                <p class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
                 <div class="quantity">
                     <button @click="decreaseQuantity">-</button>
                     <span>{{ quantity }}</span>
@@ -20,7 +20,7 @@
         </div>
         <div class="description">
             <h2>Description</h2>
-            <p>{{ product.description }}</p>
+            <p>{{ product.productDescription }}</p>
         </div>
     </div>
 </template>
@@ -36,18 +36,18 @@ export default {
     data() {
         return {
             product: {
-                name: "Dog Collar Puffy Air",
-                price: 9.99,
-                description: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
-                image: "/public/greenCollar.png",
+                productName: "Dog Collar Puffy Air",
+                productPrice: 9.99,
+                productDescription: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
+                photos: ["/public/greenCollar.png"],
+                quantityInStock : 19,
             },
             quantity: 1,
-            quantityInStock : 19,
         };
     },
     methods: {
         increaseQuantity() {
-            if(this.quantity < this.quantityInStock) {
+            if(this.quantity < this.product.quantityInStock) {
                 this.quantity++;
             }
         },
@@ -64,7 +64,15 @@ export default {
         Navbar,
         Footer
     },
-    
+    props: {
+		infos: {
+			type: Object,
+			required: true,
+		}
+	},
+    mounted() {
+		this.product = { ...this.infos };
+	},
 }
 </script >
 
