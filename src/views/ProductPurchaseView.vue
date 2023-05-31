@@ -54,6 +54,7 @@
     watch: {
       id(newId) {
         this.loadProductPurchase(newId);
+        this.loadSuggestedProducts();
         location.reload(); // Refresh the page
       },
     },

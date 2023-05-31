@@ -1,7 +1,7 @@
 <template>
-	<div class="box" @click="openProductPurchase">
+	<div class="box">
 		<div class="upper">
-			<div class="image">
+			<div class="image" @click="openProductPurchase">
 				<img :src="product.photos[0]" alt="Product Image" />
 			</div>
 		</div>
@@ -9,7 +9,8 @@
 		<div class="lower">
 			<div class="details">
 				<h1>{{ product.productName }}</h1><br>
-				<p>$ {{ product.productPrice }}</p><br>
+				<p>$ {{ product.productPrice }}</p>
+				<button class="read-full-btn" @click="openProductPurchase">Read Full</button>
 			</div>
 		</div>
 	</div>
@@ -35,7 +36,7 @@ export default {
 	methods: {
         openProductPurchase() {
             this.$router.push('/ProductPurchase?id=' + this.product.id);
-        }
+        },
     },
 	props: {
 		infos: {
@@ -49,19 +50,21 @@ export default {
 };
 </script>
 
-
 <style scoped>
 * {
 	font-family: 'Courier New', Courier, monospace;
 }
-
 .box {
 	border-style: solid;
 	align-self: center;
-	width: 12vw;
+	width: 14vw;
 	border-width: 0.2vw;
 	border-color: #46D115;
 	border-radius: 2vw;
+	box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .image img {
@@ -69,10 +72,15 @@ export default {
 	height: 10vw;
 	object-fit: cover;
 	border-radius: 2vw;
+	cursor: pointer;
 }
 
 .details {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }
 
 h1 {
@@ -99,9 +107,24 @@ p {
 	width: 100%;
 }
 
-
 .lower {
 	padding-top: 2vh;
 }
-</style>
 
+.read-full-btn {
+	background-color: #46D115;
+	color: white;
+	border: none;
+	border-radius: 0.4vw;
+	padding: 0.5vw 1vw;
+	font-size: 1vw;
+	cursor: pointer;
+	margin: 1vw auto;
+	width: 10vw;
+}
+
+.read-full-btn:focus {
+	outline: none;
+}
+
+</style>
