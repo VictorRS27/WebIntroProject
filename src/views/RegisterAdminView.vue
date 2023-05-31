@@ -27,7 +27,6 @@
     </div>
 </template>
 <script>
-import RegisterAdmin from '../components/RegisterAdmin.vue'
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 
@@ -35,7 +34,6 @@ import Footer from '../components/Footer.vue'
 export default {
     components: {
         Navbar,
-        RegisterAdmin,
         Footer
     },
     name: "RegisterAdmin",
