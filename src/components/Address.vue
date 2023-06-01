@@ -71,10 +71,12 @@ export default {
                 if (this.creditCardNumber) {
                     // Simulating purchase completion
                     this.purchaseComplete = true;
-                    setTimeout(() => {
-                        // Redirect to homepage after 5 seconds
-                        this.$router.push("/");
-                    }, 5000);
+                    // setTimeout(() => {
+					//	this.$router.push('/')
+                    //     // Redirect to homepage after 5 seconds
+					console.log("BAMAMA")
+                        this.$emit("send-credit-card", this.creditCardNumber)
+                    //}, 5000);
                 }
             },
         }

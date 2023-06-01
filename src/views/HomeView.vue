@@ -58,7 +58,6 @@ export default {
 		}
 	},
 	components: {
-		SuggestedProductLine,
 		SuggestedProduct,
 		Navbar,
 	},

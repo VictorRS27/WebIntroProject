@@ -12,7 +12,7 @@
             />
             
             <div class="product-line"></div>
-            <Address/>
+            <Address @send-credit-card = "confirmPurchase(creditCardNumber)" />
             <!-- <Footer/> -->
         </div>
     </div>      
@@ -45,6 +45,18 @@ export default {
         this.loadProductQuantity()
     },
     methods: {
+
+        confirmPurchase(creditCardNumber) {
+                if (creditCardNumber) {
+                    // Simulating purchase completion
+                    this.purchaseComplete = true;
+                    console.log(creditCardNumber)
+                    setTimeout(() => {
+                    //     // Redirect to homepage after 5 seconds
+                    this.$router.push('/')
+                    }, 5000);
+                }
+            },
         removeProduct(deletedProduct) {
             console.log(this.products)
             console.log("deleted product : ", deletedProduct)
