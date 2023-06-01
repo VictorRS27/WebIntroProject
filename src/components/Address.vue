@@ -5,7 +5,8 @@
 
 			<div class="form-group">
 				<label for="first-name">First Name(s):</label>
-				 <input id="first-name" type="text" v-model="firstName" required /> <!--já não tem o nome da pessoa no cadsatro dela? -->
+				<input id="first-name" type="text" v-model="firstName" required />
+				<!--já não tem o nome da pessoa no cadsatro dela? -->
 			</div>
 			<div class="form-group">
 				<label for="last-name">Last Name(s):</label>
@@ -25,7 +26,23 @@
 				<label for="cep">CEP Code:</label>
 				<input id="cep" type="text" v-model="cep" required />
 			</div>
-			<button type="submit">Submit</button>
+
+			<div class="form-group">
+				<label for="credit-card">Credit Card Number:</label>
+				<input type="text" id="credit-card" placeholder="Enter credit card number" v-model="creditCardNumber"
+					@input="checkCreditCardInput" required />
+			</div>
+
+			<button class="buy-button" :class="{ active: creditCardNumber }" @click="completePurchase">
+                BUY
+            </button>
+
+            <div v-if="purchaseComplete" class="purchase-message">
+                <p>Purchase complete!</p>
+                <p>Returning to homepage in 5 seconds...</p>
+            </div>
+
+			<!-- <button type="submit">Submit</button> -->
 		</form>
 	</div>
 </template>
@@ -40,8 +57,27 @@ export default {
 			address: "Street Linus Torvalds",
 			complement: "1337",
 			cep: "1234567",
+
+			creditCardNumber: "",
+            purchaseComplete: false,
 		};
 	},
+	methods: {
+            checkCreditCardInput() {
+                // Remove non-digit characters from the credit card number
+                this.creditCardNumber = this.creditCardNumber.replace(/\D/g, "");
+            },
+            completePurchase() {
+                if (this.creditCardNumber) {
+                    // Simulating purchase completion
+                    this.purchaseComplete = true;
+                    setTimeout(() => {
+                        // Redirect to homepage after 5 seconds
+                        this.$router.push("/");
+                    }, 5000);
+                }
+            },
+        }
 };
 </script>
 
@@ -99,5 +135,10 @@ button {
 	font-weight: bold;
 	font-size: 1.5vw;
 	margin-top: 3vh;
+}
+
+.purchase-message {
+  margin-top: 20px;
+  text-align: center;
 }
 </style>
