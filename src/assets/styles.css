@@ -33,7 +33,7 @@ label {
     font-weight: bold;
 }
 
-input {
+textarea, input {
     width: 100%;
     padding: 5px 0;
     border: none;
@@ -43,7 +43,7 @@ input {
     color: black;
 }
 
-input:focus {
+textarea:focus, input:focus {
     outline: none;
     background-color: rgba(227, 240, 227, 0.995);
 }
