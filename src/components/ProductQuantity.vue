@@ -19,12 +19,13 @@
 			<div class="details">
 				<p>{{ product.productShortDescription }}</p>
 				<p>${{ product.productPrice }}</p>
-                <p class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
+                <p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
+                <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
 				<div class="quantity">
-					<button @click="decreaseQuantity">-</button>
-					<span>{{ quantity }}</span>
-					<button @click="increaseQuantity">+</button>
-				</div>
+                    <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
+                    <span>{{ quantity }}</span>
+                    <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -44,7 +45,7 @@ export default {
 				photos: ["/public/greenCollar.png"],
                 quantityInStock : 19,
             },
-            quantity: 1,
+            quantity: 0,
 		};
 	},
 	methods: {
@@ -137,6 +138,12 @@ p {
     color: #888;
 }
 
+.without-stock {
+    font-size: 1.2vw;
+    margin-top: 0.5vw;
+    color: red;
+}
+
 button {
 	border: none;
 	background-color: #46D115;
@@ -172,6 +179,16 @@ span {
 	height: 2vw;
 	vertical-align: middle;
 	margin-top: 2vh;
+}
+
+.disabled-button {
+    background-color: darkgray;
+    cursor: not-allowed;
+    transition: background-color 0.3s;
+}
+
+.disabled-button:hover {
+    background-color: gray;
 }
 
 </style>

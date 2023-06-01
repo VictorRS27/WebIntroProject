@@ -44,7 +44,7 @@ export default {
                 photos: ["/public/greenCollar.png"],
                 quantityInStock : 19,
             },
-            quantity: 1,
+            quantity: 0,
         };
     },
     methods: {
