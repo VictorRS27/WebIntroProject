@@ -6,7 +6,8 @@
                 <div class="the_shop">the shop</div>
             </div>
             <div class="navbar">
-                <RouterLink to="/">Products</RouterLink>
+                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
             </div>

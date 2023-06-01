@@ -15,7 +15,7 @@
 	<div class="subtitle_container">
 		<h2>Products</h2>
 		
-		<RouterLink to="/about">
+		<RouterLink to="/products">
 			<h2> See all</h2>
 		</RouterLink>
 	</div>

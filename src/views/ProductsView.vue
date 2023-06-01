@@ -1,38 +1,68 @@
 <template>
     <Navbar />
-    <div class="lines_prod">
-        <CardLine :infos="ids[0]" />
-        <CardLine :infos="ids[1]" />
-        <CardLine :infos="ids[2]" />
+    <div class="container">
+        <div class="row">
+            <div class="col-3" v-for="(product, index) in suggestedProducts" :key="product.id">
+                <SuggestedProduct :infos="product" />
+            </div>
+        </div>
     </div>
 </template>
+
 <script>
+
+import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
-import CardLine from '../components/CardLine.vue';
+import SuggestedProduct from '../components/SuggestedProduct.vue';
+
 export default {
     name: "Products",
     data() {
         return {
-            ids: []
+            suggestedProducts: [],
+            suggestedEvents: [],
         }
     },
     components: {
+        SuggestedProduct,
         Navbar,
-        CardLine
     },
     mounted() {
-        this.ids = [] /* busca JSON no bancp */
-        console.log(this.ids)
-
+        this.loadSuggestedProducts();
+    },
+    methods: {
+        loadSuggestedProducts() {
+            axios
+            .get('http://localhost:3000/products')
+            .then((response) => {
+                const products = response.data;
+                this.suggestedProducts = products.slice(0);
+            })
+            .catch((error) => {
+                console.error('Error fetching suggested products:', error);
+            });
+        },
     },
 }
 </script>
+
 <style scoped>
-.lines_prod {
-    margin-top: 15vh;
+.container {
+  margin-top: 15vh;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.col-3 {
+    margin: 30px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 </style>
