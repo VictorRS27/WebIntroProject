@@ -1,56 +1,61 @@
 <template>
-  <div class="box">
-    <h2>Create Product</h2>
+  <div class="container">
+    <div class="box">
+      <h2>Create Product</h2>
 
-    <!-- Display warning for empty required fields -->
-    <div v-show="showEmptyFieldsWarning" class="warning">Please fill in all required fields!</div>
+      <!-- Display warning for empty required fields -->
+      <div v-show="showEmptyFieldsWarning" class="warning-text">Please fill in all required fields!</div>
 
-    <div class="form-group">
-      <label for="productName">Product Name:</label>
-      <input type="text" id="productName" placeholder="Enter product name" v-model="productName" class="styled-input" />
+      <div class="form-group">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" placeholder="Enter product name" v-model="productName" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" placeholder="Enter product description" v-model="productDescription"
+          class="styled-input"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="shortDescription">Short Description:</label>
+        <input type="text" id="shortDescription" placeholder="Enter short description" v-model="productShortDescription"
+          class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="photo1">Photo 1:</label>
+        <input type="text" id="photo1" placeholder="Enter photo link" v-model="photoLinks[0]" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="photo2">Photo 2:</label>
+        <input type="text" id="photo2" placeholder="Enter photo link" v-model="photoLinks[1]" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="photo3">Photo 3:</label>
+        <input type="text" id="photo3" placeholder="Enter photo link" v-model="photoLinks[2]" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="photo4">Photo 4:</label>
+        <input type="text" id="photo4" placeholder="Enter photo link" v-model="photoLinks[3]" class="styled-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Quantity in Stock:</label>
+        <input type="number" id="quantity" placeholder="Enter quantity in stock" v-model="quantityInStock"
+          class="styled-input" />
+      </div>
+
+      <button class="submit-button" @click="submitForm">Submit</button>
     </div>
-
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea id="description" placeholder="Enter product description" v-model="productDescription" class="styled-input"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="shortDescription">Short Description:</label>
-      <input type="text" id="shortDescription" placeholder="Enter short description" v-model="productShortDescription" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="photo1">Photo 1:</label>
-      <input type="text" id="photo1" placeholder="Enter photo link" v-model="photoLinks[0]" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="photo2">Photo 2:</label>
-      <input type="text" id="photo2" placeholder="Enter photo link" v-model="photoLinks[1]" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="photo3">Photo 3:</label>
-      <input type="text" id="photo3" placeholder="Enter photo link" v-model="photoLinks[2]" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="photo4">Photo 4:</label>
-      <input type="text" id="photo4" placeholder="Enter photo link" v-model="photoLinks[3]" class="styled-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="quantity">Quantity in Stock:</label>
-      <input type="number" id="quantity" placeholder="Enter quantity in stock" v-model="quantityInStock" class="styled-input" />
-    </div>
-
-    <button class="submit-button" @click="submitForm">Submit</button>
   </div>
 </template>
 
@@ -82,7 +87,7 @@ export default {
       if (
         !this.productName ||
         !this.productPrice ||
-        !this.productShortDescription||
+        !this.productShortDescription ||
         !this.productDescription ||
         !this.quantityInStock
       ) {
@@ -132,66 +137,22 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  margin-top: 15vh;
-  margin-bottom: 5vh;
-}
-
-.create-products {
-  height: 70%;
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: inherit;
 }
 
-.side_form {
+.box {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.side_form input {
-  margin: 10px;
-}
 
 h2 {
   text-align: center;
-}
-
-.form-group {
-  margin-bottom: 0px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-  width: 100%;
-  padding: 5px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 2px solid lightgreen;
-  background-color: transparent;
-  outline: none;
-}
-
-.submit-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid lightgreen;
-  border-radius: 4px;
-  color: green;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.warning {
-  color: red;
-  text-align: center;
-  margin-bottom: 10px;
 }
 </style>

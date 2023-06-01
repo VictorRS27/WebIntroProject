@@ -33,7 +33,7 @@ export default {
     emits: ['update:value']
 }
 </script>
-<style>
+<style scoped>
 
 .form-group {
     display: flex;
