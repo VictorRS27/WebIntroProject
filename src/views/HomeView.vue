@@ -49,7 +49,6 @@
 import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import SuggestedProduct from '../components/SuggestedProduct.vue';
-import SuggestedProductLine from '../components/SuggestedProductLine.vue';
 
 export default {
 	data() {
