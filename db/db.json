@@ -307,101 +307,100 @@
     {
       "id": 1,
       "eventName": "Pet Adoption Day",
-      "eventDescription": "Join us for a community event dedicated to pet adoption.",
+      "eventDescription": "Join us for a heartwarming community event dedicated to pet adoption. Experience the joy of finding forever homes for adorable pets in need. Whether you're a pet lover looking to expand your furry family or simply want to support a noble cause, this event is perfect for you. Come and meet a variety of lovable animals, connect with passionate animal advocates, and learn more about responsible pet ownership. Together, we can make a difference in the lives of these deserving animals.",
+      "eventShortDescription": "Join us for a heartwarming community event dedicated to pet adoption.",
       "eventDate": "2023-06-10",
       "eventAddress": "456 Elm St, City, State",
       "eventType": "Open to the public",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe380MUE29qyWvHPmfp_fPP4pyFWI4RQ1H0w&usqp=CAU"
       ]
     },
     {
       "id": 2,
       "eventName": "Rescue Shelter Adoption Fair",
-      "eventDescription": "Discover your new furry friend at our adoption fair.",
+      "eventDescription": "Discover your new furry friend at our exciting adoption fair. We invite all pet lovers to join us for a day filled with love, compassion, and endless wagging tails. Our fair offers a fantastic opportunity to meet adorable rescue pets seeking their forever homes. From playful puppies to gentle senior dogs, we have a diverse range of animals eagerly waiting to steal your heart. Whether you're ready to adopt or simply want to show your support, this event promises to warm your heart and make a lasting impact on the lives of these precious animals.",
+      "eventShortDescription": "Discover your new furry friend at our exciting adoption fair.",
       "eventDate": "2023-06-15",
       "eventAddress": "789 Oak Ave, City, State",
       "eventType": "Open to all pet lovers",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://friendsofbcas.org/wp-content/uploads/2021/03/adoptdog-2048x1137.jpg"
       ]
     },
     {
       "id": 3,
       "eventName": "Paws for a Cause",
-      "eventDescription": "Help us find forever homes for our adorable pets.",
+      "eventDescription": "Join us in a noble cause and help us find forever homes for our adorable pets. At 'Paws for a Cause,' we bring together animal lovers of all ages to create a compassionate community that nurtures and protects our furry friends. Explore our pet adoption center and meet a wide variety of loving animals in need. Whether you're looking to adopt, volunteer, or simply lend your support, this family-friendly event offers a fantastic opportunity to make a positive impact on the lives of these innocent creatures. Join us as we unite to bring happiness to both humans and animals alike.",
+      "eventShortDescription": "Join us in a noble cause and help us find forever homes for our adorable pets.",
       "eventDate": "2023-06-20",
       "eventAddress": "321 Pine Rd, City, State",
       "eventType": "Family-friendly event",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://www.teambonding.com/wp-content/uploads/2013/12/PAWS_FOR_A_CAUSE_CMYK_LANDSCAPE_SM-01.jpg"
       ]
     },
     {
       "id": 4,
       "eventName": "Adopt-a-Palooza",
-      "eventDescription": "Join us for a fun-filled day of pet adoptions and activities.",
+      "eventDescription": "Mark your calendars for a fun-filled day of pet adoptions and exciting activities at 'Adopt-a-Palooza.' This highly anticipated event is open to everyone and promises to be a delight for pet enthusiasts of all ages. Explore our adoption village, where you'll have the chance to meet a variety of adorable animals seeking their forever homes. Enjoy live music, participate in engaging workshops, and indulge in delicious food offerings. With plenty of entertainment options, including face painting and games, 'Adopt-a-Palooza' is the perfect way to spend a memorable day with your family while supporting a worthy cause.",
+      "eventShortDescription": "Mark your calendars for a fun-filled day of pet adoptions and exciting activities at 'Adopt-a-Palooza.'",
       "eventDate": "2023-06-25",
       "eventAddress": "654 Maple Blvd, City, State",
       "eventType": "Open to everyone",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://www.adoptapet.com.au/img/animals/7440720.jpeg"
       ]
     },
     {
       "id": 5,
       "eventName": "Furry Friends Adoption Expo",
-      "eventDescription": "Explore a variety of pets available for adoption at our expo.",
+      "eventDescription": "Welcome to the 'Furry Friends Adoption Expo,' a celebration of the unconditional love that pets bring into our lives. Explore a vibrant showcase of pets available for adoption, ranging from playful kittens to loyal dogs, and everything in between. Our dedicated team of animal advocates will be on hand to guide you through the adoption process and provide valuable information on responsible pet ownership. Whether you're a lifelong pet lover or considering adding a new member to your family, this expo offers a unique opportunity to connect with adorable animals and discover the joy of pet companionship.",
+      "eventShortDescription": "Welcome to the 'Furry Friends Adoption Expo,'",
       "eventDate": "2023-06-30",
       "eventAddress": "987 Walnut Ln, City, State",
       "eventType": "Pet lovers welcome",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg",
-        "https://example.com/dog-bed-photo2.jpg",
-        "https://example.com/dog-bed-photo3.jpg"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7GHMvyC8vZHxmepjfSn8VzEIbTINIyG1xgQ&usqp=CAU"
       ]
     },
     {
       "id": 6,
       "eventName": "Adoption",
       "eventDate": "2023-11-11",
-      "eventDescription": "Adoção galera",
+      "eventDescription": "Calling all animal lovers! It's time to make a difference in the lives of deserving pets. Join us for an extraordinary adoption event where you can find your new best friend. At 'Adoption,' we believe that every animal deserves a loving home, and we invite you to be a part of this compassionate journey. From playful pups to cuddly kittens, our adoption center is filled with a diverse range of adorable animals waiting to steal your heart. Whether you're looking for a faithful companion or simply want to support a noble cause, this event is your chance to change lives, one adoption at a time.",
+      "eventShortDescription": "Calling all animal lovers! It's time to make a difference in the lives of deserving pets.",
       "eventType": "Pode colar geral",
       "eventAddress": "Na entrada da matemática",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg"
+        "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2019/09/iStock-1090668790-253x253.jpg"
       ]
     },
     {
       "id": 7,
       "eventName": "Tosa",
       "eventDate": "2023-12-12",
-      "eventDescription": "Para seu doguinho uma tosa gratuita",
+      "eventDescription": "Attention all dog owners! Treat your beloved furry companions to a free grooming session at our 'Tosa' event. We understand the importance of keeping your dogs happy, healthy, and well-groomed. That's why we're offering complimentary grooming services to ensure your doggos look and feel their best. Our professional groomers will pamper your four-legged friends, providing top-notch care and attention to detail. Don't miss this fantastic opportunity to give your dog a day of relaxation and beauty. Join us at the 'Tosa' event and let your pets indulge in the ultimate grooming experience.",
+      "eventShortDescription": "Attention all dog owners! Treat your beloved furry companions to a free grooming session at our 'Tosa' event.",
       "eventType": "De graça",
       "eventAddress": "Avenida São Carlense",
       "photos": [
-        "https://example.com/dog-bed-photo1.jpg"
+        "https://static.ndmais.com.br/2021/04/istock-905308406-800x533.jpg"
       ]
     },
     {
-      "eventName": "Tosa",
-      "eventDate": "2222-12-12",
-      "eventDescription": "oiii",
-      "eventType": "tosa",
-      "eventAddress": "rua pqp",
+      "id": 8,
+      "eventName": "Puppy Playdate",
+      "eventDate": "2024-02-15",
+      "eventDescription": "Attention all pet lovers! Join us for a fun-filled 'Puppy Playdate' event. Bring your furry friends and let them socialize, play, and make new furry pals. We'll have an enclosed play area where your pups can freely run, jump, and have a blast. Our team of dog trainers will be present to facilitate interactive games and ensure a safe environment for all. It's a perfect opportunity for your dogs to burn off some energy and enjoy a delightful day with other pets. Don't miss out on this tail-wagging extravaganza!",
+      "eventShortDescription": "Attention all pet lovers! Join us for a fun-filled 'Puppy Playdate' event.",
+      "eventType": "Socialization",
+      "eventAddress": "Central Park Dog Park",
       "photos": [
-        "https://http2.mlstatic.com/D_NQ_NP_741411-MLB50028882599_052022-O.webp"
-      ],
-      "id": 8
+        "https://pupford.b-cdn.net/assets%2Fblog%2FPuppyPlayDatesASimpleGuide%2F1611780980336-puppy%20play%20dates.png?alt=media&token=a773ea6d-fcf6-42a9-a425-a1aeca528180"
+      ]
     }
+    
   ],
   "users": [
     {
