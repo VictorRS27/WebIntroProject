@@ -1,6 +1,6 @@
 <template>
+    <Navbar />
     <div class="container">
-      <Navbar />
       <div class="posts">
         <div v-for="event in events" :key="event.id" class="post">
           <h3>{{ event.eventName }}</h3>
