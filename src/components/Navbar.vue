@@ -6,8 +6,9 @@
                 <div class="the_shop">the shop</div>
             </div>
             <div class="navbar">
-                <RouterLink to="/">Shop</RouterLink>
-                <RouterLink to="/about">Services</RouterLink>
+                <RouterLink to="/">Products</RouterLink>
+                <RouterLink to="/events">Events</RouterLink>
+                <RouterLink to="/about">About us</RouterLink>
             </div>
         </div>
     </div>
@@ -22,9 +23,9 @@
             </button>
         </div>
         <div v-if="dropBox" class="dropBox">
-            <RouterLink to="/">Shop</RouterLink>
-            <RouterLink to="/about">Services</RouterLink>
-
+            <RouterLink to="/">Products</RouterLink>
+            <RouterLink to="/events?">Events</RouterLink>
+            <RouterLink to="/about">About us</RouterLink>
         </div>
     </div>
 </template>
