@@ -37,48 +37,7 @@ export default {
     
     data() {
         return {
-            products: [
-            // {
-            //     id: 1,
-            //     productName: "Collar",
-            //     productPrice: 19.99,
-            //     productDescription: "A comfortable and stylish collar for your pet.",
-            //     productShortDescription : "A comfortable and stylish collar for your pet.",
-            //     photos: ["/public/greenCollar.png"],
-            // },
-            // {
-            //     id: 2,
-            //     productName: "Collar2",
-            //     productPrice: 29.99,
-            //     productDescription: "A comfortable and stylish collar for your pet.",
-            //     productShortDescription : "A comfortable and stylish collar for your pet.",
-            //     photos: ["/public/greenCollar.png"],
-            // },
-            // {
-            //     id: 3,
-            //     productName: "Collar3",
-            //     productPrice: 39.99,
-            //     productDescription: "A comfortable and stylish collar for your pet.",
-            //     productShortDescription : "A comfortable and stylish collar for your pet.",
-            //     photos: ["/public/greenCollar.png"],
-            // },
-            // {
-            //     id: 4,
-            //     productName: "Collar4",
-            //     productPrice: 49.99,
-            //     productDescription: "A comfortable and stylish collar for your pet.",
-            //     productShortDescription : "A comfortable and stylish collar for your pet.",
-            //     photos: ["/public/greenCollar.png"],
-            // },
-            // {
-            //     id: 5,
-            //     productName: "Collar5",
-            //     productPrice: 59.99,
-            //     productDescription: "A comfortable and stylish collar for your pet.",
-            //     productShortDescription : "A comfortable and stylish collar for your pet.",
-            //     photos: ["/public/greenCollar.png"],
-            // },
-            ],
+            products: [],
         };
     },
     mounted() {

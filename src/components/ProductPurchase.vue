@@ -9,13 +9,15 @@
                     <h1>{{ product.productName }}</h1>
                 </div>
                 <p>${{ product.productPrice }}</p>
-                <p class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
+                <p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
+                <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
                 <div class="quantity">
-                    <button @click="decreaseQuantity">-</button>
+                    <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
                     <span>{{ quantity }}</span>
-                    <button @click="increaseQuantity">+</button>
+                    <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
                 </div>
-                <button class="add-to-cart-button" @click="addToCart">Add to Cart</button>
+                <button v-if="product.quantityInStock !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
+                <button v-else class="disabled-to-cart-button" @click="addToCart">Add to Cart</button>
             </div>
         </div>
         <div class="description">
@@ -62,14 +64,14 @@ export default {
         Footer
     },
     props: {
-		infos: {
-			type: Object,
-			required: true,
-		}
-	},
+        infos: {
+            type: Object,
+            required: true,
+        }
+    },
     mounted() {
-		this.product = { ...this.infos };
-	},
+        this.product = { ...this.infos };
+    },
 }
 </script >
 
@@ -131,6 +133,12 @@ p {
     color: #888;
 }
 
+.without-stock {
+    font-size: 1.2vw;
+    margin-top: 0.5vw;
+    color: red;
+}
+
 .quantity {
     display: flex;
     align-items: center;
@@ -182,6 +190,35 @@ button.add-to-cart-button {
 
 button.add-to-cart-button:hover {
     background-color: #3BB009;
+}
+
+button.disabled-to-cart-button {
+    background-color: darkgray;
+    color: white;
+    font-weight: bold;
+    font-size: 1.6vw;
+    width: 100%;
+    padding: 1.5vh 0;   
+    margin-top: 2vh;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    cursor: not-allowed;
+}
+
+button.disabled-to-cart-button:hover {
+    background-color: gray;
+}
+
+.disabled-button {
+    background-color: darkgray;
+    cursor: not-allowed;
+    transition: background-color 0.3s;
+}
+
+.disabled-button:hover {
+    background-color: gray;
 }
 
 .description {
