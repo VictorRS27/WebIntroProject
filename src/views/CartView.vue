@@ -1,21 +1,18 @@
 <template>
-    <Navbar/>
-    <div class="cart-box">
+    <Navbar />
+    <div class="box">
         <h1>Cart</h1>
-        <div class="container">
-            <div class="product-line"></div>
-            <Product v-for="(product, index) in products"
-            :key="product.id"
-            :infos="product"
-            @delete-product="removeProduct"
-            :class="{ 'product-line': index !== 0 }"
-            />
-            
-            <div class="product-line"></div>
-            <Address @send-credit-card = "confirmPurchase(creditCardNumber)" />
+        <hr/>
+        <div class="inner_box">
+
+            <Product v-for="(product, index) in products" :key="product.id" :infos="product" @delete-product="removeProduct"
+                :class="{ 'product-line': index !== 0 }" />
+
+            <hr class="product-line"/>
+            <Address @send-credit-card="confirmPurchase(creditCardNumber)" />
             <!-- <Footer/> -->
         </div>
-    </div>      
+    </div>
 </template>
 
 <script>
@@ -27,7 +24,6 @@ import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 
 
-
 export default {
     components: {
         Navbar,
@@ -35,7 +31,7 @@ export default {
         Address,
         Footer,
     },
-    
+
     data() {
         return {
             products: [],
@@ -47,16 +43,10 @@ export default {
     methods: {
 
         confirmPurchase(creditCardNumber) {
-                if (creditCardNumber) {
-                    // Simulating purchase completion
-                    this.purchaseComplete = true;
-                    console.log(creditCardNumber)
-                    setTimeout(() => {
-                    //     // Redirect to homepage after 5 seconds
-                    this.$router.push('/')
-                    }, 5000);
-                }
-            },
+            if (creditCardNumber) {
+
+            }
+        },
         removeProduct(deletedProduct) {
             console.log(this.products)
             console.log("deleted product : ", deletedProduct)
@@ -64,17 +54,16 @@ export default {
         },
         loadProductQuantity() {
             axios.get('http://localhost:3000/products')
-            .then(response => {
-                const numberOfproducts = 20 // Number of suggested products to display
-                this.products = response.data.slice()
-                console.log(this.products)
-            })
-            .catch(error => {
-                console.error('Error fetching suggested products:', error)
-            });
+                .then(response => {
+                    this.products = response.data.slice()
+                    console.log(this.products)
+                })
+                .catch(error => {
+                    console.error('Error fetching suggested products:', error)
+                });
         },
     }
-    
+
 }
 </script >
 <style scoped>
@@ -82,7 +71,7 @@ export default {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.cart-box {
+/* .cart-box {
     border-style: solid;
     align-self: center;
     width: 50vw;
@@ -93,19 +82,31 @@ export default {
     padding-right: 3vw;
     margin-top: 12vh;
     margin-bottom: 12vh;
-}
+} */
 
 h1 {
     font-size: 7vh;
     margin-left: 4vw;
 }
 
-.container {
+hr {
+    border-color: #46D115;
+    box-shadow: none;
+    border-style: inherit;
+    width: 100%;
+}
+
+.box {
+    padding: 0;
+}
+
+.inner_box {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: stretch;
+    padding: 30px;
 }
 
 .product-line {

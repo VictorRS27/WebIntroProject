@@ -1,5 +1,5 @@
 <template>
-	<div class="box">
+	<div class="box_a">
 		<div class="header">
 			<h1>{{ product.productName }}</h1>
 			<button class="trash-button" @click="deleteProduct">
@@ -84,7 +84,7 @@ export default {
 	font-family: 'Courier New', Courier, monospace;
 }
 
-.box {
+.box_a {
 	align-self: center;
 	width: 40vw;
 	border-width: 0vw;

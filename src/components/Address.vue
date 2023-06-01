@@ -34,13 +34,13 @@
 			</div>
 
 			<button class="buy-button" :class="{ active: creditCardNumber }" @click="completePurchase">
-                BUY
-            </button>
+				BUY
+			</button>
 
-            <div v-if="purchaseComplete" class="purchase-message">
-                <p>Purchase complete!</p>
-                <p>Returning to homepage in 5 seconds...</p>
-            </div>
+			<div v-if="purchaseComplete" class="purchase-message">
+				<p>Purchase complete!</p>
+				<p>Returning to homepage in 5 seconds...</p>
+			</div>
 
 			<!-- <button type="submit">Submit</button> -->
 		</form>
@@ -52,34 +52,35 @@ export default {
 	name: "Address",
 	data() {
 		return {
-			firstName: "Alan",
-			lastName: "Turing",
-			address: "Street Linus Torvalds",
-			complement: "1337",
-			cep: "1234567",
-
+			infos: {
+				"firstName": "Alan",
+				"lastName": "Turing",
+				"address": "Street Linus Torvalds",
+				"complement": "1337",
+				"cep": "1234567",
+			},
 			creditCardNumber: "",
-            purchaseComplete: false,
+			purchaseComplete: false,
 		};
 	},
 	methods: {
-            checkCreditCardInput() {
-                // Remove non-digit characters from the credit card number
-                this.creditCardNumber = this.creditCardNumber.replace(/\D/g, "");
-            },
-            completePurchase() {
-                if (this.creditCardNumber) {
-                    // Simulating purchase completion
-                    this.purchaseComplete = true;
-                    // setTimeout(() => {
-					//	this.$router.push('/')
-                    //     // Redirect to homepage after 5 seconds
-					console.log("BAMAMA")
-                        this.$emit("send-credit-card", this.creditCardNumber)
-                    //}, 5000);
-                }
-            },
-        }
+		checkCreditCardInput() {
+			// Remove non-digit characters from the credit card number
+			this.creditCardNumber = this.creditCardNumber.replace(/\D/g, "");
+		},
+		completePurchase() {
+			if (this.creditCardNumber) {
+				// Simulating purchase completion
+				this.purchaseComplete = true;
+				// setTimeout(() => {
+				//	this.$router.push('/')
+				//     // Redirect to homepage after 5 seconds
+				console.log("BAMAMA")
+				this.$emit("send-credit-card", this.creditCardNumber)
+				//}, 5000);
+			}
+		},
+	}
 };
 </script>
 
@@ -140,7 +141,7 @@ button {
 }
 
 .purchase-message {
-  margin-top: 20px;
-  text-align: center;
+	margin-top: 20px;
+	text-align: center;
 }
 </style>
