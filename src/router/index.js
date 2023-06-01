@@ -27,11 +27,11 @@ const router = createRouter({
     },
     {
       path: '/ConfirmPurchase',
-      name: 'ConfirmPurchase',
+      name: 'ConfirmPurchase2',
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/ConfirmPurchaseView.vue')
+      component: () => import('../views/ConfirmPurchaseView2.vue')
     },
     {
       path: '/Events',
