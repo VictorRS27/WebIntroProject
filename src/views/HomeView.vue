@@ -13,7 +13,7 @@
 <img src="/cute_pets.png" alt="pets" class="highlight">
 <div class="homebody">
 	<div class="subtitle_container">
-		<h2>Produtos</h2>
+		<h2>Products</h2>
 		
 		<RouterLink to="/about">
 			<h2> See all</h2>
@@ -27,18 +27,18 @@
 		/>
 	</div>
 	<div class="subtitle_container">
-		<h2>Produtos</h2>
+		<h2>Events</h2>
 		
-		<RouterLink to="/about">
+		<RouterLink to="/events">
 			<h2> See all</h2>
 		</RouterLink>
 	</div>
 
 	<div class="container">
-		<SuggestedProduct
-		v-for="(product, index) in this.suggestedProducts"
-		:key="product.id"
-		:infos="product"
+		<SuggestedEvent
+		v-for="(event, index) in this.suggestedEvents"
+		:key="event.id"
+		:infos="event"
 		/>
 	</div>
 </div>
@@ -49,21 +49,25 @@
 import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import SuggestedProduct from '../components/SuggestedProduct.vue';
+import SuggestedEvent from '../components/SuggestedEvent.vue';
 
 export default {
 	data() {
 		return {
 			height: true,
 			suggestedProducts: [],
+			suggestedEvents: [],
 		}
 	},
 	components: {
 		SuggestedProduct,
+		SuggestedEvent,
 		Navbar,
 	},
 	mounted() {
 		addEventListener("scroll", this.logo_control)
 		this.loadSuggestedProducts();
+		this.loadSuggestedEvents();
 	},
 	methods: {
 		logo_control() {
@@ -82,6 +86,18 @@ export default {
 				const products = response.data;
 				const numberOfSuggestions = 4; // Number of suggested products to display
 				this.suggestedProducts = products.slice(0, numberOfSuggestions);
+			})
+			.catch((error) => {
+				console.error('Error fetching suggested products:', error);
+			});
+		},
+		loadSuggestedEvents() {
+			axios
+			.get('http://localhost:3000/events')
+			.then((response) => {
+				const events = response.data;
+				const numberOfSuggestions = 4; // Number of suggested products to display
+				this.suggestedEvents = events.slice(0, numberOfSuggestions);
 			})
 			.catch((error) => {
 				console.error('Error fetching suggested products:', error);
