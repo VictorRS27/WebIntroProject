@@ -29,24 +29,10 @@
             </div>
 
             <div class="form-group">
-                <label for="photo1">Photo 1:</label>
-                <input type="text" id="photo1" placeholder="Enter photo link" v-model="photo1" />
+                <label for="photo">Photo:</label>
+                <input type="text" id="photo" placeholder="Enter photo link" v-model="photo" />
             </div>
 
-            <div class="form-group">
-                <label for="photo2">Photo 2:</label>
-                <input type="text" id="photo2" placeholder="Enter photo link" v-model="photo2" />
-            </div>
-
-            <div class="form-group">
-                <label for="photo3">Photo 3:</label>
-                <input type="text" id="photo3" placeholder="Enter photo link" v-model="photo3" />
-            </div>
-
-            <div class="form-group">
-                <label for="photo4">Photo 4:</label>
-                <input type="text" id="photo4" placeholder="Enter photo link" v-model="photo4" />
-            </div>
 
             <button class="submit-button" @click="createEvent">Submit</button>
         </div>
@@ -68,10 +54,7 @@ export default {
             eventDescription: '',
             eventType: '',
             eventAddress: '',
-            photo1: '',
-            photo2: '',
-            photo3: '',
-            photo4: ''
+            photo: '',
         };
     },
     methods: {
@@ -82,7 +65,7 @@ export default {
                 eventDescription: this.eventDescription,
                 eventType: this.eventType,
                 eventAddress: this.eventAddress,
-                photos: [this.photo1, this.photo2, this.photo3, this.photo4].filter(Boolean)
+                photos: [this.photo1].filter(Boolean)
             };
 
             axios.post('http://localhost:3000/events', newEvent)
@@ -94,10 +77,7 @@ export default {
                     this.eventDescription = '';
                     this.eventType = '';
                     this.eventAddress = '';
-                    this.photo1 = '';
-                    this.photo2 = '';
-                    this.photo3 = '';
-                    this.photo4 = '';
+                    this.photo = '';
                 })
                 .catch(error => {
                     console.log(error);
