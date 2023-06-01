@@ -1,7 +1,8 @@
 <template>
     <Navbar />
-    <div class="box">
-        <div class="register-admin">
+    <div class="container">
+        <div class="box">
+
             <h2>Register Admin</h2>
 
             <div class="form-group">
@@ -21,9 +22,10 @@
 
             <p class="warning-text" v-show="showWarning">Email or username already exists.</p>
 
-        </div>
-        <button class="submit-button" @click="registerAdmin">Submit</button>
 
+            <button class="submit-button" @click="registerAdmin">Submit</button>
+
+        </div>
     </div>
 </template>
 <script>
@@ -98,23 +100,21 @@ export default {
 };
 </script >
 <style scoped>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
 .box {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    border-style: solid;
-    align-self: center;
-    width: 40vw;
-    border-width: 3px;
-    border-color: #46d115;
-    border-radius: 30px;
-    padding: 10px 10px;
-    margin-top: 20vh;
+    align-items: center;
 }
 
 .register-admin {
-    max-width: 500px;
+    width: inherit;
 }
 
 h2 {
@@ -123,6 +123,7 @@ h2 {
 
 .form-group {
     margin-bottom: 20px;
+    width: 40vw;
 }
 
 label {
@@ -133,24 +134,25 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-    width: 20vw;
+    width: 100%;
     padding: 5px 0;
     border: none;
-    border-bottom: 2px solid lightgreen;
+    border-bottom: 4px solid #46D115;
     background-color: transparent;
     font-size: 16px;
     color: black;
 }
 
 .submit-button {
-    display: block;
-    width: 20vw;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid lightgreen;
-    border-radius: 4px;
-    color: green;
-    font-weight: bold;
+    margin: 20px;
+    background-color: #46D115;
+    border-radius: 30px;
+    height: 4vh;
+    width: 30%;
+    border: 0cm;
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -158,5 +160,11 @@ input[type="email"] {
     color: red;
     margin-top: 5px;
     font-size: 14px;
+}
+
+@media screen and (max-width: 700px) {
+    .form-group {
+        width: 90vw;
+    }
 }
 </style>

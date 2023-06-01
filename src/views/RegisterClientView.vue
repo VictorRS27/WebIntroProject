@@ -1,7 +1,7 @@
 <template>
-    <Navbar />
-    <div class="box">
-        <div class="register-client">
+    <div class="container">
+
+        <div class="box">
             <h2>Register Client</h2>
 
             <div class="form-group">
@@ -31,9 +31,9 @@
                 <input type="text" id="address" placeholder="Enter address" v-model="address" />
             </div>
 
-        </div>
-        <button class="submit-button" @click="registerClient">Submit</button>
 
+            <button class="submit-button" @click="registerClient">Submit</button>
+        </div>
     </div>
 </template>
 <script>
@@ -119,67 +119,23 @@ export default {
 };
 </script >
 <style scoped>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
 .box {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-style: solid;
-    align-self: center;
-    width: 40vw;
-    border-width: 3px;
-    border-color: #46d115;
-    border-radius: 30px;
-    padding: 10px 10px;
-    margin-top: 20vh;
-}
-
-.register-client {
-    max-width: 500px;
+    padding: 0;
 }
 
 h2 {
     text-align: center;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"] {
-    width: 20vw;
-    padding: 5px 0;
-    border: none;
-    border-bottom: 2px solid lightgreen;
-    background-color: transparent;
-    font-size: 16px;
-    color: black;
-}
-
-.submit-button {
-    display: block;
-    width: 20vw;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid lightgreen;
-    border-radius: 4px;
-    color: green;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.warning-text {
-    color: red;
-    margin-top: 5px;
-    font-size: 14px;
 }
 </style>
   
