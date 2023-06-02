@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="container">
     <div class="box">
       <h2>Create Product</h2>
@@ -142,6 +143,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: inherit;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
 }
 
 .box {

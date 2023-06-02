@@ -23,7 +23,7 @@
                 <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
 				<div class="quantity">
                     <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
-                    <span>{{ quantity }}</span>
+                    <span>{{ product.quantity }}</span>
                     <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
                 </div>
 			</div>
@@ -44,19 +44,19 @@ export default {
                 productShortDescription: "Make your dog walks a breeze with our durable and stylish Dog Leash",
 				photos: ["/public/greenCollar.png"],
                 quantityInStock : 19,
+				quantity: 0,
             },
-            quantity: 0,
 		};
 	},
 	methods: {
 		increaseQuantity() {
-			if(this.quantity < this.product.quantityInStock) {
-                this.quantity++;
+			if(this.product.quantity < this.product.quantityInStock) {
+                this.product.quantity++;
             }
 		},
 		decreaseQuantity() {
-			if (this.quantity > 1) {
-				this.quantity--;
+			if (this.product.quantity > 1) {
+				this.product.quantity--;
 			}
 		},
 		deleteProduct() {
@@ -192,4 +192,3 @@ span {
 }
 
 </style>
-

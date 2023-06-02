@@ -1,20 +1,23 @@
-<!-- ParentComponent.vue -->
 <template>
-  <Navbar/>
-  <div class="loginPage">
-    <div class="container">
-      <div class="box">
-        <h1>Login</h1>
-        <InputText v-model:value="username" label="Nome de Usuário" placeHolder="petFriend24"/>
-        <InputText v-model:value="password" label="Senha" placeHolder="********"/>
-        <InputSubmit class="submit-btn" @submit2="redirect"></InputSubmit>
+  <Navbar />
+  <div class="container">
+    <div class="box">
+      <h1>Login</h1>
+      <div class="form-group">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" placeholder="petFriend24" v-model="username" />
       </div>
+      <div class="form-group">
+        <label for="username">Senha:</label>
+        <input type="password" placeholder="********" v-model="password" />
+      </div>
+      <button class="submit-button" @click="redirect">Enviar</button>
     </div>
   </div>
 </template>
 
 <script>
-
+import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import InputSubmit from '../components/InputSubmit.vue';
 import InputText from '../components/InputText.vue';
@@ -22,8 +25,8 @@ import InputText from '../components/InputText.vue';
 export default {
   data() {
     return {
-      username: '', 
-      password: '' 
+      username: '',
+      password: ''
     }
   },
   components: {
@@ -33,9 +36,37 @@ export default {
   },
   methods: {
     redirect() {
-      console.log(this.username);
-      console.log(this.password);
-      /* this.$router.push('/') */
+      axios.get("http://localhost:3000/users")
+        .then((response) => {
+          let match = response.data.filter((user) => user.username === this.username && user.password === this.password);
+          if (match.length != 1) {
+            axios.get("http://localhost:3000/admin")
+              .then((response) => {
+                let match2 = response.data.filter((user) => user.username === this.username && user.password === this.password);
+                console.log(match2);
+                if (match2.length != 1) {
+                  alert("Não foi encontrado")
+                }
+                else {
+                  console.log("entrou")
+                  document.cookie = "admin=" + match2[0].id;
+                  this.$router.push('/adminmenu');
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+          else {
+            console.log(match);
+            document.cookie = match[0].id;
+            this.$router.push('/');
+          }
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 }
@@ -47,14 +78,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-input+input {
-  margin: 4vh 10px 0 10px;
-}
-
-input+button {
-  margin: 4vh 10px 0 10px;
+  align-items: center;
 }
 
 h1 {
@@ -68,17 +92,7 @@ h1 {
   justify-content: center;
   align-items: center;
   height: inherit;
-  margin-top: 15vh;
-}
-
-.submit-btn {
-  align-self: flex-end;
-  margin-right: 20px;
-}
-
-.loginPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
 }
 </style>

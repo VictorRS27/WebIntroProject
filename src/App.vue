@@ -21,8 +21,6 @@ export default {
   },
   methods: {
     handleMouseMove() {
-      console.log('Mouse move');
-      console.log(Math.floor(Math.random() * 170) % 170);
       if(Math.floor(Math.random() * 170) % 170 === 1){
         this.playSound();
       }

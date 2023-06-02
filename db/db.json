@@ -400,7 +400,6 @@
         "https://pupford.b-cdn.net/assets%2Fblog%2FPuppyPlayDatesASimpleGuide%2F1611780980336-puppy%20play%20dates.png?alt=media&token=a773ea6d-fcf6-42a9-a425-a1aeca528180"
       ]
     }
-    
   ],
   "users": [
     {
@@ -458,6 +457,14 @@
       "telephone": "12",
       "address": "121",
       "id": 7
+    },
+    {
+      "username": "aaa",
+      "password": "aaa",
+      "email": "aaa",
+      "telephone": "aaa",
+      "address": "aaa",
+      "id": 8
     }
   ],
   "admin": [
@@ -514,6 +521,30 @@
       "password": "senha",
       "email": "ooa@Xas",
       "id": 9
+    }
+  ],
+  "cart":[
+    {
+      "id":1,
+      "id_cliente": 8,
+      "products": [
+        {
+          "id": 6,
+          "qtd": 1
+        },
+        {
+          "id": 1,
+          "qtd": 2
+        },
+        {
+          "id": 2,
+          "qtd": 3
+        },
+        {
+          "id": 3,
+          "qtd": 4
+        }
+      ]
     }
   ]
 }
