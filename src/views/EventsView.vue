@@ -93,6 +93,7 @@ h1 {
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  min-width: 300px;
 }
 
 .blog-card:hover {

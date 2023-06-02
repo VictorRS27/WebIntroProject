@@ -1,16 +1,21 @@
 <!-- ParentComponent.vue -->
 <template>
+  <Navbar/>
   <div class="loginPage">
-    <div class="box">
-      <h1>Login</h1>
-      <InputText v-model:value="username" label="Nome de Usuário" placeHolder="petFriend24"/>
-      <InputText v-model:value="password" label="Senha" placeHolder="********"/>
-      <InputSubmit class="submit-btn" @submit2="redirect"></InputSubmit>
+    <div class="container">
+      <div class="box">
+        <h1>Login</h1>
+        <InputText v-model:value="username" label="Nome de Usuário" placeHolder="petFriend24"/>
+        <InputText v-model:value="password" label="Senha" placeHolder="********"/>
+        <InputSubmit class="submit-btn" @submit2="redirect"></InputSubmit>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import Navbar from '../components/Navbar.vue';
 import InputSubmit from '../components/InputSubmit.vue';
 import InputText from '../components/InputText.vue';
 
@@ -23,7 +28,8 @@ export default {
   },
   components: {
     InputText,
-    InputSubmit
+    InputSubmit,
+    Navbar
   },
   methods: {
     redirect() {
@@ -57,9 +63,12 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.text-field {
-  width: 80%;
-  align-self: center;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  margin-top: 15vh;
 }
 
 .submit-btn {

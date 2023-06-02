@@ -6,7 +6,7 @@ export default {
     name: "InputSubmit"
 }
 </script>
-<style>
+<style scoped>
     button {
         margin: 20px;
         background-color: #46D115;
