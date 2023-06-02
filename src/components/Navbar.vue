@@ -5,12 +5,29 @@
                 <div class="pet">Pet</div>
                 <div class="the_shop">the shop</div>
             </div>
-            <div class="navbar">
+            <div v-if="(myCookie === '')" class="navbar">
+                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/products">Products</RouterLink>
+                <RouterLink to="/events">Events</RouterLink>
+                <RouterLink to="/about">About us</RouterLink>
+                <RouterLink to="/login">Login</RouterLink>
+            </div>
+
+            <div v-else-if="(myCookie[0] === 'u')" class="navbar">
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
             </div>
+
+            <div v-else-if="(myCookie[0] === 'a')" class="navbar">
+                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/products">Products</RouterLink>
+                <RouterLink to="/events">Events</RouterLink>
+                <RouterLink to="/about">About us</RouterLink>
+            </div>
+
+
         </div>
     </div>
     <div v-else class="nav">
@@ -39,6 +56,7 @@ export default {
         return {
             mobile: false,
             dropBox: false,
+            myCookie: ''
         }
     },
     props: {
@@ -60,8 +78,8 @@ export default {
     mounted() {
         this.defineWindow();
         window.addEventListener("resize", this.defineWindow);
-        // myCookie =  document.cookie
-        // console.log(myCookie)
+        this.myCookie =  document.cookie;
+        console.log(this.myCookie);
     },
 
 
