@@ -1,46 +1,32 @@
 <template>
-  <Navbar />
-  <div class="container">
-    <div class="posts">
-      <div v-for="event in events" :key="event.id" class="post">
-        <div class="post-header">
-          <h3 class="event-name">{{ event.eventName }}</h3>
+  <div>
+    <Navbar />
+    <h1>Flexbox Blog-Card</h1>
+
+    <div class="blog-wrapper">
+      <div v-for="(event, index) in events" :key="index" class="blog-card">
+        <div class="card-img">
+          <img :src="event.photos[0]" :alt="'photo' + index" />
         </div>
-        <div id="post_back" class="post-content">
-          <div class="post-text">
-            <p class="event-description">{{ event.eventDescription }}</p>
-          </div>
-          <div class="post-photos">
-            <img
-              v-for="(photo, index) in event.photos"
-              :src="photo"
-              :alt="'photo' + index"
-              :key="index"
-              class="post-photo"
-            />
-          </div>
+        <h1>{{ event.eventName }}</h1>
+        <div class="card-details">
+          <span><i class="fa fa-calendar"></i>{{ formatDate(event.eventDate) }}</span>
+          <span><i class="fa fa-heart"></i>{{ event.likes }}</span>
         </div>
-        <div class="post-footer">
-          <p class="date">{{ formatDate(event.eventDate) }}</p>
-          <p><strong>Address:</strong> {{ event.eventAddress }}</p>
-          <p><strong>Type:</strong> {{ event.eventType }}</p>
-        </div>
-        <div class="post-actions">
-          <button class="like-button" :class="{ 'liked': event.liked }" @click="toggleLike(event)">
-            <i class="heart-icon" :class="{ 'fas': event.liked, 'far': !event.liked }"></i>
-            <span>{{ event.likes }}</span>
-          </button>
+        <div class="card-text">
+          <p class="event-description">{{ event.eventDescription }}</p>
         </div>
       </div>
     </div>
-    <!-- <Footer/> -->
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   components: {
@@ -68,7 +54,7 @@ export default {
         });
     },
     formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
       return new Date(date).toLocaleDateString(undefined, options);
     },
     toggleLike(event) {
@@ -79,109 +65,83 @@ export default {
 </script>
 
 <style scoped>
-.container {
+h1 {
+  font-size: 1vw;
+  margin-top: 3vh;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+.blog-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  align-items: stretch;
+  flex-wrap: wrap;
   margin-top: 10vh;
 }
 
-.posts {
-  margin: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-}
-
-.post {
-  background: radial-gradient(circle, #46D115, #2CA603);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  color: #000000;
-}
-
-.post-header {
-  margin-bottom: 1rem;
-}
-
-.event-name {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #000000;
-}
-
-.post-content {
-  margin-bottom: 1rem;
-}
-
-.post-text {
-  margin-bottom: 1.5rem;
-}
-
-.event-description {
-  color: #000000;
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-
-.post-photos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.post-photo {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.post-footer {
-  margin-top: 1rem;
-  color: #000000;
-}
-
-.date {
-  font-size: 0.9rem;
-  color: #000000;
-  margin-bottom: 0.5rem;
-}
-
-.post-actions {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.like-button {
-  background-color: transparent;
-  color: #000000;
-  border: none;
-  padding: 0;
+.blog-card {
+  transition: 0.3s;
+  width: 20vw;
+  margin: 15px;
+  background: #fff;
+  border: 1px solid #80cb60;
+  text-align: center;
   cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card .card-img {
+  position: relative;
+  text-align: center;
+  background: #80cb60;
+  border-radius: 10px 10px 0 0;
+}
+
+.blog-card .card-img img {
+  transition: 0.3s;
+  max-height: 180px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.blog-card .card-img h1 {
+  position: absolute;
+  margin: 0;
+  font-size: 24px;
+  bottom: 15px;
+  width: 100%;
+  color: #00ffee;
+  font-family: 'Slabo 27px', serif;
+}
+
+.blog-card .card-details {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Roboto', sans-serif;
+  color: #777;
+}
+
+.blog-card .card-details span {
   display: flex;
   align-items: center;
 }
 
-.heart-icon {
-  font-size: 1rem;
-  margin-right: 0.5rem;
+.blog-card .card-details i {
+  margin-right: 5px;
 }
 
-.like-button.liked .heart-icon {
-  color: #ff0000;
-}
-
-.like-button span {
-  margin-left: 0.25rem;
-  font-size: 0.9rem;
-}
-
-.like-button:focus {
-  outline: none;
+.blog-card .card-text {
+  padding: 20px 15px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 22px;
+  color: #555;
 }
 </style>
