@@ -53,14 +53,12 @@ export default {
             if(this.product.quantity < this.product.quantityInStock) {
                 this.product.quantity++;
                 this.$emit("emit-product", this.product)
-                console.log("product.quantity = ", this.product.quantity);
             }
         },
         decreaseQuantity() {
             if (this.product.quantity > 1) {
                 this.product.quantity--;
                 this.$emit("emit-product", this.product)
-                console.log("product.quantity = ", this.product.quantity);
             }
         },
         loadCart() {
@@ -80,41 +78,45 @@ export default {
             });
         },
         async addToCart() {
-            try {
-                const cartData = await this.loadCart();
-                console.log("cartData = ", cartData)
-                let alreadyInserted = false;
-                for(let i = 0; !alreadyInserted && i < cartData.products.length; i++) {
-                    
-                    if(cartData.products[i].id == this.product.id) {
-                        cartData.products[i].qtd = this.product.quantity;
-                        alreadyInserted = true; 
-                    }
-                }
 
-                console.log("cartData = ", cartData)
-                
-                if(!alreadyInserted) {
-                    cartData.products.push(
-                    {
-                        "id": this.product.id,
-                        "qtd": this.product.quantity
+            if(this.product.quantity > 0)
+            {
+                try {
+                    const cartData = await this.loadCart();
+                    let alreadyInserted = false;
+                    for(let i = 0; !alreadyInserted && i < cartData.products.length; i++) {
+                        
+                        if(cartData.products[i].id == this.product.id) {
+                            cartData.products[i].qtd = this.product.quantity;
+                            alreadyInserted = true; 
+                        }
                     }
-                    )
+                    
+                    if(!alreadyInserted) {
+                        cartData.products.push(
+                        {
+                            "id": this.product.id,
+                            "qtd": this.product.quantity
+                        }
+                        )
+                    }
+                    
+                    axios
+                    .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
+                    .then((response) => {
+                        console.log('Cart saved successfully:', response.data);
+                        this.$router.push('/Cart');
+                    })
+                    .catch((error) => {
+                        console.error('Error saving cart:', error);
+                    });
+                } catch (error) {
+                    // Handle errors here
+                    console.error(error);
                 }
-                
-                axios
-                .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
-                .then((response) => {
-                    console.log('Cart saved successfully:', response.data);
-                    this.$router.push('/Cart');
-                })
-                .catch((error) => {
-                    console.error('Error saving cart:', error);
-                });
-            } catch (error) {
-                // Handle errors here
-                console.error(error);
+            }
+            else {
+                alert("You need to select at least one unit of the product to add to the cart.")
             }
         },
     },
