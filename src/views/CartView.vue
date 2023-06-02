@@ -4,7 +4,7 @@
         <h1>Cart</h1>
         <hr />
         <div class="inner_box">
-            <Product v-for="(product, index) in products" :key="product.id" :infos="product" @delete-product="removeProduct"
+            <Product v-for="(product, index) in products" :key="product.id" :infos="product" @delete-product="removeProduct" @emit-product="updateProducts"
             :class="{ 'product-line': index !== 0 }" />
             
             <hr class="product-line" />
@@ -46,7 +46,6 @@ export default {
                     let id_cliente = document.cookie;
                     id_cliente = parseInt(id_cliente);
                     let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
-                    console.log("cart1 = ", cart[0]);
                     resolve(cart[0]); // Resolve the promise with the desired value
                 })
                 .catch((error) => {
@@ -84,7 +83,9 @@ export default {
             }
         },
         confirmPurchase(creditCardNumber) {
+            consolelog("CreditCartNumber = ", creditCardNumber);   
             if (creditCardNumber) {
+                consolelog("CreditCartNumber = ", creditCardNumber);   
                 // Handle purchase confirmation logic
             }
         },
@@ -92,6 +93,19 @@ export default {
             console.log(this.products);
             console.log("deleted product: ", deletedProduct);
             this.products = this.products.filter((product) => product.id !== deletedProduct.id);
+        },
+        updateProducts(product) {
+
+            let index = 0;
+            for(let i = 0; i < this.products.length; i++)
+                if(product.id == this.products[i].id)
+                    index = i;
+
+            this.products[index] = product;
+
+            console.log("index = ", index)  
+            console.log("product = ", product)
+            console.log("products[index] = ", this.products[index])
         },
         loadProductQuantity() {
             axios
@@ -106,12 +120,15 @@ export default {
                 console.error('Error fetching suggested products:', error);
             });
         },
+
         async saveCart() {
             
             try {
                 const cartData = await this.loadCart();
                 cartData.products = []
                 for(let i = 0; i < this.products.length; i++) {
+
+                    console.log("this.products[i] = ", this.products[i])
                     cartData.products.push(
                     {
                         "id": this.products[i].id,
@@ -131,8 +148,6 @@ export default {
                 .catch((error) => {
                     console.error('Error saving cart:', error);
                 });
-                
-                console.log(cart);
             } catch (error) {
                 // Handle errors here
                 console.error(error);
@@ -174,7 +189,6 @@ hr {
 }
 
 .box {
-    margin-top: 20vh;
     padding: 0;
 }
 

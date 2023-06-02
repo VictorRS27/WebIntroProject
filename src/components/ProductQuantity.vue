@@ -52,11 +52,14 @@ export default {
 		increaseQuantity() {
 			if(this.product.quantity < this.product.quantityInStock) {
                 this.product.quantity++;
+				console.log("this.quantity = ", this.product.quantity)
+				this.$emit("emit-product", this.product)
             }
 		},
 		decreaseQuantity() {
 			if (this.product.quantity > 1) {
 				this.product.quantity--;
+				this.$emit("emit-product", this.product)
 			}
 		},
 		deleteProduct() {
