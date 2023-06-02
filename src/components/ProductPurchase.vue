@@ -13,7 +13,7 @@
                 <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
                 <div class="quantity">
                     <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
-                    <span>{{ quantity }}</span>
+                    <span>{{ product.quantity }}</span>
                     <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
                 </div>
                 <button v-if="product.quantityInStock !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
@@ -29,6 +29,7 @@
 
 <script>
 
+import axios from 'axios';
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 
@@ -43,19 +44,77 @@ export default {
                 productDescription: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
                 photos: ["/public/greenCollar.png"],
                 quantityInStock : 19,
+                quantity: 0,
             },
-            quantity: 0,
         };
     },
     methods: {
         increaseQuantity() {
-            if(this.quantity < this.product.quantityInStock) {
-                this.quantity++;
+            if(this.product.quantity < this.product.quantityInStock) {
+                this.product.quantity++;
+                this.$emit("emit-product", this.product)
+                console.log("product.quantity = ", this.product.quantity);
             }
         },
         decreaseQuantity() {
-            if (this.quantity > 1) {
-                this.quantity--;
+            if (this.product.quantity > 1) {
+                this.product.quantity--;
+                this.$emit("emit-product", this.product)
+                console.log("product.quantity = ", this.product.quantity);
+            }
+        },
+        loadCart() {
+            return new Promise((resolve, reject) => {
+                axios
+                .get('http://localhost:3000/cart')
+                .then((response) => {
+                    let id_cliente = document.cookie;
+                    id_cliente = parseInt(id_cliente);
+                    let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
+                    resolve(cart[0]); // Resolve the promise with the desired value
+                })
+                .catch((error) => {
+                    console.error('Error fetching suggested products:', error);
+                    reject(error); // Reject the promise with an error
+                });
+            });
+        },
+        async addToCart() {
+            try {
+                const cartData = await this.loadCart();
+                console.log("cartData = ", cartData)
+                let alreadyInserted = false;
+                for(let i = 0; !alreadyInserted && i < cartData.products.length; i++) {
+                    
+                    if(cartData.products[i].id == this.product.id) {
+                        cartData.products[i].qtd = this.product.quantity;
+                        alreadyInserted = true; 
+                    }
+                }
+
+                console.log("cartData = ", cartData)
+                
+                if(!alreadyInserted) {
+                    cartData.products.push(
+                    {
+                        "id": this.product.id,
+                        "qtd": this.product.quantity
+                    }
+                    )
+                }
+                
+                axios
+                .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
+                .then((response) => {
+                    console.log('Cart saved successfully:', response.data);
+                    this.$router.push('/Cart');
+                })
+                .catch((error) => {
+                    console.error('Error saving cart:', error);
+                });
+            } catch (error) {
+                // Handle errors here
+                console.error(error);
             }
         },
     },
@@ -71,6 +130,7 @@ export default {
     },
     mounted() {
         this.product = { ...this.infos };
+        console.log("product.quantity = ", this.product.quantity);
     },
 }
 </script >

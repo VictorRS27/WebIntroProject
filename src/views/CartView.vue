@@ -89,9 +89,8 @@ export default {
             }
         },
         removeProduct(deletedProduct) {
-            console.log(this.products);
-            console.log("deleted product: ", deletedProduct);
             this.products = this.products.filter((product) => product.id !== deletedProduct.id);
+            this.saveCart();
         },
         updateProducts(product) {
 
@@ -101,12 +100,7 @@ export default {
                     index = i;
 
             this.products[index] = product;
-
             this.saveCart();
-
-            console.log("index = ", index)  
-            console.log("product = ", product)
-            console.log("products[index] = ", this.products[index])
         },
         loadProductQuantity() {
             axios
@@ -129,7 +123,6 @@ export default {
                 cartData.products = []
                 for(let i = 0; i < this.products.length; i++) {
 
-                    console.log("this.products[i] = ", this.products[i])
                     cartData.products.push(
                     {
                         "id": this.products[i].id,
@@ -137,9 +130,6 @@ export default {
                     }
                     )
                 }
-
-                console.log("cartData.id = ", cartData.id)
-                console.log("cartData = ", cartData)
 
                 axios
                 .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
