@@ -4,12 +4,11 @@
         <h1>Cart</h1>
         <hr />
         <div class="inner_box">
-            <Product v-for="(product, index) in products" :key="product.id" :infos="product" @delete-product="removeProduct"
+            <Product v-for="(product, index) in products" :key="product.id" :infos="product" @delete-product="removeProduct" @emit-product="updateProducts"
             :class="{ 'product-line': index !== 0 }" />
             
             <hr class="product-line" />
             <Address @send-credit-card="confirmPurchase(creditCardNumber)" />
-            <button class="save-button" @click="saveCart">Save</button> <!-- Add the Save button here -->
         </div>
     </div>
 </template>
@@ -46,7 +45,6 @@ export default {
                     let id_cliente = document.cookie;
                     id_cliente = parseInt(id_cliente);
                     let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
-                    console.log("cart1 = ", cart[0]);
                     resolve(cart[0]); // Resolve the promise with the desired value
                 })
                 .catch((error) => {
@@ -84,14 +82,25 @@ export default {
             }
         },
         confirmPurchase(creditCardNumber) {
+            consolelog("CreditCartNumber = ", creditCardNumber);   
             if (creditCardNumber) {
+                consolelog("CreditCartNumber = ", creditCardNumber);   
                 // Handle purchase confirmation logic
             }
         },
         removeProduct(deletedProduct) {
-            console.log(this.products);
-            console.log("deleted product: ", deletedProduct);
             this.products = this.products.filter((product) => product.id !== deletedProduct.id);
+            this.saveCart();
+        },
+        updateProducts(product) {
+
+            let index = 0;
+            for(let i = 0; i < this.products.length; i++)
+                if(product.id == this.products[i].id)
+                    index = i;
+
+            this.products[index] = product;
+            this.saveCart();
         },
         loadProductQuantity() {
             axios
@@ -106,12 +115,14 @@ export default {
                 console.error('Error fetching suggested products:', error);
             });
         },
+
         async saveCart() {
             
             try {
                 const cartData = await this.loadCart();
                 cartData.products = []
                 for(let i = 0; i < this.products.length; i++) {
+
                     cartData.products.push(
                     {
                         "id": this.products[i].id,
@@ -119,9 +130,6 @@ export default {
                     }
                     )
                 }
-
-                console.log("cartData.id = ", cartData.id)
-                console.log("cartData = ", cartData)
 
                 axios
                 .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
@@ -131,8 +139,6 @@ export default {
                 .catch((error) => {
                     console.error('Error saving cart:', error);
                 });
-                
-                console.log(cart);
             } catch (error) {
                 // Handle errors here
                 console.error(error);
@@ -174,7 +180,6 @@ hr {
 }
 
 .box {
-    margin-top: 20vh;
     padding: 0;
 }
 
@@ -190,17 +195,6 @@ hr {
 .product-line {
     border-top: 1px solid #46D115;
     border-radius: 0;
-}
-.save-button {
-    padding: 10px 20px;
-    background-color: #46D115;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.5vw;
-    margin-top: 3vh;
 }
 
 </style>
