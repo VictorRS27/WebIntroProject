@@ -9,7 +9,6 @@
             
             <hr class="product-line" />
             <Address @send-credit-card="confirmPurchase(creditCardNumber)" />
-            <button class="save-button" @click="saveCart">Save</button> <!-- Add the Save button here -->
         </div>
     </div>
 </template>
@@ -102,6 +101,8 @@ export default {
                     index = i;
 
             this.products[index] = product;
+
+            this.saveCart();
 
             console.log("index = ", index)  
             console.log("product = ", product)
@@ -204,17 +205,6 @@ hr {
 .product-line {
     border-top: 1px solid #46D115;
     border-radius: 0;
-}
-.save-button {
-    padding: 10px 20px;
-    background-color: #46D115;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.5vw;
-    margin-top: 3vh;
 }
 
 </style>
