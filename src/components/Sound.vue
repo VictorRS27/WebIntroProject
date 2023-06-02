@@ -19,7 +19,7 @@ export default {
   methods: {
     
     playSound() {
-      console.log("move")
+      //console.log("move")
       const soundID = Math.floor(Math.random() * 7);
       const soundsList = [
         "public/cat-meow-6226.mp3",
@@ -31,7 +31,7 @@ export default {
         "public/pet-squeak-toy-81315.mp3"
       ];
       this.audio.src = soundsList[soundID]; // Replace with the path to your sound file
-      this.audio.play();
+      //this.audio.play();
     }
   }
 };
