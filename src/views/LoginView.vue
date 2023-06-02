@@ -49,7 +49,7 @@ export default {
                 }
                 else {
                   console.log("entrou")
-                  document.cookie = "admin=" + match2[0].id;
+                  document.cookie = match2[0].id;
                   this.$router.push('/adminmenu');
                 }
               })

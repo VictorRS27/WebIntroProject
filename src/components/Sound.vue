@@ -22,13 +22,13 @@ export default {
       //console.log("move")
       const soundID = Math.floor(Math.random() * 7);
       const soundsList = [
-        "public/cat-meow-6226.mp3",
-        "public/zimmermacaco.mp3",
-        "public/sheep-122256.mp3",
-        "public/duck-quack-112941.mp3",
-        "public/elephant-trumpets-growls-6047.mp3",
-        "public/owl-144750.mp3",
-        "public/pet-squeak-toy-81315.mp3"
+        "/cat-meow-6226.mp3",
+        "/zimmermacaco.mp3",
+        "/sheep-122256.mp3",
+        "/duck-quack-112941.mp3",
+        "/elephant-trumpets-growls-6047.mp3",
+        "/owl-144750.mp3",
+        "/pet-squeak-toy-81315.mp3"
       ];
       this.audio.src = soundsList[soundID]; // Replace with the path to your sound file
       //this.audio.play();

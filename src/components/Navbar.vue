@@ -58,8 +58,10 @@ export default {
         }
     },
     mounted() {
-        this.defineWindow()
-        window.addEventListener("resize", this.defineWindow)
+        this.defineWindow();
+        window.addEventListener("resize", this.defineWindow);
+        // myCookie =  document.cookie
+        // console.log(myCookie)
     },
 
 
