@@ -11,7 +11,9 @@
         <h1>{{ event.eventName }}</h1>
         <div class="card-details">
           <span><i class="fa fa-calendar"></i>{{ formatDate(event.eventDate) }}</span>
-          <span><i class="fa fa-heart"></i>{{ event.likes }}</span>
+          <span @click="toggleHeartColor(event)">
+            <i class="fa fa-heart" :class="{ 'liked': event.liked }"></i>{{ event.likes }}
+          </span>
         </div>
         <div class="card-text">
           <p class="event-description">{{ event.eventDescription }}</p>
@@ -57,7 +59,7 @@ export default {
       const options = { year: 'numeric', month: 'short', day: 'numeric' };
       return new Date(date).toLocaleDateString(undefined, options);
     },
-    toggleLike(event) {
+    toggleHeartColor(event) {
       event.liked = !event.liked;
     }
   }
@@ -136,6 +138,10 @@ h1 {
 
 .blog-card .card-details i {
   margin-right: 5px;
+}
+
+.blog-card .card-details i.liked {
+  color: red;
 }
 
 .blog-card .card-text {
