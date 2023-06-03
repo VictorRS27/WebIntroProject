@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     handleMouseMove() {
-      if(Math.floor(Math.random() * 170) % 170 === 1){
+      if(Math.floor(Math.random() * 200) % 200 === 1){
         this.playSound();
       }
     },
@@ -42,10 +42,10 @@ export default {
       }
 
       this.audio.src = soundsList[soundID]; // Replace with the path to your sound file
-      this.audio.play().catch(error => {
-        // Handle play() promise rejection
-        console.log('Failed to play sound:', error);
-      });
+      // this.audio.play().catch(error => {
+      //   // Handle play() promise rejection
+      //   console.log('Failed to play sound:', error);
+      // });
     }
   }
 };
