@@ -36,6 +36,25 @@ export default {
         this.loadProducts();
     },
     methods: {
+        parseCookiesData(myCookie) {
+            const userPrefix = 'user=';
+            const adminPrefix = 'admin=';
+
+            if (myCookie.startsWith(userPrefix)) {
+                let userId = myCookie.substring(userPrefix.length);
+                
+                console.log('User ID:', userId);
+                // Do something with the user ID
+                return userId;
+            } else if (myCookie.startsWith(adminPrefix)) {
+                let adminId = myCookie.substring(adminPrefix.length);
+                console.log('Admin ID:', adminId);
+                // Do something with the admin ID
+                return adminId;
+            } else {
+                console.log('Invalid cookies format');
+            }
+        },
         
         loadCart() {
             return new Promise((resolve, reject) => {
@@ -43,7 +62,7 @@ export default {
                 .get('http://localhost:3000/cart')
                 .then((response) => {
                     let id_cliente = document.cookie;
-                    id_cliente = parseInt(id_cliente);
+                    id_cliente = parseCookiesData(id_cliente);
                     let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
                     resolve(cart[0]); // Resolve the promise with the desired value
                 })
@@ -107,7 +126,7 @@ export default {
             .get('http://localhost:3000/cart')
             .then((response) => {
                 let id_cliente = document.cookie;
-                id_cliente = parseInt(id_cliente);
+                id_cliente = parseCookiesData(id_cliente);
                 let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
                 this.loadProducts(cart[0]);
             })

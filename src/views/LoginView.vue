@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import InputSubmit from '../components/InputSubmit.vue';
@@ -49,7 +50,7 @@ export default {
                 }
                 else {
                   console.log("entrou")
-                  document.cookie = match2[0].id;
+                  document.cookie = 'admin=' + match2[0].id;
                   this.$router.push('/adminmenu');
                 }
               })
@@ -59,7 +60,7 @@ export default {
           }
           else {
             console.log(match);
-            document.cookie = match[0].id;
+            document.cookie = 'user=' + match[0].id;
             this.$router.push('/');
           }
 

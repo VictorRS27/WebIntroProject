@@ -18,13 +18,15 @@
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
+                <p @click="LogOff">Logoff</p>
             </div>
 
             <div v-else-if="(myCookie[0] === 'a')" class="navbar">
                 <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/products">Products</RouterLink>
-                <RouterLink to="/events">Events</RouterLink>
+                <RouterLink to="/AdminMenu">Menu</RouterLink>
+                <RouterLink to="/crud">Crud</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
+                <p @click="LogOff">Logoff</p>
             </div>
 
 
@@ -37,7 +39,8 @@
                 <div class="the_shop">the shop</div>
             </div>
             <button @click="switchDropBox">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png" alt="menu">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png"
+                    alt="menu">
             </button>
         </div>
         <div v-if="dropBox" class="dropBox">
@@ -60,10 +63,17 @@ export default {
         }
     },
     props: {
-        is_home:Boolean,
-        default:false
+        is_home: Boolean,
+        default: false
     },
     methods: {
+        LogOff() {
+            document.cookie = this.myCookie + ';expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Remove user ID cookie
+            console.log('Cookies deleted');
+            this.myCookie = '';
+            alert('Você fez o Logoff, faça login novamente para acessar sua conta')
+            this.$router.push('/');
+        },
         defineWindow() {
             if (window.innerWidth < 700) {
                 this.mobile = true
@@ -73,13 +83,31 @@ export default {
         },
         switchDropBox() {
             this.dropBox = !this.dropBox;
+        },
+        parseCookiesData() {
+            const userPrefix = 'user=';
+            const adminPrefix = 'admin=';
+
+            if (this.myCookie.startsWith(userPrefix)) {
+                let userId = this.myCookie.substring(userPrefix.length);
+                console.log('User ID:', userId);
+                // Do something with the user ID
+            } else if (this.myCookie.startsWith(adminPrefix)) {
+                let adminId = this.myCookie.substring(adminPrefix.length);
+                console.log('Admin ID:', adminId);
+                // Do something with the admin ID
+            } else {
+                console.log('Invalid cookies format');
+            }
         }
     },
+
     mounted() {
         this.defineWindow();
         window.addEventListener("resize", this.defineWindow);
-        this.myCookie =  document.cookie;
+        this.myCookie = document.cookie;
         console.log(this.myCookie);
+        this.parseCookiesData();
     },
 
 
@@ -88,8 +116,7 @@ export default {
 
 
 <style scoped>
-
-.nav{
+.nav {
     font-family: 'Courier New', Courier, monospace;
     color: aliceblue;
     text-decoration: none;
@@ -139,7 +166,18 @@ export default {
     font-size: 24px;
 }
 
+.navbar p {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .navbar a:hover {
+    color: #000;
+}
+
+.navbar p:hover {
     color: #000;
 }
 
