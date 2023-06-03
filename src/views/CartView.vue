@@ -62,7 +62,7 @@ export default {
                 .get('http://localhost:3000/cart')
                 .then((response) => {
                     let id_cliente = document.cookie;
-                    id_cliente = parseCookiesData(id_cliente);
+                    id_cliente = this.parseCookiesData(id_cliente);
                     let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
                     resolve(cart[0]); // Resolve the promise with the desired value
                 })
@@ -126,7 +126,7 @@ export default {
             .get('http://localhost:3000/cart')
             .then((response) => {
                 let id_cliente = document.cookie;
-                id_cliente = parseCookiesData(id_cliente);
+                id_cliente = this.parseCookiesData(id_cliente);
                 let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
                 this.loadProducts(cart[0]);
             })
