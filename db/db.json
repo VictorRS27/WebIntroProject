@@ -529,12 +529,16 @@
       "id_cliente": 8,
       "products": [
         {
+          "id": 2,
+          "qtd": 8
+        },
+        {
           "id": 3,
           "qtd": 9
         },
         {
           "id": 4,
-          "qtd": 2
+          "qtd": 1
         },
         {
           "id": 9,

@@ -16,7 +16,7 @@
                     <span>{{ product.quantity }}</span>
                     <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
                 </div>
-                <button v-if="product.quantityInStock !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
+                <button v-if="product.quantityInStock !== 0 && product.quantity !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
                 <button v-else class="disabled-to-cart-button" @click="addToCart">Add to Cart</button>
             </div>
         </div>
