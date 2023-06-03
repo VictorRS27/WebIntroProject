@@ -65,13 +65,13 @@ export default {
 		Navbar,
 	},
 	mounted() {
-		addEventListener("scroll", this.logo_control)
+		//addEventListener("scroll", this.logo_control)
 		this.loadSuggestedProducts();
 		this.loadSuggestedEvents();
 	},
 	methods: {
 		logo_control() {
-			console.log(window.scrollY)
+			//console.log(window.scrollY)
 			if (window.scrollY > 500) {
 				this.height = false
 			}
