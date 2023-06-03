@@ -194,4 +194,10 @@ span {
     background-color: gray;
 }
 
+
+@media screen and (max-width: 700px){
+    .box_a{
+		width: 60vw;
+	}
+}
 </style>

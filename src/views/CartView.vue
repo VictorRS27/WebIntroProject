@@ -154,22 +154,10 @@ export default {
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* .cart-box {
-    border-style: solid;
-    align-self: center;
-    width: 50vw;
-    border-width: 0.2vw;
-    border-color: #46D115;
-    border-radius: 30px;
-    padding-left: 0vw;
-    padding-right: 3vw;
-    margin-top: 12vh;
-    margin-bottom: 12vh;
-} */
-
 h1 {
     font-size: 7vh;
     margin-left: 4vw;
+    align-self: flex-start;
 }
 
 hr {
@@ -181,6 +169,11 @@ hr {
 
 .box {
     padding: 0;
+    margin: 15vh 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .inner_box {

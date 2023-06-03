@@ -1,8 +1,7 @@
 <template>
-	<div class="box">
+	<div class="box_no_border">
 		<h2>Shipping Information</h2>
 		<form>
-
 			<div class="form-group">
 				<label for="first-name">First Name(s):</label>
 				<input id="first-name" type="text" v-model="firstName" required />
@@ -87,7 +86,7 @@ export default {
 <style scoped>
 /* CSS styles remain the same as before */
 
-.box {
+.box_no_border {
 	border: none;
 	width: 50vw;
 	border-radius: 0vw;
@@ -96,36 +95,12 @@ export default {
 form {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .form-group {
-	font-size: 2.2vh;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 3vh;
-	margin-top: 3vh;
-	margin-left: 3vh;
-	margin-right: 3vh;
-}
-
-label {
-	font-weight: bold;
-}
-
-.input-group {
-	display: flex;
-}
-
-input {
-	flex-grow: 1;
-	padding-left: 1vw;
-	border-radius: 0;
-	border: none;
-	border-bottom: 2px solid #46D115;
-	/* Green line */
-	font-size: 1vw;
+	width: 100%;
 }
 
 button {
@@ -138,10 +113,17 @@ button {
 	font-weight: bold;
 	font-size: 1.5vw;
 	margin-top: 3vh;
+	width: 100%;
 }
 
 .purchase-message {
 	margin-top: 20px;
 	text-align: center;
+}
+
+@media screen and (max-width: 700px){
+    .box_no_border {
+		width: 80vw;
+	}
 }
 </style>
