@@ -169,7 +169,7 @@ hr {
 
 .box {
     padding: 0;
-    margin: 15vh 0;
+    margin: 15vh 0 8vh 0;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -181,13 +181,19 @@ hr {
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: stretch;
+    align-items: center;
     padding: 30px;
 }
 
 .product-line {
     border-top: 1px solid #46D115;
     border-radius: 0;
+}
+
+@media screen and (max-width: 700px){
+    .inner_box{
+        padding: 0;
+    }
 }
 
 </style>

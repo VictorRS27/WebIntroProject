@@ -102,7 +102,7 @@ export default {
 
 .image img {
 	width: 10vw;
-	height: 10vw;
+	height: auto;
 	object-fit: cover;
 	border-radius: 2vw;
 	margin-right: 2vw;
@@ -125,7 +125,7 @@ h1 {
 
 p {
     margin: 0;
-    font-size: 1.4vw;
+    font-size: 1.4em;
     color: #666;
 }
 
@@ -136,13 +136,13 @@ p {
 }
 
 .quantity-stock {
-    font-size: 1.2vw;
+    font-size: 1.2em;
     margin-top: 0.5vw;
     color: #888;
 }
 
 .without-stock {
-    font-size: 1.2vw;
+    font-size: 1.2em;
     margin-top: 0.5vw;
     color: red;
 }
@@ -152,7 +152,7 @@ button {
 	background-color: #46D115;
 	color: white;
 	font-weight: bold;
-	font-size: 1.3vw;
+	font-size: 1.3em;
 	width: 2vw;
 	height: 2vw;
 	cursor: pointer;
@@ -197,7 +197,36 @@ span {
 
 @media screen and (max-width: 700px){
     .box_a{
-		width: 60vw;
+		width: 80vw;
+	}
+	p{
+		font-size: 0.8em;
+	}
+	.image img {
+		width: 20vw;
+		height: auto;
+	}
+	.product {
+		align-items: flex-start;
+	}
+
+	.quantity-stock {
+		font-size: 0.6em;
+	}
+	.quantity {
+		margin-top: 2vh;
+	}
+	button {
+		height: 4vh;
+		width: 4vh;
+	}
+	span {
+		height: 4vh;
+		width: 4vh;
+		font-size: 1.2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 </style>

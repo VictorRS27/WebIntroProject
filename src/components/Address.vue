@@ -111,7 +111,7 @@ button {
 	border-radius: 5px;
 	cursor: pointer;
 	font-weight: bold;
-	font-size: 1.5vw;
+	font-size: 1.5em;
 	margin-top: 3vh;
 	width: 100%;
 }
