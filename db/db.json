@@ -75,7 +75,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/184255-400-400/Bandeja-Higienica-Classic-Preta.jpg?v=638133809156200000"
       ],
-      "quantityInStock": 15
+      "quantityInStock": 0
     },
     {
       "id": 8,
@@ -545,6 +545,11 @@
           "qtd": 5
         }
       ]
+    },
+    {
+      "id_cliente": 9,
+      "products": [],
+      "id": 2
     }
   ]
 }

@@ -25,12 +25,14 @@ import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import InputSubmit from '../components/InputSubmit.vue';
 import InputText from '../components/InputText.vue';
+import { getTransitionRawChildren } from 'vue';
 
 export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      Id : ''
     }
   },
   components: {
@@ -39,6 +41,41 @@ export default {
     Navbar
   },
   methods: {
+    createCart() {
+      axios
+      .get('http://localhost:3000/cart')
+      .then((response) => {
+        let carts = response.data.slice();
+        let cartsFiltered = response.data.filter((c) => c.id_cliente == this.Id);
+        
+        if(cartsFiltered.length == 0) {
+          
+          const newCart = {
+            id_cliente: this.Id,
+            products : []
+          };
+          
+          fetch('http://localhost:3000/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCart)
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Cart created:', data);
+          })
+          .catch(error => {
+            console.error('Error creating product:', error);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching cart:', error);
+        reject(error); // Reject the promise with an error
+      });
+    },
     redirect() {
       axios.get("http://localhost:3000/users")
       .then((response) => {
@@ -64,6 +101,8 @@ export default {
         else {
           console.log(match);
           document.cookie = 'user=' + match[0].id;
+          this.Id = match[0].id;
+          this.createCart();
           this.$router.push('/');
         }
         

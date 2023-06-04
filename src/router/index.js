@@ -108,8 +108,7 @@ const router = createRouter({
       name: 'crud',
       props: (route) => ({ which_table: route.query.crud }),
       component: () => import('../views/CrudView.vue')
-    }
-    ,
+    },
     {
       path: '/ProductPurchase',
       name: 'ProductPurchase',
@@ -118,6 +117,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       props: (route) => ({ id: route.query.id}),
       component: () => import('../views/ProductPurchaseView.vue')
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: () => import('../views/Error.vue')
     }
   ]
 })
