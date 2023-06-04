@@ -1,5 +1,5 @@
 <template>
-    <Navbar/>
+    <Navbar />
 
     <div class="container">
         <div class="box">
@@ -34,6 +34,12 @@
 
 
             <button class="submit-button" @click="registerClient">Submit</button>
+            <div v-show="success">
+                <p>User {{ this.name }} was registered ! </p>
+                <p>You will be redirected in <time><strong id="seconds">3</strong> seconds</time>.</p>
+            </div>
+
+
         </div>
     </div>
 </template>
@@ -58,9 +64,30 @@ export default {
             address: "",
             usernameExists: false, // New data property for username existence check
             emailExists: false, // New data property for email existence check
+
+            user: "",
+            success: false
         };
     },
     methods: {
+
+        countdown() {
+            var el = document.getElementById('seconds'),
+                total = el.innerHTML,
+                timeinterval = setInterval(function () {
+                    total = --total;
+                    el.textContent = total;
+                    if (total <= 0) {
+                        clearInterval(timeinterval);
+                    }
+                }, 1000);
+
+                setTimeout(() => {
+                    this.$router.push("/login")
+                }, 3000);
+
+
+        },
         registerClient() {
             const newClient = {
                 username: this.username,
@@ -95,6 +122,9 @@ export default {
 
                             axios.post("http://localhost:3000/users", newClient)
                                 .then((response) => {
+                                    this.user;
+
+
                                     console.log("Client registered:", response.data);
                                     this.username = "";
                                     this.password = "";
@@ -103,6 +133,11 @@ export default {
                                     this.address = "";
                                     this.usernameExists = false;
                                     this.emailExists = false;
+
+                                    this.success = true;
+
+                                    this.countdown();
+
                                 })
                                 .catch((error) => {
                                     console.log(error);
@@ -115,7 +150,9 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-        },
+
+
+        }
     },
 };
 </script >
@@ -140,4 +177,3 @@ h2 {
     text-align: center;
 }
 </style>
-  
