@@ -97,7 +97,7 @@ h1 {
 }
 
 .blog-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2vh);
 }
 
 .blog-card .card-img {

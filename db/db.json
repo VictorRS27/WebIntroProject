@@ -527,7 +527,16 @@
     {
       "id": 1,
       "id_cliente": 8,
-      "products": []
+      "products": [
+        {
+          "id": 2,
+          "qtd": 12
+        },
+        {
+          "id": 3,
+          "qtd": 5
+        }
+      ]
     }
   ]
 }
