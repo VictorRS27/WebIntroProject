@@ -1,27 +1,28 @@
 <template>
+    <Navbar/>
     <div class="container_crud">
         <div class="box">
             <div class="box_head">
-                <h1 v-if="which_table === 'products'"> Produtos </h1>
-                <h1 v-if="which_table === 'users'"> Usuários </h1>
-                <h1 v-if="which_table === 'admin'"> Administradores </h1>
-                <h1 v-if="which_table === 'events'"> Eventos </h1>
+                <h1 v-if="which_table === 'products'"> Products </h1>
+                <h1 v-if="which_table === 'users'"> Users </h1>
+                <h1 v-if="which_table === 'admin'"> Administrators </h1>
+                <h1 v-if="which_table === 'events'"> Events </h1>
             </div>
             <div v-if="which_table === 'products'" class="line">
-                <span class="column">Nome</span>
-                <span class="column">Preço</span>
-                <span class="column">Descrição</span>
-                <span class="column">Estoque</span>
+                <span class="column">Name</span>
+                <span class="column">Price</span>
+                <span class="column">Description</span>
+                <span class="column">Stock</span>
             </div>
             <div v-else-if="which_table === 'users'" class="line">
-                <span class="column">Nome de usuário</span>
+                <span class="column">Username</span>
                 <span class="column">Email</span>
                 <span class="column">Telefone</span>
-                <span class="column">Endereço</span>
+                <span class="column">Adress</span>
             </div>
             <div v-else-if="which_table === 'admin'" class="line">
-                <span class="column">Nome de usuário</span>
-                <span class="column">Senha</span>
+                <span class="column">Username</span>
+                <span class="column">Password</span>
                 <span class="column">Email</span>
                 <span class="column">Telefone</span>
             </div>
@@ -59,37 +60,37 @@
             <div class="box_feet">
                 <div v-if="which_table === 'products'" class="data">
                     <div class="line">
-                        <span>Nome: {{ focused.productName }}</span>
-                        <span>Preço: {{ focused.productPrice }}</span>
-                        <span>Quantidade em estoque: {{ focused.quantityInStock }}</span>
+                        <span>Name: {{ focused.productName }}</span>
+                        <span>Price: {{ focused.productPrice }}</span>
+                        <span>Quantity in Stock: {{ focused.quantityInStock }}</span>
                     </div>
-                    <p>Descrição curta: {{ focused.productShortDescription }}</p>
-                    <p>Descrição longa: {{ focused.productDescription }}</p>
+                    <p>Description curta: {{ focused.productShortDescription }}</p>
+                    <p>Description longa: {{ focused.productDescription }}</p>
                     <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
                 </div>
                 <div v-if="which_table === 'users'" class="data">
                     <div class="line">
-                        <span>Nome de Usuário: {{ focused.username }}</span>
+                        <span>Username: {{ focused.username }}</span>
                         <span>Email: {{ focused.email }}</span>
                     </div>
-                    <p>Endereço: {{ focused.address }}</p>
+                    <p>Adress: {{ focused.address }}</p>
                     <p>Telefone: {{ focused.telephone }}</p>
                 </div>
                 <div v-if="which_table === 'admin'" class="data">
                     <div class="line">
-                        <span>Nome de Usuário: {{ focused.username }}</span>
-                        <span>Senha: {{ focused.password }}</span>
+                        <span>Username: {{ focused.username }}</span>
+                        <span>Password: {{ focused.password }}</span>
                     </div>
                     <p>Email: {{ focused.email }}</p>
                     <p>Telefone: {{ focused.telephone }}</p>
                 </div>
                 <div v-if="which_table === 'events'" class="data">
                     <div class="line">
-                        <span>Nome: {{ focused.eventName }}</span>
-                        <span>Tipo: {{ focused.eventType }}</span>
-                        <span>Data: {{ focused.eventDate }}</span>
+                        <span>Name: {{ focused.eventName }}</span>
+                        <span>Type: {{ focused.eventType }}</span>
+                        <span>Date: {{ focused.eventDate }}</span>
                     </div>
-                    <p>Descrição longa: {{ focused.eventDescription }}</p>
+                    <p>Description longa: {{ focused.eventDescription }}</p>
                     <img class="img_small" v-for="(photo, index) in focused.photos" :src="photo" :alt="'photo' + index">
                 </div>
                 <div class="btn_column">
@@ -101,8 +102,14 @@
     </div>
 </template>
 <script>
+
 import axios from 'axios'
+import Navbar from '../components/Navbar.vue'
+
 export default {
+    components: {
+        Navbar
+    },
     name: "crudView",
     data() {
         return {
