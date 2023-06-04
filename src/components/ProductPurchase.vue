@@ -11,13 +11,16 @@
                 <p>${{ product.productPrice }}</p>
                 <p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
                 <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
-                <div class="quantity">
-                    <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
-                    <span>{{ product.quantity }}</span>
-                    <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+                
+                <div v-show="this.isAdmin == false">
+                    <div class="quantity">
+                        <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
+                        <span>{{ product.quantity }}</span>
+                        <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+                    </div>
+                    <button v-if="product.quantityInStock !== 0 && product.quantity !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
+                    <button v-else class="disabled-to-cart-button" @click="addToCart">Add to Cart</button>
                 </div>
-                <button v-if="product.quantityInStock !== 0 && product.quantity !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
-                <button v-else class="disabled-to-cart-button" @click="addToCart">Add to Cart</button>
             </div>
         </div>
         <div class="description">
@@ -46,14 +49,15 @@ export default {
                 quantityInStock : 19,
                 quantity: 0,
             },
+            isAdmin : false,
         };
     },
     methods: {
-
+        
         parseCookiesData(myCookie) {
             const userPrefix = 'user=';
             const adminPrefix = 'admin=';
-
+            
             if (myCookie.startsWith(userPrefix)) {
                 let userId = myCookie.substring(userPrefix.length);
                 
@@ -69,7 +73,7 @@ export default {
                 console.log('Invalid cookies format');
             }
         },
-
+        
         increaseQuantity() {
             if(this.product.quantity < this.product.quantityInStock) {
                 this.product.quantity++;
@@ -99,7 +103,7 @@ export default {
             });
         },
         async addToCart() {
-
+            
             if(this.product.quantity > 0)
             {
                 try {
@@ -154,6 +158,12 @@ export default {
     mounted() {
         this.product = { ...this.infos };
         console.log("product.quantity = ", this.product.quantity);
+        
+        let Mycookie = document.cookie;
+        if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a'))
+        this.isAdmin = false;
+        else
+        this.isAdmin = true;
     },
 }
 </script >
