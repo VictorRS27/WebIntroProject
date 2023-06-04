@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
+    <Navbar/>
 
+    <div class="container">
         <div class="box">
             <h2>Register Client</h2>
 
@@ -37,10 +38,10 @@
     </div>
 </template>
 <script>
+
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 import axios from 'axios';
-
 
 export default {
     components: {
@@ -120,6 +121,8 @@ export default {
 </script >
 <style scoped>
 .container {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,7 +134,6 @@ export default {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 0;
 }
 
 h2 {
