@@ -12,7 +12,7 @@
                 <RouterLink to="/about">About us</RouterLink>
                 <RouterLink to="/login">Login</RouterLink>
             </div>
-
+            
             <div v-else-if="(myCookie[0] === 'u')" class="navbar">
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/products">Products</RouterLink>
@@ -22,7 +22,7 @@
                 <p class="user">Hi, {{this.username}}</p>
                 <p class = "logoff" @click="LogOff">Logoff</p>
             </div>
-
+            
             <div v-else-if="(myCookie[0] === 'a')" class="navbar">
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/AdminMenu">Menu</RouterLink>
@@ -31,8 +31,8 @@
                 <RouterLink to="/about">About us</RouterLink>
                 <p @click="LogOff">Logoff</p>
             </div>
-
-
+            
+            
         </div>
     </div>
     <div v-else class="nav">
@@ -43,13 +43,29 @@
             </div>
             <button @click="switchDropBox">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png"
-                    alt="menu">
+                alt="menu">
             </button>
         </div>
         <div v-if="dropBox" class="dropBox">
-            <RouterLink to="/">Products</RouterLink>
-            <RouterLink to="/events?">Events</RouterLink>
-            <RouterLink to="/about">About us</RouterLink>
+            <RouterLink v-if="(myCookie === '')" to="/">Home</RouterLink>
+            <RouterLink v-if="(myCookie === '')" to="/products">Products</RouterLink>
+            <RouterLink v-if="(myCookie === '')" to="/events">Events</RouterLink>
+            <RouterLink v-if="(myCookie === '')" to="/about">About us</RouterLink>
+            <RouterLink v-if="(myCookie === '')" to="/login">Login</RouterLink>
+            
+            <RouterLink v-if="(myCookie[0] === 'u')" to="/">Home</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'u')" to="/products">Products</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'u')" to="/events">Events</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'u')" to="/about">About us</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'u')" to="/cart">Cart</RouterLink>
+            <p v-if="(myCookie[0] === 'u')" class = "logoff" @click="LogOff">Logoff</p>
+            
+            <RouterLink v-if="(myCookie[0] === 'a')" to="/">Home</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'a')" to="/AdminMenu">Menu</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'a')" to="/products">Products</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'a')" to="/events">Events</RouterLink>
+            <RouterLink v-if="(myCookie[0] === 'a')" to="/about">About us</RouterLink>
+            <p v-if="(myCookie[0] === 'a')" @click="LogOff">Logoff</p>
         </div>
     </div>
 </template>
@@ -93,7 +109,7 @@ export default {
         parseCookiesData() {
             const userPrefix = 'user=';
             const adminPrefix = 'admin=';
-
+            
             if (this.myCookie.startsWith(userPrefix)) {
                 this.Id = this.myCookie.substring(userPrefix.length);
                 console.log('User ID:', this.Id);
@@ -109,18 +125,18 @@ export default {
         getUsername(myCookie){
             
             axios
-                .get('http://localhost:3000/users')
-                .then((response) => {
-                    console.log("user ID =" + this.Id)
-                    let user = response.data.filter((bla) => bla.id == this.Id);
-                    this.username = user[0].username;
-                })
-                .catch((error) => {
-                    console.error('Error fetching username:', error);
-                });
+            .get('http://localhost:3000/users')
+            .then((response) => {
+                console.log("user ID =" + this.Id)
+                let user = response.data.filter((bla) => bla.id == this.Id);
+                this.username = user[0].username;
+            })
+            .catch((error) => {
+                console.error('Error fetching username:', error);
+            });
         }
     },
-
+    
     mounted() {
         this.defineWindow();
         window.addEventListener("resize", this.defineWindow);
@@ -132,8 +148,8 @@ export default {
         }
         
     },
-
-
+    
+    
 }
 </script>
 
