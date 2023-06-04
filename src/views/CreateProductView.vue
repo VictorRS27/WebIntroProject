@@ -133,7 +133,14 @@ export default {
       this.quantityInStock = '';
       this.showEmptyFieldsWarning = false;
     }
-  }
+  },
+  mounted() {
+    let Mycookie = document.cookie;
+    
+    if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a')) {
+      this.$router.push('/error');
+    }
+  },
 };
 </script>
 

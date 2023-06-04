@@ -37,6 +37,13 @@ export default {
     crudEvents() {
       this.$router.push('/crud?crud=events');
     }
+  },
+  mounted () {
+    let Mycookie = document.cookie;
+
+    if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a')) {
+      this.$router.push('/error');
+    }
   }
 }
 </script >

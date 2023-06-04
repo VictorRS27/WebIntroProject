@@ -178,7 +178,13 @@ export default {
         }
     },
     mounted() {
-        this.fetchItems()
+        let Mycookie = document.cookie;
+        
+        if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a')) {
+            this.$router.push('/error');
+        }
+        else
+            this.fetchItems()
     },
 }
 </script>
