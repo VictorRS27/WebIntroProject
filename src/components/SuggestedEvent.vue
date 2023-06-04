@@ -54,6 +54,7 @@ export default {
 	font-family: 'Courier New', Courier, monospace;
 }
 .box {
+	transition: 0.3s;
 	border-style: solid;
 	align-self: center;
 	width: 14vw;
@@ -65,6 +66,10 @@ export default {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+}
+
+.box:hover {
+  transform: translateY(-2vh);
 }
 
 .image img {

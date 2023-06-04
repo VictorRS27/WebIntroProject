@@ -18,7 +18,9 @@
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
-                <p @click="LogOff">Logoff</p>
+                <RouterLink to="/cart">Cart</RouterLink>
+                <p class="user">Hi, {{this.username}}</p>
+                <p class = "logoff" @click="LogOff">Logoff</p>
             </div>
 
             <div v-else-if="(myCookie[0] === 'a')" class="navbar">
@@ -54,13 +56,16 @@
 
 
 <script>
+import axios from 'axios';
 export default {
     name: "Navbar",
     data() {
         return {
             mobile: false,
             dropBox: false,
-            myCookie: ''
+            myCookie: '',
+            username: '',
+            Id: ''
         }
     },
     props: {
@@ -90,16 +95,29 @@ export default {
             const adminPrefix = 'admin=';
 
             if (this.myCookie.startsWith(userPrefix)) {
-                let userId = this.myCookie.substring(userPrefix.length);
-                console.log('User ID:', userId);
+                this.Id = this.myCookie.substring(userPrefix.length);
+                console.log('User ID:', this.Id);
                 // Do something with the user ID
             } else if (this.myCookie.startsWith(adminPrefix)) {
-                let adminId = this.myCookie.substring(adminPrefix.length);
-                console.log('Admin ID:', adminId);
+                this.Id = this.myCookie.substring(adminPrefix.length);
+                console.log('Admin ID:', this.Id);
                 // Do something with the admin ID
             } else {
                 console.log('Invalid cookies format');
             }
+        },
+        getUsername(myCookie){
+            
+            axios
+                .get('http://localhost:3000/users')
+                .then((response) => {
+                    console.log("user ID =" + this.Id)
+                    let user = response.data.filter((bla) => bla.id == this.Id);
+                    this.username = user[0].username;
+                })
+                .catch((error) => {
+                    console.error('Error fetching username:', error);
+                });
         }
     },
 
@@ -109,6 +127,10 @@ export default {
         this.myCookie = document.cookie;
         console.log(this.myCookie);
         this.parseCookiesData();
+        if(this.myCookie != "" && (this.myCookie[0] === 'u' || this.myCookie[0] === 'a')){
+            this.getUsername(this.myCookie);
+        }
+        
     },
 
 
@@ -167,19 +189,16 @@ export default {
     font-size: 24px;
 }
 
-.navbar p {
+.navbar p, .user {
     color: aliceblue;
     text-decoration: none;
     font-size: 24px;
+    
+}
+
+.navbar a:hover , .logoff:hover{
+    color: #000;
     cursor: pointer;
-}
-
-.navbar a:hover {
-    color: #000;
-}
-
-.navbar p:hover {
-    color: #000;
 }
 
 
