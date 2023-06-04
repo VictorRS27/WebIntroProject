@@ -20,7 +20,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/1043807-400-400/Coleira-Caes-Puffy-Air-Doco-Laranja.png?v=638149136884770000"
       ],
-      "quantityInStock": 14
+      "quantityInStock": 11
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/358206-400-400"
       ],
-      "quantityInStock": 20
+      "quantityInStock": 19
     },
     {
       "id": 4,
@@ -185,7 +185,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/851031-400-400"
       ],
-      "quantityInStock": 6
+      "quantityInStock": 5
     },
     {
       "id": 18,
@@ -465,6 +465,14 @@
       "telephone": "aaa",
       "address": "aaa",
       "id": 8
+    },
+    {
+      "username": "karina",
+      "password": "0987",
+      "email": "karinabordin@usp.br",
+      "telephone": "18991578761",
+      "address": "coração do otavio",
+      "id": 9
     }
   ],
   "admin": [
