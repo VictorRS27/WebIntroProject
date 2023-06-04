@@ -31,7 +31,7 @@ export default {
         "/pet-squeak-toy-81315.mp3"
       ];
       this.audio.src = soundsList[soundID]; // Replace with the path to your sound file
-      //this.audio.play();
+      this.audio.play();
     }
   }
 };
