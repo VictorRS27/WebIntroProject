@@ -24,7 +24,8 @@
             <div v-else-if="(myCookie[0] === 'a')" class="navbar">
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/AdminMenu">Menu</RouterLink>
-                <RouterLink to="/crud">Crud</RouterLink>
+                <RouterLink to="/products">Products</RouterLink>
+                <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
                 <p @click="LogOff">Logoff</p>
             </div>
