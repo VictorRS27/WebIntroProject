@@ -196,12 +196,22 @@ export default {
                 .get('http://localhost:3000/' + this.which_table)
                 .then((response) => {
                     this.items = response.data.filter((item) => item.id != this.focused.id);
-                    this.updateTable();
+
+                    axios
+                        .delete('http://localhost:3000/' + this.which_table + '/' + this.focused.id)
+                        .then((response) => {
+                            console.log('Deu bao')
+                        })
+                        .catch((error) => {
+                            console.error('Error fetching items', error);
+                            reject(error); // Reject the promise with an error
+                        });
                 })
                 .catch((error) => {
                     console.error('Error fetching items', error);
                     reject(error); // Reject the promise with an error
                 });
+
         },
         updateTable() {
 
