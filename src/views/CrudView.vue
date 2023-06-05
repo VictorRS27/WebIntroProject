@@ -1,5 +1,5 @@
 <template>
-    <Navbar/>
+    <Navbar />
     <div class="container_crud">
         <div class="box">
             <div class="box_head">
@@ -95,6 +95,7 @@
                 </div>
                 <div class="btn_column">
                     <button @click="handle_link(0)">Add</button>
+                    <button @click="deleteItem()">Delete</button>
                     <button @click="handle_link(1)">Edit</button>
                 </div>
             </div>
@@ -159,10 +160,10 @@ export default {
             }
             if ((this.which_table === "products") || (this.which_table === "events")) {
                 if (add_or_edit) {
-                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length -1) + '?id=' + this.focused.id)
+                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length - 1) + '?id=' + this.focused.id)
                 }
                 else {
-                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length -1))
+                    this.$router.push('/create' + this.which_table.slice(0, this.which_table.length - 1))
                 }
             }
             else {
@@ -175,12 +176,51 @@ export default {
                     }
                 }
             }
+        },
+        parseCookiesData(myCookie) {
+            const userPrefix = 'user=';
+            const adminPrefix = 'admin=';
+
+            if (myCookie.startsWith(userPrefix)) {
+                let userId = myCookie.substring(userPrefix.length);
+                return userId;
+            } else if (myCookie.startsWith(adminPrefix)) {
+                let adminId = myCookie.substring(adminPrefix.length);
+                return adminId;
+            } else {
+                console.log('Invalid cookies format');
+            }
+        },
+        deleteItem() {
+            axios
+                .get('http://localhost:3000/' + this.which_table)
+                .then((response) => {
+                    this.items = response.data.filter((item) => item.id != this.focused.id);
+                    this.updateTable();
+                })
+                .catch((error) => {
+                    console.error('Error fetching items', error);
+                    reject(error); // Reject the promise with an error
+                });
+        },
+        updateTable() {
+
+            for (let i = 0; i < this.items.length; i++) {
+                axios
+                    .put('http://localhost:3000/' + this.which_table + "/" + this.items[i].id, this.items[i]) // Assuming the endpoint to update the cart is a PUT request
+                    .then((response) => {
+                        console.log('Table saved successfully:', response.data);
+                    })
+                    .catch((error) => {
+                        console.error('Error saving table:', error);
+                    });
+            }
         }
     },
     mounted() {
         let Mycookie = document.cookie;
-        
-        if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a')) {
+
+        if (Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a')) {
             this.$router.push('/error');
         }
         else
@@ -267,7 +307,7 @@ span+span {
 }
 
 @media (max-width: 858px) {
-    .box_feet{
+    .box_feet {
         display: grid;
         justify-content: center;
     }

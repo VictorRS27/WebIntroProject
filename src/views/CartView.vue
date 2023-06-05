@@ -197,8 +197,7 @@ export default {
                 // Handle errors here
                 console.error(error);
             }
-        }
-        ,
+        },
         removeProduct(deletedProduct) {
             this.products = this.products.filter((product) => product.id !== deletedProduct.id);
             this.saveCart();
