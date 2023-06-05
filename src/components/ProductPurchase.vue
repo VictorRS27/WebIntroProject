@@ -162,10 +162,10 @@ export default {
         console.log("product.quantity = ", this.product.quantity);
 
         let Mycookie = document.cookie;
-        if(Mycookie != "" && Mycookie[0] == 'a')
-            this.isAdmin = true;
+        if(Mycookie != "" && Mycookie[0] == 'u')
+            this.isUser = true;
         else
-            this.isAdmin = false;
+            this.isUser = false;
     },
 }
 </script >
