@@ -11,14 +11,17 @@
                 <p>${{ product.productPrice }}</p>
                 <p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
                 <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
-                
-                <div v-show="this.isAdmin == false">
+
+                <div v-show="this.isUser == true">
                     <div class="quantity">
-                        <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
+                        <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0"
+                            :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
                         <span>{{ product.quantity }}</span>
-                        <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+                        <button @click="increaseQuantity" :disabled="product.quantityInStock === 0"
+                            :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
                     </div>
-                    <button v-if="product.quantityInStock !== 0 && product.quantity !== 0" class="add-to-cart-button" @click="addToCart">Add to Cart</button>
+                    <button v-if="product.quantityInStock !== 0 && product.quantity !== 0" class="add-to-cart-button"
+                        @click="addToCart">Add to Cart</button>
                     <button v-else class="disabled-to-cart-button" @click="addToCart">Add to Cart</button>
                 </div>
             </div>
@@ -46,21 +49,21 @@ export default {
                 productPrice: 9.99,
                 productDescription: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
                 photos: ["/public/greenCollar.png"],
-                quantityInStock : 19,
+                quantityInStock: 19,
                 quantity: 0,
             },
-            isAdmin : false,
+            isUser: false,
         };
     },
     methods: {
-        
+
         parseCookiesData(myCookie) {
             const userPrefix = 'user=';
             const adminPrefix = 'admin=';
-            
+
             if (myCookie.startsWith(userPrefix)) {
                 let userId = myCookie.substring(userPrefix.length);
-                
+
                 console.log('User ID:', userId);
                 // Do something with the user ID
                 return userId;
@@ -73,9 +76,9 @@ export default {
                 console.log('Invalid cookies format');
             }
         },
-        
+
         increaseQuantity() {
-            if(this.product.quantity < this.product.quantityInStock) {
+            if (this.product.quantity < this.product.quantityInStock) {
                 this.product.quantity++;
                 this.$emit("emit-product", this.product)
             }
@@ -89,52 +92,51 @@ export default {
         loadCart() {
             return new Promise((resolve, reject) => {
                 axios
-                .get('http://localhost:3000/cart')
-                .then((response) => {
-                    let id_cliente = document.cookie;
-                    id_cliente = this.parseCookiesData(id_cliente);
-                    let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
-                    resolve(cart[0]); // Resolve the promise with the desired value
-                })
-                .catch((error) => {
-                    console.error('Error fetching suggested products:', error);
-                    reject(error); // Reject the promise with an error
-                });
+                    .get('http://localhost:3000/cart')
+                    .then((response) => {
+                        let id_cliente = document.cookie;
+                        id_cliente = this.parseCookiesData(id_cliente);
+                        let cart = response.data.filter((bla) => bla.id_cliente == id_cliente);
+                        resolve(cart[0]); // Resolve the promise with the desired value
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching suggested products:', error);
+                        reject(error); // Reject the promise with an error
+                    });
             });
         },
         async addToCart() {
-            
-            if(this.product.quantity > 0)
-            {
+
+            if (this.product.quantity > 0) {
                 try {
                     const cartData = await this.loadCart();
                     let alreadyInserted = false;
-                    for(let i = 0; !alreadyInserted && i < cartData.products.length; i++) {
-                        
-                        if(cartData.products[i].id == this.product.id) {
+                    for (let i = 0; !alreadyInserted && i < cartData.products.length; i++) {
+
+                        if (cartData.products[i].id == this.product.id) {
                             cartData.products[i].qtd = this.product.quantity;
-                            alreadyInserted = true; 
+                            alreadyInserted = true;
                         }
                     }
-                    
-                    if(!alreadyInserted) {
+
+                    if (!alreadyInserted) {
                         cartData.products.push(
-                        {
-                            "id": this.product.id,
-                            "qtd": this.product.quantity
-                        }
+                            {
+                                "id": this.product.id,
+                                "qtd": this.product.quantity
+                            }
                         )
                     }
-                    
+
                     axios
-                    .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
-                    .then((response) => {
-                        console.log('Cart saved successfully:', response.data);
-                        this.$router.push('/Cart');
-                    })
-                    .catch((error) => {
-                        console.error('Error saving cart:', error);
-                    });
+                        .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
+                        .then((response) => {
+                            console.log('Cart saved successfully:', response.data);
+                            this.$router.push('/Cart');
+                        })
+                        .catch((error) => {
+                            console.error('Error saving cart:', error);
+                        });
                 } catch (error) {
                     // Handle errors here
                     console.error(error);
@@ -158,12 +160,12 @@ export default {
     mounted() {
         this.product = { ...this.infos };
         console.log("product.quantity = ", this.product.quantity);
-        
+
         let Mycookie = document.cookie;
-        if(Mycookie == "" || (Mycookie != "" && Mycookie[0] != 'a'))
-        this.isAdmin = false;
+        if(Mycookie != "" && Mycookie[0] == 'a')
+            this.isAdmin = true;
         else
-        this.isAdmin = true;
+            this.isAdmin = false;
     },
 }
 </script >
@@ -291,7 +293,7 @@ button.disabled-to-cart-button {
     font-weight: bold;
     font-size: 1.6vw;
     width: 100%;
-    padding: 1.5vh 0;   
+    padding: 1.5vh 0;
     margin-top: 2vh;
     border: none;
     border-radius: 0.5vw;
@@ -330,6 +332,5 @@ p {
     color: #666;
     line-height: 1.5;
 }
-
 </style>
 
