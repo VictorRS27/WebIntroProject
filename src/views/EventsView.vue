@@ -21,19 +21,16 @@
       </div>
     </div>
 
-    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
 import axios from 'axios';
 
 export default {
   components: {
-    Navbar,
-    Footer
+    Navbar
   },
   name: 'Events',
   data() {

@@ -48,6 +48,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      props: (route) => ({ item_id: route.query.id }),
       component: () => import('../views/CreateProductView.vue')
     }
     ,
@@ -57,6 +58,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      props: (route) => ({ item_id: route.query.id }),
       component: () => import('../views/CreateEventView.vue')
     },
     {
@@ -65,6 +67,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      props: (route) => ({ item_id: route.query.id }),
       component: () => import('../views/RegisterClientView.vue')
     }
     ,
@@ -74,6 +77,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (login.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      props: (route) => ({ item_id: route.query.id }),
       component: () => import('../views/RegisterAdminView.vue')
     }
     ,

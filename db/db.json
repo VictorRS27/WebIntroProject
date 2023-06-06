@@ -20,7 +20,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/1043807-400-400/Coleira-Caes-Puffy-Air-Doco-Laranja.png?v=638149136884770000"
       ],
-      "quantityInStock": 11
+      "quantityInStock": 0
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/358206-400-400"
       ],
-      "quantityInStock": 19
+      "quantityInStock": 17
     },
     {
       "id": 4,
@@ -196,7 +196,7 @@
       "photos": [
         "https://cobasi.vteximg.com.br/arquivos/ids/536767-400-400/TREINEPET_7UN_FRENTE.jpg?v=638133530517300000"
       ],
-      "quantityInStock": 30
+      "quantityInStock": 28
     },
     {
       "id": 19,
@@ -295,16 +295,17 @@
       ]
     },
     {
-      "id": 7,
       "eventName": "Tosa",
       "eventDate": "2023-12-12",
       "eventDescription": "Attention all dog owners! Treat your beloved furry companions to a free grooming session at our 'Tosa' event. We understand the importance of keeping your dogs happy, healthy, and well-groomed. That's why we're offering complimentary grooming services to ensure your doggos look and feel their best. Our professional groomers will pamper your four-legged friends, providing top-notch care and attention to detail. Don't miss this fantastic opportunity to give your dog a day of relaxation and beauty. Join us at the 'Tosa' event and let your pets indulge in the ultimate grooming experience.",
-      "eventShortDescription": "Attention all dog owners! Treat your beloved furry companions to a free grooming session at our 'Tosa' event.",
-      "eventType": "De graça",
+      "eventType": "Custa muitos dinheiros",
       "eventAddress": "Avenida São Carlense",
       "photos": [
-        "https://static.ndmais.com.br/2021/04/istock-905308406-800x533.jpg"
-      ]
+        [
+          "https://static.ndmais.com.br/2021/04/istock-905308406-800x533.jpg"
+        ]
+      ],
+      "id": 7
     },
     {
       "id": 8,
@@ -329,12 +330,12 @@
       "address": "654 Maple Blvd, City, State"
     },
     {
-      "id": 2,
       "username": "furrylover",
       "password": "mypetsrock",
-      "email": "furrylover@example.com",
+      "email": "furryloverisgay@example.com",
       "telephone": "+55 17 98765-4321",
-      "address": "123 Elm St, City, State"
+      "address": "123 Elm St, City, State",
+      "id": 2
     },
     {
       "id": 3,
@@ -425,10 +426,10 @@
       "email": "admin3@example.com"
     },
     {
-      "id": 7,
       "username": "admin5",
       "password": "adminpass5",
-      "email": "admin5@example.com"
+      "email": "admin5trollado2@example.com",
+      "id": 7
     },
     {
       "username": "otavio",
@@ -441,20 +442,7 @@
     {
       "id": 1,
       "id_cliente": 8,
-      "products": [
-        {
-          "id": 2,
-          "qtd": 11
-        },
-        {
-          "id": 3,
-          "qtd": 9
-        },
-        {
-          "id": 18,
-          "qtd": 2
-        }
-      ]
+      "products": []
     },
     {
       "id_cliente": 9,
