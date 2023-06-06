@@ -436,6 +436,13 @@
       "password": "pass",
       "email": "otaviocoletti@outlook.com",
       "id": 8
+    },
+    {
+      "username": "mane",
+      "password": "123",
+      "email": "mane@gmail.com",
+      "telephone": "1313-1313",
+      "id": 9
     }
   ],
   "cart": [
