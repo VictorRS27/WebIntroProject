@@ -20,6 +20,11 @@
                 <input type="email" id="email" placeholder="Enter email" v-model="email" />
             </div>
 
+            <div class="form-group">
+                <label for="telephone">telephone:</label>
+                <input type="telephone" id="telephone" placeholder="Enter telephone" v-model="telephone" />
+            </div>
+
             <p class="warning-text" v-show="showWarning">Email or username already exists.</p>
 
 
@@ -45,6 +50,7 @@ export default {
             username: "",
             password: "",
             email: "",
+            telephone: "",
             showWarning: false, // New data property for showing the warning text
         };
     },
@@ -73,6 +79,7 @@ export default {
                         this.username = to_edit.username;
                         this.password = to_edit.password;
                         this.email = to_edit.email;
+                        this.telephone = to_edit.telephone;
                         console.log(this.username)
                     })
                     .catch((error) => {
@@ -85,6 +92,7 @@ export default {
                 username: this.username,
                 password: this.password,
                 email: this.email,
+                telephone: this.telephone
             };
 
             if (this.item_id === -1) {
@@ -115,6 +123,7 @@ export default {
                                         this.username = "";
                                         this.password = "";
                                         this.email = "";
+                                        this.telephone = "";
                                         this.showWarning = false; // Reset showWarning to false after successful registration
                                     })
                                     .catch((error) => {
@@ -179,7 +188,8 @@ label {
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+input[type="telephone"] {
     width: 100%;
     padding: 5px 0;
     border: none;
