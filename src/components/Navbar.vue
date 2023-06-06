@@ -97,7 +97,7 @@ export default {
             this.$router.push('/');
         },
         defineWindow() {
-            if (window.innerWidth < 700) {
+            if (window.innerWidth < 900) {
                 this.mobile = true
             } else {
                 this.mobile = false

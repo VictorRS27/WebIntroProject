@@ -28,16 +28,16 @@ export default {
 				productDescription: "A comfortable and stylish collar for your pet.",
 				productShortDescription: "A comfortable and stylish collar for your pet.",
 				photos: ["/public/greenCollar.png"],
-				quantityInStock : 10,
+				quantityInStock: 10,
 			},
 			quantity: 1,
 		};
 	},
 	methods: {
-        openProductPurchase() {
-            this.$router.push('/ProductPurchase?id=' + this.product.id);
-        },
-    },
+		openProductPurchase() {
+			this.$router.push('/ProductPurchase?id=' + this.product.id);
+		},
+	},
 	props: {
 		infos: {
 			type: Object,
@@ -54,6 +54,7 @@ export default {
 * {
 	font-family: 'Courier New', Courier, monospace;
 }
+
 .box {
 	transition: 0.3s;
 	border-style: solid;
@@ -69,7 +70,7 @@ export default {
 }
 
 .box:hover {
-  transform: translateY(-2vh);
+	transform: translateY(-2vh);
 }
 
 .image img {
@@ -89,7 +90,7 @@ export default {
 }
 
 h1 {
-	margin : 0vw;
+	margin: 0vw;
 	font-size: 1.4vw;
 }
 
@@ -120,11 +121,11 @@ p {
 	background-color: #46D115;
 	color: white;
 	border: none;
-	border-radius: 0.4vw;
+	border-radius: 40px;
 	padding: 0.5vw 1vw;
 	font-size: 1vw;
 	cursor: pointer;
-	margin: 1vw auto;
+	margin: 1vh auto;
 	width: 10vw;
 }
 
@@ -132,4 +133,28 @@ p {
 	outline: none;
 }
 
+@media screen and (max-width: 700px) {
+	.box {
+		width: 90vw;
+	}
+
+	.image img {
+		width: 60vw;
+		height: auto;
+	}
+
+	h1 {
+		font-size: 1.7em;
+	}
+
+	p {
+		font-size: 1.5em;
+	}
+
+	.read-full-btn {
+		height: 5vh;
+		font-size: 1em;
+		width: 80vw;
+	}
+}
 </style>

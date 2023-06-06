@@ -1,14 +1,14 @@
 <template>
   <div>
     <Navbar />
-    <h1>Flexbox Blog-Card</h1>
+    <h1>Events</h1>
 
     <div class="blog-wrapper">
       <div v-for="(event, index) in events" :key="index" class="blog-card">
         <div class="card-img">
           <img :src="event.photos[0]" :alt="'photo' + index" />
         </div>
-        <h1>{{ event.eventName }}</h1>
+        <h2>{{ event.eventName }}</h2>
         <div class="card-details">
           <span><i class="fa fa-calendar"></i>{{ formatDate(event.eventDate) }}</span>
           <span @click="toggleHeartColor(event)">
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+h2 {
   font-size: 1vw;
   margin-top: 3vh;
   font-family: 'Oswald', sans-serif;
@@ -72,12 +72,16 @@ h1 {
   color: #333;
 }
 
+h1 {
+  margin-top: 20vh;
+  text-align: center;
+}
+
 .blog-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10vh;
 }
 
 .blog-card {
@@ -147,5 +151,15 @@ h1 {
   font-family: 'Roboto', sans-serif;
   line-height: 22px;
   color: #555;
+}
+
+@media screen and (max-width: 700px){
+    .blog-card {
+      width: 90vw;
+      border:0;
+      box-shadow: none;
+      margin: 0;
+      min-width: 0;
+    }
 }
 </style>
