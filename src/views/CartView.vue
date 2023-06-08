@@ -21,6 +21,7 @@
             <div v-if="purchaseComplete" class="purchase-message">
                 <p>Purchase complete!</p>
                 <p>Thank you for choosing Pet The Shop to help you !</p>
+                <router-link to="/products">Comprar Mais</router-link>
             </div>
         </div>
     </div>
@@ -170,7 +171,7 @@ export default {
                     .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
                     .then((response) => {
                         console.log('Cart saved successfully:', response.data);
-                        window.location.reload()
+                        /* window.location.reload() */
                     })
                     .catch((error) => {
                         console.error('Error saving cart:', error);

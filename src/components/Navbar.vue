@@ -29,7 +29,7 @@
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
                 <RouterLink to="/about">About us</RouterLink>
-                <p @click="LogOff">Logoff</p>
+                <p class="logoff" @click="LogOff">Logoff</p>
             </div>
             
             
@@ -65,7 +65,7 @@
             <RouterLink v-if="(myCookie[0] === 'a')" to="/products">Products</RouterLink>
             <RouterLink v-if="(myCookie[0] === 'a')" to="/events">Events</RouterLink>
             <RouterLink v-if="(myCookie[0] === 'a')" to="/about">About us</RouterLink>
-            <p v-if="(myCookie[0] === 'a')" @click="LogOff">Logoff</p>
+            <p v-if="(myCookie[0] === 'a')" class="logoff" @click="LogOff">Logoff</p>
         </div>
     </div>
 </template>

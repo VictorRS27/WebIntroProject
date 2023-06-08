@@ -86,7 +86,8 @@ export default {
             let match2 = response.data.filter((user) => user.username === this.username && user.password === this.password);
             console.log(match2);
             if (match2.length != 1) {
-              alert("Não foi encontrado")
+              alert("Usuário não encontrado")
+              this.password = ''
             }
             else {
               console.log("entrou")

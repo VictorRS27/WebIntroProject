@@ -1,22 +1,42 @@
 <template>
-    <div class="icon">
+    <div class="social-icon">
+      <i :class="`fab fa-${socialMedia}`" @click="redirect"></i>
     </div>
-</template>
-
-<script>
-export default {
-    name: "Icon"
-}
-</script>
-
-<style>
-.icon {
-    width: 50px;
-    height: 50px;
-    border-color: aliceblue;
-    border-width: 1px;
-    border-radius: 100px;
-    border-style: solid;
-    margin: 10px;
-}
-</style>
+  </template>
+  
+  <script>
+  export default {
+    name: "Icon",
+    props: {
+      socialMedia: {
+        type: String,
+        required: true
+      }
+    },
+    methods: {
+        redirect() {
+            window.location.href = `https://${this.socialMedia}.com/petTheShop`
+        }
+    },
+  };
+  </script>
+  
+  <style scoped>
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    cursor: pointer;
+  }
+  
+  .social-icon i {
+    color: #333;
+    font-size: 24px;
+  }
+  </style>
+  

@@ -7,12 +7,12 @@
         </div>
         <div class="allIcons">
             <div class="icons">
-                <Icon>F</Icon>
-                <Icon>Y</Icon>
+                <Icon socialMedia="instagram"/>
+                <Icon socialMedia="facebook"/>
             </div>
             <div class="icons">
-                <Icon>T</Icon>
-                <Icon>P</Icon>
+                <Icon socialMedia="pinterest"/>
+                <Icon socialMedia="twitter"/>
             </div>
         </div>
     </div>
