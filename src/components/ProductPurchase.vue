@@ -63,13 +63,10 @@ export default {
 
             if (myCookie.startsWith(userPrefix)) {
                 let userId = myCookie.substring(userPrefix.length);
-
-                console.log('User ID:', userId);
                 // Do something with the user ID
                 return userId;
             } else if (myCookie.startsWith(adminPrefix)) {
                 let adminId = myCookie.substring(adminPrefix.length);
-                console.log('Admin ID:', adminId);
                 // Do something with the admin ID
                 return adminId;
             } else {
@@ -159,7 +156,7 @@ export default {
     },
     mounted() {
         this.product = { ...this.infos };
-        console.log("product.quantity = ", this.product.quantity);
+        this.product.quantity = 1;
 
         let Mycookie = document.cookie;
         if(Mycookie != "" && Mycookie[0] == 'u')

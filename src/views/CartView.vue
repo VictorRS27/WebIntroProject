@@ -11,8 +11,8 @@
             <Address />
             <div class="form-group">
                 <label for="credit-card">Credit Card Number:</label>
-                <input type="text" id="credit-card" placeholder="Enter credit card number" v-model="creditCardNumber"
-                    @input="checkCreditCardInput" required />
+                <input type="text" id="credit-card" placeholder="aaaa bbbb cccc dddd" v-model="creditCardNumber"
+                    @input="checkCreditCardInput" maxlength="19" required />
             </div>
             <button class="buy-button" :class="{ active: creditCardNumber }" @click="completePurchase">
                 BUY
@@ -54,8 +54,12 @@ export default {
     },
     methods: {
         checkCreditCardInput() {
-            // Remove non-digit characters from the credit card number
-            this.creditCardNumber = this.creditCardNumber.replace(/\D/g, "");
+            let v = this.creditCardNumber
+            v = v.replace(/\D/g, "");
+            v = v.replace(/^(\d{4})(\d)/g, "$1 $2");
+            v = v.replace(/^(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3");
+            v = v.replace(/^(\d{4})\s(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3 $4");
+            this.creditCardNumber = v
         },
         completePurchase() {
             console.log(this.creditCardNumber);

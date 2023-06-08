@@ -22,7 +22,13 @@
 
             <div class="form-group">
                 <label for="telephone">telephone:</label>
-                <input type="telephone" id="telephone" placeholder="Enter telephone" v-model="telephone" />
+                <input 
+                type="telephone" 
+                id="telephone" 
+                placeholder="Enter telephone" 
+                v-model="telephone"
+                @input="formatPhoneNumber" 
+                maxlength="15"/>
             </div>
 
             <p class="warning-text" v-show="showWarning">Email or username already exists.</p>
@@ -33,7 +39,10 @@
         </div>
     </div>
 </template>
+
 <script>
+
+
 import axios from 'axios';
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
@@ -68,6 +77,13 @@ export default {
         this.load_edit()
     },
     methods: {
+        formatPhoneNumber() {
+            let value = this.telephone
+            value = value.replace(/\D/g, '')
+            value = value.replace(/(\d{2})(\d)/, "($1) $2")
+            value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+            this.telephone = value
+        },
         load_edit() {
             console.log(this.item_id)
             if (this.item_id !== -1) {

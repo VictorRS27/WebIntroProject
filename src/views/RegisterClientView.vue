@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label for="telephone">Telephone:</label>
-                <input type="tel" id="telephone" placeholder="Enter telephone" v-model="telephone" />
+                <input type="tel" id="telephone" placeholder="Enter telephone" v-model="telephone" @input="formatPhoneNumber" maxlength="15"/>
             </div>
 
             <div class="form-group">
@@ -78,7 +78,13 @@ export default {
         this.load_edit()
     },
     methods: {
-
+        formatPhoneNumber() {
+            let value = this.telephone
+            value = value.replace(/\D/g, '')
+            value = value.replace(/(\d{2})(\d)/, "($1) $2")
+            value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+            this.telephone = value
+        },
         countdown() {
             var el = document.getElementById('seconds'),
                 total = el.innerHTML,
