@@ -70,7 +70,7 @@ export default {
 
             }
         },
-        subtractDataBase() {  // funcao n pronta
+        subtractDataBase() {  
             // chamar o banco de produtos
             try {
                 axios

@@ -4,26 +4,26 @@
 		<form>
 			<div class="form-group">
 				<label for="first-name">First Name(s):</label>
-				<input id="first-name" type="text" v-model="firstName" placeholder="John" />
+				<input id="first-name" type="text" v-model="infos.firstName" placeholder="John" />
 				<!--já não tem o nome da pessoa no cadsatro dela? -->
 			</div>
 			<div class="form-group">
 				<label for="last-name">Last Name(s):</label>
-				<input id="last-name" type="text" v-model="lastName" placeholder="from Silva Saurus" />
+				<input id="last-name" type="text" v-model="infos.lastName" placeholder="from Silva Saurus" />
 			</div>
 
 
 			<div class="form-group">
 				<label for="address">Address:</label>
-				<input id="address" type="text" v-model="address" placeholder="street of the fools" />
+				<input id="address" type="text" v-model="infos.address" placeholder="street of the fools" />
 			</div>
 			<div class="form-group">
 				<label for="complement">Complement:</label>
-				<input id="complement" type="text" v-model="complement" placeholder="number 0" />
+				<input id="complement" type="text" v-model="infos.complement" placeholder="number 0" />
 			</div>
 			<div class="form-group">
 				<label for="cep">CEP Code:</label>
-				<input id="cep" type="text" v-model="cep" placeholder="66666-232" maxlength="9" @input="checkCEP" />
+				<input id="cep" type="text" v-model="infos.cep" placeholder="66666-666" maxlength="9" @input="checkCEP" />
 			</div>
 
 		</form>
@@ -47,7 +47,8 @@ export default {
 	},
 	methods: {
 		checkCEP() {
-			value = this.infos.cep
+			console.log(this.infos.cep)
+			let value = this.infos.cep
 			value = value.replace(/\D/g, '')
 			value = value.replace(/(\d{5})(\d)/, '$1-$2')
 			this.infos.cep = value

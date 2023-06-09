@@ -7,17 +7,17 @@
 
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter username" v-model="username" />
+                <input type="text" id="username" placeholder="Enter username" v-model="username" required/>
             </div>
 
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" placeholder="Enter password" v-model="password" />
+                <input type="password" id="password" placeholder="Enter password" v-model="password" required/>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter email" v-model="email" />
+                <input type="email" id="email" placeholder="Enter email" v-model="email" required/>
             </div>
 
             <div class="form-group">
