@@ -118,6 +118,11 @@ const router = createRouter({
       path: '/error',
       name: 'error',
       component: () => import('../views/Error.vue')
+    },
+    // Catch-all route for non-existing routes
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/error'
     }
   ]
 })
