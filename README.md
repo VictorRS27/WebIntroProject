@@ -22,8 +22,8 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
-
 ```sh
-npm run build
+npm run backend
 ```
+
+It is necessary to run both commands simultaneously to use the application
