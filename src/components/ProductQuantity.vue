@@ -44,6 +44,7 @@ export default {
                 productShortDescription: "Make your dog walks a breeze with our durable and stylish Dog Leash",
 				photos: ["/public/greenCollar.png"],
                 quantityInStock : 19,
+				quantitySold : 123,
 				quantity: 0,
             },
 		};

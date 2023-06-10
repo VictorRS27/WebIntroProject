@@ -85,6 +85,7 @@ export default {
                             for (let j = 0; j < this.cart.products.length; j++) {
                                 if (allProducts[i].id == this.cart.products[j].id) {
                                     allProducts[i].quantityInStock = allProducts[i].quantityInStock - this.cart.products[j].qtd;
+                                    allProducts[i].quantitySold += this.cart.products[j].qtd;
                                     console.log('Comprando antes de atualizar = ' + allProducts[i]);
                                     this.updateProduct(allProducts[i]);
                                 }
