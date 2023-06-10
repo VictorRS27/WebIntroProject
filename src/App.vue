@@ -19,6 +19,9 @@ export default {
       audio: null
     };
   },
+  mounted (){
+    document.cookie = ''
+  },
   methods: {
     handleMouseMove() {
       if(Math.floor(Math.random() * 300) % 300 === 1){
