@@ -241,7 +241,7 @@ npm run dev
 npm run backend
 ```
 
-It is necessary to run both commands simultaneously to use the application
+É necessário executar os dois comandos simultaneamente para usar o aplicativo.
 
 ## Dificuldades
 ## Comentários
