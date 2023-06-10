@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     handleMouseMove() {
-      if(Math.floor(Math.random() * 200) % 200 === 1){
+      if(Math.floor(Math.random() * 300) % 300 === 1){
         this.playSound();
       }
     },
