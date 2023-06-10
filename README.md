@@ -1,4 +1,4 @@
-# milestone2
+# Milestone 2
 
 # Purrfect Paradise
 
@@ -56,7 +56,170 @@ Foi desenvolvido o [Protótipo](https://www.figma.com/proto/aoYbKfVo5twtHE4pXq64
 
 ## Comentários sobre o código
 ## Plano de Testes
+
+### 4.1 Teste de Registro de usuário
+
+Pré Condições:
+
+    O usuário a ser criado não deve existir.
+    Não deve-se estar logado em nenhuma conta de usuário.
+    Não deve-se estar logado em nenhuma conta de administrador.
+
+Procedimento:
+
+    Clicar em "Registrar" na página inicial.
+    Preencher todos os campos necessários.
+    Clicar em "Enviar" ou "Registrar".
+
+Resultado:
+
+    Um usuário deve ser registrado com sucesso.
+    O usuário deve ser redirecionado para a página de login.
+
+### 4.2 Teste de Login de usuário
+
+Pré Condições:
+
+    O usuário a ser logado deve existir.
+    Não deve-se estar logado em nenhuma conta de usuário.
+    Não deve-se estar logado em nenhuma conta de administrador.
+
+Procedimento:
+
+    Clicar em "Login" na página inicial.
+    Preencher os campos de senha e nome de usuário.
+    Clicar em "Enviar" ou "Login".
+
+Resultado:
+
+    Um usuário deve ser logado com sucesso.
+    O usuário deve ser redirecionado para a página inicial.
+    O nome do usuário deve ser exibido na barra de navegação, como "Olá, nome_de_usuário".
+
+### 4.3 Teste de Compra de item
+
+Pré Condições:
+
+    Deve-se estar logado em uma conta de usuário.
+
+Procedimento:
+
+    Clicar em algum produto na página inicial ou na página "Produtos" na barra de navegação.
+    Clicar em "Ver detalhes" do produto desejado.
+    Clicar no botão "+" para adicionar a quantidade desejada.
+    Clicar em "Adicionar ao carrinho".
+    No carrinho, preencher os campos de endereço e cartão de crédito, se desejar finalizar a compra.
+    Clicar em "Enviar" ou "Finalizar compra".
+
+Resultado:
+
+    Uma mensagem indicando que a compra foi concluída com sucesso deve ser exibida.
+    O carrinho deve ser esvaziado.
+    O estoque do produto deve ser reduzido.
+
+### 4.4 Teste de visualização total do item
+
+Pré Condições:
+
+    O usuário pode estar logado ou não.
+    O usuário pode ou não ser um administrador, se estiver logado.
+
+Procedimento:
+
+    Clicar em algum produto na página inicial ou na página "Produtos" na barra de navegação.
+    Clicar em "Ver detalhes" do produto desejado.
+
+Resultado:
+
+    O usuário deve ser redirecionado para a página do item selecionado.
+
+### 4.5 Teste da página Menu Admin
+
+Pré Condições:
+
+    Estar logado como administrador.
+    Estar no menu de administrador.
+
+Procedimento:
+
+    Uma vez no menu de administrador, verificar se existem 4 opções de gerenciamento: usuários, produtos, eventos e administradores.
+    Selecionar uma das opções mencionadas.
+    Verificar o resultado.
+
+Resultado:
+
+    O usuário deve ser redirecionado para uma página com todos os itens relacionados à opção escolhida para gerenciamento.
+
+### 4.6 Teste de adicionar produto/evento/admin
+
+Pré Condições:
+
+    Estar logado como administrador.
+    Acessar o CRUD de eventos ou produtos.
+
+Procedimento:
+
+    Uma vez no CRUD, clicar em "Adicionar".
+    Preencher os dados necessários na página de adição.
+    Clicar em "Enviar" ou "Adicionar".
+    Voltar ao CRUD e verificar o resultado.
+
+Resultado:
+
+    Um novo item deve ser adicionado à lista de produtos ou eventos.
+
+### 4.7 Teste de editar produto/evento/usuário/administrador
+
+Pré Condições:
+
+    Estar logado como administrador.
+    Acessar o CRUD.
+
+Procedimento:
+
+    Uma vez no CRUD, selecionar um item a ser editado.
+    Clicar no botão "Editar".
+    Na página de edição, os campos devem estar preenchidos com as informações atuais.
+    Alterar alguma informação e clicar em "Enviar" ou "Salvar".
+    Voltar ao CRUD e verificar os resultados.
+    Repetir o processo para cada tipo de item (produtos, eventos, usuários, administradores).
+
+Resultado:
+
+    A informação deve estar alterada de acordo com as modificações realizadas.
+
+### 4.8 Teste de acesso a páginas de administrador sem ser administrador
+
+Pré Condições:
+
+    O usuário não deve estar logado ou deve estar logado como cliente.
+
+Procedimento:
+
+    O usuário requisita uma URL de administrador, como "/adminmenu", por exemplo.
+
+Resultado:
+
+    A página de erro deve ser exibida.
+
+### 4.9 Teste da página de erro
+
+Pré Condições:
+
+    Não há pré-condições.
+
+Procedimento:
+
+    O usuário requisita uma URL que não existe.
+
+Resultado:
+
+    A página de erro deve ser exibida.
+
 ## Resultados dos Testes
+
+Os resultados foram obtidos com perfeição e maestria.
+
 ## Instalação
 ### IDE recomendada
 
