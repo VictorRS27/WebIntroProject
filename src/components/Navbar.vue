@@ -9,7 +9,6 @@
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
-                <RouterLink to="/about">About us</RouterLink>
                 <RouterLink to="/login">Login</RouterLink>
             </div>
             
@@ -17,7 +16,6 @@
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
-                <RouterLink to="/about">About us</RouterLink>
                 <RouterLink to="/cart">Cart</RouterLink>
                 <p class="user">Hi, {{this.username}}</p>
                 <p class = "logoff" @click="LogOff">Logoff</p>
@@ -28,7 +26,6 @@
                 <RouterLink to="/AdminMenu">Menu</RouterLink>
                 <RouterLink to="/products">Products</RouterLink>
                 <RouterLink to="/events">Events</RouterLink>
-                <RouterLink to="/about">About us</RouterLink>
                 <p class="logoff" @click="LogOff">Logoff</p>
             </div>
             
