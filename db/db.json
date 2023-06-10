@@ -452,6 +452,14 @@
       "telephone": "",
       "address": "",
       "id": 14
+    },
+    {
+      "username": "otavio1212",
+      "password": "otavio",
+      "email": "otaviocoletti@outlook.com.br",
+      "telephone": "12",
+      "address": "12",
+      "id": 15
     }
   ],
   "admin": [
@@ -540,6 +548,11 @@
       "id_cliente": 12,
       "products": [],
       "id": 5
+    },
+    {
+      "id_cliente": 15,
+      "products": [],
+      "id": 6
     }
   ]
 }

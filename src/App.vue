@@ -29,10 +29,9 @@ export default {
       }
     },
     playSound() {
-      const soundID = Math.floor((Math.random() * 10) % 7);
+      const soundID = Math.floor((Math.random() * 10) % 6);
       const soundsList = [
         'public/cat-meow-6226.mp3',
-        'public/zimmermacaco.mp3',
         'public/sheep-122256.mp3',
         'public/duck-quack-112941.mp3',
         'public/elephant-trumpets-growls-6047.mp3',
