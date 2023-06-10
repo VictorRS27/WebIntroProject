@@ -436,6 +436,22 @@
       "telephone": "(12) 3456-7890",
       "address": "kenzo",
       "id": 12
+    },
+    {
+      "username": "kenzo1",
+      "password": "",
+      "email": "kenzo",
+      "telephone": "(12) 3456-7890",
+      "address": "kenzo",
+      "id": 13
+    },
+    {
+      "username": "asdfasdf",
+      "password": "",
+      "email": "",
+      "telephone": "",
+      "address": "",
+      "id": 14
     }
   ],
   "admin": [
