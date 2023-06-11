@@ -11,6 +11,12 @@
         <label for="username">Senha:</label>
         <input type="password" placeholder="********" v-model="password" />
       </div>
+      <p class="warning-text" v-show="showWarningExists">
+        Fill User and Password.
+      </p>
+      <p class="warning-text" v-show="showWarningWrong">
+        User not found.
+      </p>
       <div class="buttons">
         <button class="submit-button" @click="redirect">Submit</button>
         <button class="submit-button" @click="redirectRegisterClient">Register</button>
@@ -32,7 +38,9 @@ export default {
     return {
       username: '',
       password: '',
-      Id : ''
+      Id: '',
+      showWarningExists: false,
+      showWarningWrong: false
     }
   },
   components: {
@@ -43,78 +51,87 @@ export default {
   methods: {
     createCart() {
       axios
-      .get('http://localhost:3000/cart')
-      .then((response) => {
-        let carts = response.data.slice();
-        let cartsFiltered = response.data.filter((c) => c.id_cliente == this.Id);
-        
-        if(cartsFiltered.length == 0) {
-          
-          const newCart = {
-            id_cliente: this.Id,
-            products : []
-          };
-          
-          fetch('http://localhost:3000/cart', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newCart)
-          })
-          .then(response => response.json())
-          .then(data => {
-            console.log('Cart created:', data);
-          })
-          .catch(error => {
-            console.error('Error creating product:', error);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching cart:', error);
-        reject(error); // Reject the promise with an error
-      });
+        .get('http://localhost:3000/cart')
+        .then((response) => {
+          let carts = response.data.slice();
+          let cartsFiltered = response.data.filter((c) => c.id_cliente == this.Id);
+
+          if (cartsFiltered.length == 0) {
+
+            const newCart = {
+              id_cliente: this.Id,
+              products: []
+            };
+
+            fetch('http://localhost:3000/cart', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(newCart)
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Cart created:', data);
+              })
+              .catch(error => {
+                console.error('Error creating product:', error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching cart:', error);
+          reject(error); // Reject the promise with an error
+        });
     },
     redirect() {
-      axios.get("http://localhost:3000/users")
-      .then((response) => {
-        let match = response.data.filter((user) => user.username === this.username && user.password === this.password);
-        if (match.length != 1) {
-          axios.get("http://localhost:3000/admin")
+      this.showWarningExists = false
+      this.showWarningWrong = false
+      if (this.username === '' && this.password === '') {
+        this.showWarningExists = true
+      }
+      else {
+        axios.get("http://localhost:3000/users")
           .then((response) => {
-            let match2 = response.data.filter((user) => user.username === this.username && user.password === this.password);
-            console.log(match2);
-            if (match2.length != 1) {
-              alert("Usuário não encontrado")
-              this.password = ''
+            let match = response.data.filter((user) => user.username === this.username && user.password === this.password);
+            if (match.length != 1) {
+              axios.get("http://localhost:3000/admin")
+                .then((response) => {
+                  let match2 = response.data.filter((user) => user.username === this.username && user.password === this.password);
+                  console.log(match2);
+                  if (match2.length != 1) {
+                    /* alert("Usuário não encontrado") */
+                    this.showWarningWrong = true
+                    this.password = ''
+                  }
+                  else {
+                    console.log("entrou")
+                    document.cookie = 'admin=' + match2[0].id;
+                    this.$router.push('/adminmenu');
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
             }
             else {
-              console.log("entrou")
-              document.cookie = 'admin=' + match2[0].id;
-              this.$router.push('/adminmenu');
+              console.log(match);
+              document.cookie = 'user=' + match[0].id;
+              this.Id = match[0].id;
+              this.createCart();
+              this.$router.push('/');
             }
+
           })
           .catch((error) => {
             console.log(error);
           });
-        }
-        else {
-          console.log(match);
-          document.cookie = 'user=' + match[0].id;
-          this.Id = match[0].id;
-          this.createCart();
-          this.$router.push('/');
-        }
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
     },
     redirectRegisterClient() {
       this.$router.push('/RegisterUsers');
     }
+
   }
 }
 </script>
@@ -148,5 +165,4 @@ h1 {
   justify-content: space-evenly;
   width: 80%;
 }
-
 </style>

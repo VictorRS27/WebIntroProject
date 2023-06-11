@@ -46,9 +46,13 @@
                 />
             </div>
             
-            <p class="warning-text" v-show="showWarning">
+            <p class="warning-text" v-show="showWarningExists">
                 Email or username already exists.
+            </p> 
+            <p class="warning-text" v-show="showWarningIncomplete">
+                Fill all information.
             </p>
+            
             
             <button class="submit-button" @click="submitForm">Submit</button>
         </div>
@@ -72,7 +76,8 @@ export default {
             password: "",
             email: "",
             telephone: "",
-            showWarning: false,
+            showWarningExists: false,
+            showWarningIncomplete: false
         };
     },
     methods: {
@@ -114,7 +119,7 @@ export default {
                         console.error(
                         "Admin with the same username or email already exists."
                         );
-                        this.showWarning = true;
+                        this.showWarningExists = true;
                         return;
                     }
                     
@@ -131,7 +136,7 @@ export default {
                             console.error(
                             "User with the same username or email already exists."
                             );
-                            this.showWarning = true;
+                            this.showWarningExists = true;
                             return;
                         }
                         
@@ -146,7 +151,7 @@ export default {
                             this.password = "";
                             this.email = "";
                             this.telephone = "";
-                            this.showWarning = false;
+                            this.showWarningExists = false;
                         })
                         .catch((error) => {
                             console.error("Error registering admin:", error);
@@ -161,7 +166,7 @@ export default {
                 });
             }
             else {
-                alert("Fill in all necessary information");
+                this.showWarningIncomplete = true
             }
         },
     },

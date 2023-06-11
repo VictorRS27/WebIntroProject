@@ -460,6 +460,14 @@
       "telephone": "12",
       "address": "12",
       "id": 15
+    },
+    {
+      "username": "aaaa",
+      "password": "fdbsgh",
+      "email": "dsdsgbadrgsdgn",
+      "telephone": "(45) 65656-5656",
+      "address": "tjjdytjdjytyj",
+      "id": 16
     }
   ],
   "admin": [
@@ -511,6 +519,20 @@
       "email": "mane@gmail.com",
       "telephone": "1313-1313",
       "id": 9
+    },
+    {
+      "username": "admin",
+      "password": "adminpass1",
+      "email": "victor.vki.dasilva@gmail.com",
+      "telephone": "(11) 11111-1111",
+      "id": 10
+    },
+    {
+      "username": "admin27",
+      "password": "27",
+      "email": "victor.vki.desilva@gmail.com",
+      "telephone": "(23) 44343-3223",
+      "id": 11
     }
   ],
   "cart": [
