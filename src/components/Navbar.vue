@@ -165,6 +165,7 @@ export default {
 .navWeb {
     background-color: #46D115;
     height: 10vh;
+    min-height: 90px;
     width: 100%;
     display: flex;
     z-index: 3;
