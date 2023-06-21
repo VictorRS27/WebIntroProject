@@ -28,6 +28,8 @@ app.get('/events', async (req, res) => {
         const collection = db.collection('events');
         const events = await collection.find().toArray();
         client.close();
+        for(let i = 0; i < events.length; i++)
+            events[i].id = events[i]._id
         res.json(events);
     } catch (error) {
         console.log(error);
@@ -42,6 +44,8 @@ app.get('/products', async (req, res) => {
         const collection = db.collection('products');
         const products = await collection.find().toArray();
         client.close();
+        for(let i = 0; i < products.length; i++)
+            products[i].id = products[i]._id
         res.json(products);
     } catch (error) {
         console.log(error);
@@ -55,6 +59,8 @@ app.get('/users', async (req, res) => {
         const db = client.db();
         const collection = db.collection('users');
         const users = await collection.find().toArray();
+        for(let i = 0; i < users.length; i++)
+            users[i].id = users[i]._id
         client.close();
         res.json(users);
     } catch (error) {
@@ -69,6 +75,8 @@ app.get('/admin', async (req, res) => {
         const db = client.db();
         const collection = db.collection('admin');
         const admin = await collection.find().toArray();
+        for(let i = 0; i < admin.length; i++)
+            admin[i].id = admin[i]._id
         client.close();
         res.json(admin);
     } catch (error) {
@@ -83,6 +91,8 @@ app.get('/cart', async (req, res) => {
         const db = client.db();
         const collection = db.collection('cart');
         const cart = await collection.find().toArray();
+        for(let i = 0; i < cart.length; i++)
+            cart[i].id = cart[i]._id
         client.close();
         res.json(cart);
     } catch (error) {
