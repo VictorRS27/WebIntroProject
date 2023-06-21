@@ -63,6 +63,7 @@
                 required
                 />
             </div>
+            <p class="warning-text" v-show="incomplete">Fill in all necessary information.</p>
             
             <button class="submit-button" @click="registerClient">Submit</button>
             <div v-show="success">
@@ -95,6 +96,7 @@ export default {
             emailExists: false,
             user: "",
             success: false,
+            incomplete:false
         };
     },
     props: {
@@ -146,6 +148,7 @@ export default {
             }
         },
         registerClient() {
+            this.incomplete = false
             if (
             this.username != "" &&
             this.password != "" &&
@@ -230,7 +233,7 @@ export default {
                 }
             }
             else {
-                alert("Fill in all necessary information");
+                this.incomplete = true;
             }
         },
     },

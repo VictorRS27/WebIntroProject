@@ -1,5 +1,5 @@
 <template>
-    <Navbar/>
+    <Navbar />
     <div class="container">
         <div class="box">
             <h2>Create Event</h2>
@@ -34,7 +34,9 @@
                 <input type="text" id="photo" placeholder="Enter photo link" v-model="photo" />
             </div>
 
-
+            <p class="warning-text" v-show="showWarning">
+                Fill all required fields!
+            </p> 
             <button class="submit-button" @click="createEvent">Submit</button>
         </div>
     </div>
@@ -56,6 +58,7 @@ export default {
             eventType: '',
             eventAddress: '',
             photo: '',
+            showWarning: false
         };
     },
     props: {
@@ -81,41 +84,51 @@ export default {
             }
         },
         createEvent() {
-            const newEvent = {
-                eventName: this.eventName,
-                eventDate: this.eventDate,
-                eventDescription: this.eventDescription,
-                eventType: this.eventType,
-                eventAddress: this.eventAddress,
-                photos: [this.photo]
-            };
-            if (this.item_id === -1) {
-
-                axios.post('http://localhost:3000/events', newEvent)
-                    .then(response => {
-                        console.log('Event created:', response.data);
-                        // Clear form fields
-                        this.eventName = '';
-                        this.eventDate = '';
-                        this.eventDescription = '';
-                        this.eventType = '';
-                        this.eventAddress = '';
-                        this.photo = '';
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
+            this.showWarning = false
+            if (this.eventName === '' ||
+                this.eventDate === '' ||
+                this.eventDescription === '' ||
+                this.eventType === '' ||
+                this.photo === '') {
+                this.showWarning = true
             }
             else {
-                axios.put(`http://localhost:3000/events/${this.item_id}`, newEvent)
-                    .then(response => {
-                        this.$router.push("/crud?crud=events")
-                        // Faça algo com a resposta
-                    })
-                    .catch(error => {
-                        console.error('Erro ao atualizar o item:', error);
-                        // Trate o erro adequadamente
-                    });
+                const newEvent = {
+                    eventName: this.eventName,
+                    eventDate: this.eventDate,
+                    eventDescription: this.eventDescription,
+                    eventType: this.eventType,
+                    eventAddress: this.eventAddress,
+                    photos: [this.photo]
+                };
+                if (this.item_id === -1) {
+
+                    axios.post('http://localhost:3000/events', newEvent)
+                        .then(response => {
+                            console.log('Event created:', response.data);
+                            // Clear form fields
+                            this.eventName = '';
+                            this.eventDate = '';
+                            this.eventDescription = '';
+                            this.eventType = '';
+                            this.eventAddress = '';
+                            this.photo = '';
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
+                else {
+                    axios.put(`http://localhost:3000/events/${this.item_id}`, newEvent)
+                        .then(response => {
+                            this.$router.push("/crud?crud=events")
+                            // Faça algo com a resposta
+                        })
+                        .catch(error => {
+                            console.error('Erro ao atualizar o item:', error);
+                            // Trate o erro adequadamente
+                        });
+                }
             }
         }
     },
