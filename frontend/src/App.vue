@@ -29,14 +29,13 @@ export default {
       }
     },
     playSound() {
-      const soundID = Math.floor((Math.random() * 10) % 12);
+      const soundID = Math.floor((Math.random() * 10) % 11);
       const soundsList = [
         'public/cat-meow-6226.mp3',
         'public/sheep-122256.mp3',
         'public/duck-quack-112941.mp3',
         'public/elephant-trumpets-growls-6047.mp3',
         'public/owl-144750.mp3',
-        'public/pet-squeak-toy-81315.mp3',
         'mixkit-angry-wild-cat-roar-89.wav',
         'mixkit-cartoon-little-cat-meow-91.wav',
         'mixkit-dog-barking-twice-1.wav',
