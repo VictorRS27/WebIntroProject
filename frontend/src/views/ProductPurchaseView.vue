@@ -83,6 +83,7 @@ export default {
         allProducts = allProducts.slice();
         this.productpurchase = allProducts.filter((product) => product.id == id);
         this.productpurchase[0].quantity = 0;
+        console.log("BBBBBBBBBBBBBBBBBBBBBBBBBB = ", this.productpurchase[0])
       })
       .catch((error) => {
         console.error('Error fetching suggested products:', error);

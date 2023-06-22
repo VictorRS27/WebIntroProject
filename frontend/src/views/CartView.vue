@@ -77,7 +77,9 @@ export default {
                     .get('http://localhost:3000/products')
                     .then((response) => {
                         const products = response.data;
+                        console.log('CCCCCCCCCCCCCCCCCCCC=', response.data)
                         let allProducts = products.slice();
+                        console.log('CCCCCCCCCCCCCCCCCCCC=', response.data)
                         console.log("allProducts2 = ", allProducts);
                         console.log("cart.products2 = ", this.cart.products);
 
@@ -85,8 +87,8 @@ export default {
                             for (let j = 0; j < this.cart.products.length; j++) {
                                 if (allProducts[i].id == this.cart.products[j].id) {
                                     allProducts[i].quantityInStock = allProducts[i].quantityInStock - this.cart.products[j].qtd;
-                                    allProducts[i].quantitySold += this.cart.products[j].qtd;
-                                    console.log('Comprando antes de atualizar = ' + allProducts[i]);
+                                    allProducts[i].quantitySold = allProducts[i].quantitySold + this.cart.products[j].qtd;
+                                    console.log('Comprando antes de atualizar = ', allProducts[i]);
                                     this.updateProduct(allProducts[i]);
                                 }
                             }
@@ -189,10 +191,10 @@ export default {
         },
         updateProduct(newProduct) {
             try {
-                console.log('Comprando = ' + newProduct);
+                console.log('Comprando = ', newProduct);
 
                 axios
-                    .put('http://localhost:3000/products/' + newProduct.id, newProduct) // Assuming the endpoint to update the cart is a PUT request
+                    .put(`http://localhost:3000/products/${newProduct.id}`, newProduct) // Assuming the endpoint to update the cart is a PUT request
                     .then((response) => {
                         console.log('Cart saved successfully:', response.data);
                     })
