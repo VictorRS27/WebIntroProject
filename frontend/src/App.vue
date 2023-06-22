@@ -36,7 +36,13 @@ export default {
         'public/duck-quack-112941.mp3',
         'public/elephant-trumpets-growls-6047.mp3',
         'public/owl-144750.mp3',
-        'public/pet-squeak-toy-81315.mp3'
+        'public/pet-squeak-toy-81315.mp3',
+        'mixkit-angry-wild-cat-roar-89.wav',
+        'mixkit-cartoon-little-cat-meow-91.wav',
+        'mixkit-dog-barking-twice-1.wav',
+        'mixkit-forest-bird-singing-1211.wav',
+        'mixkit-melodic-songbird-chirp-67.wav'
+
       ];
 
       if (!this.audio) {
