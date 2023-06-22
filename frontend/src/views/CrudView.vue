@@ -139,6 +139,7 @@ export default {
             });
         },
         fetchItems() {
+            
             let link = 'http://localhost:3000/' + this.which_table
             axios.get(link)
                 .then(response => {

@@ -30,11 +30,34 @@ app.get('/events', async (req, res) => {
         client.close();
         for(let i = 0; i < events.length; i++)
         events[i].id = events[i]._id.toString()
-        console.log("EVENTS : ", events)
+        //console.log("EVENTS : ", events)
         res.json(events);
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Failed to fetch events' });
+    }
+});
+
+app.get('/events/:id', async (req, res) => {
+    try {
+        const eventId = req.params.id;
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('events');
+        const event = await collection.findOne({ _id: new mongodb.ObjectId(eventId) });
+        event.id = event._id.toString()
+        client.close();
+        
+        if (!event) {
+            res.status(404).json({ error: 'Event not found' });
+            return;
+        }
+        
+        event.id = event._id.toString();
+        res.json(event);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch event' });
     }
 });
 
@@ -54,6 +77,31 @@ app.get('/products', async (req, res) => {
     }
 });
 
+app.get('/products/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('products');
+        const product = await collection.findOne({ _id: new mongodb.ObjectId(productId) });
+        product.id = product._id.toString()
+        client.close();
+        
+        if (!product) {
+            res.status(404).json({ error: 'product not found' });
+            return;
+        }
+        
+        product.id = product._id.toString();
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch product' });
+    }
+});
+
+
+
 app.get('/users', async (req, res) => {
     try {
         const client = await mongodb.MongoClient.connect(mongoURL);
@@ -67,6 +115,29 @@ app.get('/users', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Failed to fetch users' });
+    }
+});
+
+app.get('/users/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('users');
+        const product = await collection.findOne({ _id: new mongodb.ObjectId(productId) });
+        product.id = product._id.toString()
+        client.close();
+        
+        if (!product) {
+            res.status(404).json({ error: 'product not found' });
+            return;
+        }
+        
+        product.id = product._id.toString();
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch product' });
     }
 });
 
@@ -86,6 +157,29 @@ app.get('/admin', async (req, res) => {
     }
 });
 
+app.get('/admin/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('admin');
+        const product = await collection.findOne({ _id: new mongodb.ObjectId(productId) });
+        product.id = product._id.toString()
+        client.close();
+        
+        if (!product) {
+            res.status(404).json({ error: 'product not found' });
+            return;
+        }
+        
+        product.id = product._id.toString();
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch product' });
+    }
+});
+
 app.get('/cart', async (req, res) => {
     try {
         const client = await mongodb.MongoClient.connect(mongoURL);
@@ -99,6 +193,29 @@ app.get('/cart', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Failed to fetch cart' });
+    }
+});
+
+app.get('/cart/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('cart');
+        const product = await collection.findOne({ _id: new mongodb.ObjectId(productId) });
+        product.id = product._id.toString()
+        client.close();
+        
+        if (!product) {
+            res.status(404).json({ error: 'product not found' });
+            return;
+        }
+        
+        product.id = product._id.toString();
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch product' });
     }
 });
 
@@ -130,7 +247,7 @@ app.delete('/admin/:id', async (req, res) => {
         const collection = db.collection('admin');
         const result = await collection.deleteOne({ _id: new mongodb.ObjectId(adminId) });
         client.close();
-
+        
         console.log('result=', result)
         
         if (result.deletedCount === 1) {
@@ -152,7 +269,7 @@ app.delete('/users/:id', async (req, res) => {
         const collection = db.collection('users');
         const result = await collection.deleteOne({ _id: new mongodb.ObjectId(userId) });
         client.close();
-
+        
         console.log('result=', result)
         
         if (result.deletedCount === 1) {
@@ -174,7 +291,7 @@ app.delete('/products/:id', async (req, res) => {
         const collection = db.collection('products');
         const result = await collection.deleteOne({ _id: new mongodb.ObjectId(productId) });
         client.close();
-
+        
         console.log('result=', result)
         
         if (result.deletedCount === 1) {
@@ -196,7 +313,7 @@ app.delete('/cart/:id', async (req, res) => {
         const collection = db.collection('cart');
         const result = await collection.deleteOne({ _id: new mongodb.ObjectId(cartId) });
         client.close();
-
+        
         console.log('result=', result)
         
         if (result.deletedCount === 1) {
@@ -210,7 +327,112 @@ app.delete('/cart/:id', async (req, res) => {
     }
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+app.put('/products/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedProduct = req.body; // Assuming the updated data is sent in the request body
+        console.log('updatedProduct = ', updatedProduct)
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('products');
+        const result = await collection.updateOne(
+            { _id: new mongodb.ObjectId(productId) },
+            { $set: updatedProduct }
+            );
+            client.close();
+            console.log('result = ', result)
+            
+            if (result.matchedCount === 1) {
+                res.json({ message: 'Product updated successfully' });
+            } else {
+                res.status(404).json({ error: 'Product not found' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Failed to update product' });
+        }
+    });
+
+app.put('/admin/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedProduct = req.body; // Assuming the updated data is sent in the request body
+        console.log('updatedProduct = ', updatedProduct)
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('admin');
+        const result = await collection.updateOne(
+            { _id: new mongodb.ObjectId(productId) },
+            { $set: updatedProduct }
+            );
+            client.close();
+            console.log('result = ', result)
+            
+            if (result.matchedCount === 1) {
+                res.json({ message: 'Product updated successfully' });
+            } else {
+                res.status(404).json({ error: 'Product not found' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Failed to update product' });
+        }
+    });
+
+app.put('/events/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedProduct = req.body; // Assuming the updated data is sent in the request body
+        console.log('updatedProduct = ', updatedProduct)
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('events');
+        const result = await collection.updateOne(
+            { _id: new mongodb.ObjectId(productId) },
+            { $set: updatedProduct }
+            );
+            client.close();
+            console.log('result = ', result)
+            
+            if (result.matchedCount === 1) {
+                res.json({ message: 'Product updated successfully' });
+            } else {
+                res.status(404).json({ error: 'Product not found' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Failed to update product' });
+        }
+    });
+
+app.put('/users/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedProduct = req.body; // Assuming the updated data is sent in the request body
+        console.log('updatedProduct = ', updatedProduct)
+        const client = await mongodb.MongoClient.connect(mongoURL);
+        const db = client.db();
+        const collection = db.collection('users');
+        const result = await collection.updateOne(
+            { _id: new mongodb.ObjectId(productId) },
+            { $set: updatedProduct }
+            );
+            client.close();
+            console.log('result = ', result)
+            
+            if (result.matchedCount === 1) {
+                res.json({ message: 'Product updated successfully' });
+            } else {
+                res.status(404).json({ error: 'Product not found' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Failed to update product' });
+        }
+    });
+    
+    
+    // Start the server
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });

@@ -119,29 +119,48 @@ export default {
                 console.log('Invalid cookies format');
             }
         },
-        getUsername(myCookie){
+        getUsername_user(myCookie){
             
             axios
             .get('http://localhost:3000/users')
             .then((response) => {
                 console.log("user ID =" + this.Id)
                 let user = response.data.filter((bla) => bla.id == this.Id);
+                console.log('USER = ', user)
+                this.username = user[0].username;
+            })
+            .catch((error) => {
+                console.error('Error fetching username:', error);
+            });
+        },
+        getUsername_admin(myCookie){
+            
+            axios
+            .get('http://localhost:3000/admin')
+            .then((response) => {
+                console.log("user ID =" + this.Id)
+                let user = response.data.filter((bla) => bla.id == this.Id);
+                console.log('USER = ', user)
                 this.username = user[0].username;
             })
             .catch((error) => {
                 console.error('Error fetching username:', error);
             });
         }
+
     },
     
     mounted() {
         this.defineWindow();
         window.addEventListener("resize", this.defineWindow);
         this.myCookie = document.cookie;
-        console.log(this.myCookie);
+        console.log("COOKIE AAA =", this.myCookie);
         this.parseCookiesData();
-        if(this.myCookie != "" && (this.myCookie[0] === 'u' || this.myCookie[0] === 'a')){
-            this.getUsername(this.myCookie);
+        if(this.myCookie != "" && (this.myCookie[0] === 'u')){
+            this.getUsername_user(this.myCookie);
+        }
+        if(this.myCookie != "" && (this.myCookie[0] === 'a')){
+            this.getUsername_admin(this.myCookie);
         }
         
     },
