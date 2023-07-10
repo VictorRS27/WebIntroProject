@@ -1,22 +1,21 @@
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 
 // MongoDB connection URL
-const mongoURL = 'mongodb://localhost:27017/pet_the_shop';
+const mongoURL = 'mongodb://localhost:27017';
+const dbName = 'pet_the_shop';
+
+let db;
 
 // Establish the database connection
-mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+MongoClient.connect(mongoURL, { useUnifiedTopology: true })
+  .then(client => {
+    db = client.db(dbName);
+    console.log('MongoDB connected successfully');
+  })
+  .catch(error => {
+    console.error('MongoDB connection error:', error);
+  });
 
-const db = mongoose.connection;
-
-db.on('error', (error) => {
-  console.error('MongoDB connection error:', error);
-});
-
-db.once('open', () => {
-  console.log('MongoDB connected successfully');
-});
-
-module.exports = db;
+module.exports = {
+  getDB: () => db
+};

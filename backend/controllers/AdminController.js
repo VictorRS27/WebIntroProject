@@ -1,15 +1,15 @@
-const mongodb = require('mongodb');
-const db = require('../db');
-const collection = db.collection('admin');
+const { ObjectId } = require('mongodb');
+const { getDB } = require('../db'); // Import the database connection object
 
 module.exports = {
   getAllAdmins: async (req, res) => {
     try {
-      const admins = await collection.find().toArray();
+      const db = getDB();
+      const admins = await db.collection('admin').find().toArray();
 
-      for (let i = 0; i < admins.length; i++) {
-        admins[i].id = admins[i]._id.toString();
-      }
+      admins.forEach(admin => {
+        admin.id = admin._id.toString();
+      });
 
       res.json(admins);
     } catch (error) {
@@ -20,8 +20,9 @@ module.exports = {
 
   getAdminById: async (req, res) => {
     try {
+      const db = getDB();
       const adminId = req.params.id;
-      const admin = await collection.findOne({ _id: new mongodb.ObjectId(adminId) });
+      const admin = await db.collection('admin').findOne({ _id: new ObjectId(adminId) });
 
       if (!admin) {
         res.status(404).json({ error: 'Admin not found' });
@@ -38,8 +39,9 @@ module.exports = {
 
   deleteAdmin: async (req, res) => {
     try {
+      const db = getDB();
       const adminId = req.params.id;
-      const result = await collection.deleteOne({ _id: new mongodb.ObjectId(adminId) });
+      const result = await db.collection('admin').deleteOne({ _id: new ObjectId(adminId) });
 
       if (result.deletedCount === 1) {
         res.json({ message: 'Admin deleted successfully' });
@@ -54,12 +56,13 @@ module.exports = {
 
   updateAdmin: async (req, res) => {
     try {
+      const db = getDB();
       const adminId = req.params.id;
       const updatedAdmin = req.body;
       const { _id, ...updatedAdminWithoutId } = updatedAdmin;
 
-      const result = await collection.updateOne(
-        { _id: new mongodb.ObjectId(adminId) },
+      const result = await db.collection('admin').updateOne(
+        { _id: new ObjectId(adminId) },
         { $set: updatedAdminWithoutId }
       );
 
@@ -76,8 +79,9 @@ module.exports = {
 
   createAdmin: async (req, res) => {
     try {
+      const db = getDB();
       const newAdmin = req.body;
-      const result = await collection.insertOne(newAdmin);
+      const result = await db.collection('admin').insertOne(newAdmin);
 
       if (result.acknowledged === true) {
         res.status(201).json({ message: 'Admin created successfully' });

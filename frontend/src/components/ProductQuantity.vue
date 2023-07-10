@@ -22,9 +22,9 @@
 				<p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
 				<p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
 				<div class="quantity">
-					<button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
+					<!-- <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button> -->
 					<span>{{ product.quantity }}</span>
-					<button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+					<!-- <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button> -->
 				</div>
 			</div>
 		</div>

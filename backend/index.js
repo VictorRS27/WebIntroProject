@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const db = require('./db'); // Custom module for database connection
+const { getDB } = require('./db'); // Custom module for database connection
 
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.urlencoded({ extended: true }));

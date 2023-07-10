@@ -1,15 +1,15 @@
-const mongodb = require('mongodb');
-const db = require('../db');
-const collection = db.collection('events');
+const { ObjectId } = require('mongodb');
+const { getDB } = require('../db'); // Import the database connection object
 
 module.exports = {
   getAllEvents: async (req, res) => {
     try {
-      const events = await collection.find().toArray();
+      const db = getDB();
+      const events = await db.collection('events').find().toArray();
 
-      for (let i = 0; i < events.length; i++) {
-        events[i].id = events[i]._id.toString();
-      }
+      events.forEach(event => {
+        event.id = event._id.toString();
+      });
 
       res.json(events);
     } catch (error) {
@@ -20,8 +20,9 @@ module.exports = {
 
   getEventById: async (req, res) => {
     try {
+      const db = getDB();
       const eventId = req.params.id;
-      const event = await collection.findOne({ _id: new mongodb.ObjectId(eventId) });
+      const event = await db.collection('events').findOne({ _id: new ObjectId(eventId) });
 
       if (!event) {
         res.status(404).json({ error: 'Event not found' });
@@ -38,8 +39,9 @@ module.exports = {
 
   deleteEvent: async (req, res) => {
     try {
+      const db = getDB();
       const eventId = req.params.id;
-      const result = await collection.deleteOne({ _id: new mongodb.ObjectId(eventId) });
+      const result = await db.collection('events').deleteOne({ _id: new ObjectId(eventId) });
 
       if (result.deletedCount === 1) {
         res.json({ message: 'Event deleted successfully' });
@@ -54,12 +56,13 @@ module.exports = {
 
   updateEvent: async (req, res) => {
     try {
+      const db = getDB();
       const eventId = req.params.id;
       const updatedEvent = req.body;
       const { _id, ...updatedEventWithoutId } = updatedEvent;
 
-      const result = await collection.updateOne(
-        { _id: new mongodb.ObjectId(eventId) },
+      const result = await db.collection('events').updateOne(
+        { _id: new ObjectId(eventId) },
         { $set: updatedEventWithoutId }
       );
 
@@ -76,8 +79,9 @@ module.exports = {
 
   createEvent: async (req, res) => {
     try {
+      const db = getDB();
       const newEvent = req.body;
-      const result = await collection.insertOne(newEvent);
+      const result = await db.collection('events').insertOne(newEvent);
 
       if (result.acknowledged === true) {
         res.status(201).json({ message: 'Event created successfully' });
