@@ -211,7 +211,7 @@ export default {
             this.saveCart();
         },
         updateProducts(product) {
-
+            console.log("AAAABBUUUUUBBBLLLLLEEEE")
             let index = 0;
             for (let i = 0; i < this.products.length; i++)
                 if (product.id == this.products[i].id)
@@ -249,6 +249,7 @@ export default {
                     )
                 }
 
+                console.log("CAAAAAAAAAAARRRRRRRRRRDD", cartData)
                 axios
                     .put('http://localhost:3000/cart/' + cartData.id, cartData) // Assuming the endpoint to update the cart is a PUT request
                     .then((response) => {

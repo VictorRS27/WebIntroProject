@@ -19,13 +19,13 @@
 			<div class="details">
 				<p>{{ product.productShortDescription }}</p>
 				<p>${{ product.productPrice }}</p>
-                <p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
-                <p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
+				<p v-if="product.quantityInStock !== 0" class="quantity-stock">In Stock: {{ product.quantityInStock }}</p>
+				<p v-else class="without-stock">In Stock: {{ product.quantityInStock }}</p>
 				<div class="quantity">
-                    <button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
-                    <span>{{ product.quantity }}</span>
-                    <button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
-                </div>
+					<button @click="decreaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">-</button>
+					<span>{{ product.quantity }}</span>
+					<button @click="increaseQuantity" :disabled="product.quantityInStock === 0" :class="{ 'disabled-button': product.quantityInStock === 0 }">+</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -38,24 +38,24 @@ export default {
 		return {
 			product: {
 				id: 0,
-                productName: "Dog Collar Puffy Air",
-                productPrice: 9.99,
-                productDescription: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
-                productShortDescription: "Make your dog walks a breeze with our durable and stylish Dog Leash",
+				productName: "Dog Collar Puffy Air",
+				productPrice: 9.99,
+				productDescription: "Puffy Air Doco Dog Collar Green:\nTo ensure safety and comfort for your dog on the walk, you need to choose a good collar, so he won't escape or get hurt.With that in mind the Puffy Air Doco Dog Collar is lightweight and sturdy, with a stylish design and super comfortable for your pooch. It has a solid, vibrant color and is easily seen from a distance.This dog collar has a plastic fastener with quick release and buckles for a perfect fit around the pet's neck. It has reinforced stitching and a welded metal ring for better fixing the guide.Enjoy and buy now here at Cobasi the Puffy Air Doco Dog Collar at an incredible price. On the site, on the app or in our physical stores.\nSize:\nMini Breeds, Small Breeds, Medium Breeds, Large Breeds.\nAge:\nPuppy, Adult, Senior\nBrand:\nDoco\nColor:\nGreen",
+				productShortDescription: "Make your dog walks a breeze with our durable and stylish Dog Leash",
 				photos: ["/public/greenCollar.png"],
-                quantityInStock : 19,
+				quantityInStock : 19,
 				quantitySold : 123,
 				quantity: 0,
-            },
+			},
 		};
 	},
 	methods: {
 		increaseQuantity() {
 			if(this.product.quantity < this.product.quantityInStock) {
-                this.product.quantity++;
+				this.product.quantity++;
 				console.log("this.quantity = ", this.product.quantity)
 				this.$emit("emit-product", this.product)
-            }
+			}
 		},
 		decreaseQuantity() {
 			if (this.product.quantity > 1) {
@@ -67,8 +67,8 @@ export default {
 			this.$emit("delete-product", this.product);
 		},
 		openProductPurchase() {
-            this.$router.push('/ProductPurchase?id=' + this.product.id);
-        },
+			this.$router.push('/ProductPurchase?id=' + this.product.id);
+		},
 	},
 	props: {
 		infos: {
@@ -125,9 +125,9 @@ h1 {
 }
 
 p {
-    margin: 0;
-    font-size: 1.4em;
-    color: #666;
+	margin: 0;
+	font-size: 1.4em;
+	color: #666;
 }
 
 .quantity {
@@ -137,15 +137,15 @@ p {
 }
 
 .quantity-stock {
-    font-size: 1.2em;
-    margin-top: 0.5vw;
-    color: #888;
+	font-size: 1.2em;
+	margin-top: 0.5vw;
+	color: #888;
 }
 
 .without-stock {
-    font-size: 1.2em;
-    margin-top: 0.5vw;
-    color: red;
+	font-size: 1.2em;
+	margin-top: 0.5vw;
+	color: red;
 }
 
 button {
@@ -159,7 +159,7 @@ button {
 	cursor: pointer;
 	margin: 0 0.1vw;
 	border-radius: 50%;
-    transition: background-color 0.3s;
+	transition: background-color 0.3s;
 }
 
 span {
@@ -169,7 +169,7 @@ span {
 	background-color: white;
 	padding: 0 0.6vw;
 	border-radius: 0.5vw;
-    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.4);
 }
 
 .trash-button {
@@ -186,18 +186,18 @@ span {
 }
 
 .disabled-button {
-    background-color: darkgray;
-    cursor: not-allowed;
-    transition: background-color 0.3s;
+	background-color: darkgray;
+	cursor: not-allowed;
+	transition: background-color 0.3s;
 }
 
 .disabled-button:hover {
-    background-color: gray;
+	background-color: gray;
 }
 
 
 @media screen and (max-width: 700px){
-    .box_a{
+	.box_a{
 		width: 80vw;
 	}
 	p{
@@ -210,7 +210,7 @@ span {
 	.product {
 		align-items: flex-start;
 	}
-
+	
 	.quantity-stock {
 		font-size: 0.6em;
 	}
