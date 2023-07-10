@@ -1,11 +1,10 @@
 const mongodb = require('mongodb');
 const db = require('../db'); // Import the database connection object
-const Product = require('../models/Product');
+const collection = db.collection('products');
 
 module.exports = {
     getAllProducts: async (req, res) => {
         try {
-            const collection = db.collection('products');
             const products = await collection.find().toArray();
             
             for (let i = 0; i < products.length; i++) {
@@ -22,7 +21,6 @@ module.exports = {
     getProductById: async (req, res) => {
         try {
             const productId = req.params.id;
-            const collection = db.collection('products');
             const product = await collection.findOne({ _id: new mongodb.ObjectId(productId) });
             
             if (!product) {
@@ -41,7 +39,6 @@ module.exports = {
     deleteProduct: async (req, res) => {
         try {
             const productId = req.params.id;
-            const collection = db.collection('products');
             const result = await collection.deleteOne({ _id: new mongodb.ObjectId(productId) });
             
             if (result.deletedCount === 1) {
@@ -61,7 +58,6 @@ module.exports = {
             const updatedProduct = req.body;
             const { _id, ...updatedProductWithoutId } = updatedProduct;
             
-            const collection = db.collection('products');
             const result = await collection.updateOne(
                 { _id: new mongodb.ObjectId(productId) },
                 { $set: updatedProductWithoutId }
@@ -81,7 +77,7 @@ module.exports = {
         createProduct: async (req, res) => {
             try {
                 const newData = req.body;
-                const collection = db.collection('products');
+
                 const result = await collection.insertOne(newData);
                 
                 if (result.acknowledged === true) {
