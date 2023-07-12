@@ -1,4 +1,4 @@
-# Milestone 2
+# Milestone 3
 
 # Purrfect Paradise
 
@@ -221,29 +221,64 @@ Resultado:
 Os resultados foram obtidos com perfeição e maestria.
 
 ## Instalação
-### IDE recomendada
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Clonar o projeto
 
-### Setup do Projeto
-
-```sh
-npm install
+Abra o terminal e execute o seguinte comando para clonar o projeto : 
+``` 
+git clone 
 ```
 
-#### Compilar e simular
+#### Setup do Banco de Dados
+Primeiramente baixe o mongoDB em sua máquina utilizando este [link](https://www.mongodb.com/try/download/community).
+
+Rode o banco com o seguinte comando : 
+```
+sudo service mongod start
+```
+Se você quiser observar o status do banco insira : 
+```
+sudo service mongod status
+```
+
+Após isso abra o terminal e entre na shell do mongodb com o seguinte comando :
+```
+mongosh
+```
+Copie o conteúdo do arquivo createMongoDatabase.txt na pasta /backend e cole na shell do mongodb, isso preencherá o banco de dados com as informações necessárias. Para sair basta escrever :
+```
+exit
+```
+
+#### Rodando a aplicação
+Abra dois terminais. No primeiro entre na pasta backend e rode o banco de dados com os seguintes comandos : 
 
 ```sh
+cd backend
+npm install
+npm start
+```
+
+No segundo terminal, entre na pasta frontend e rode o banco de dados com os seguintes comandos : 
+
+```sh
+cd frontend
+npm install
 npm run dev
 ```
 
-```sh
-npm run backend
-```
-
-É necessário executar os dois comandos simultaneamente para usar o aplicativo.
-
 ## Dificuldades
-## Comentários
+
+Enfrentamos algumas dificuldades durante o desenvolvimento do projeto Purrfect Paradise:
+
+1. Implementação da funcionalidade de carrinho de compras: Tivemos desafios ao gerenciar adequadamente o carrinho de compras, incluindo a adição, remoção e atualização de produtos. Foi necessário garantir que os itens selecionados pelos clientes fossem armazenados corretamente e que a quantidade em estoque fosse atualizada de forma adequada.
+
+2. Gerenciamento de estoque: Tivemos que lidar com o desafio de manter um controle preciso do estoque de produtos. Foi necessário garantir que a quantidade em estoque fosse atualizada corretamente após cada venda e enfrentamos casos em que um produto estava fora de estoque.
+
+3. Implementação de autenticação e autorização: A distinção entre usuários e administradores exigiu a implementação de um sistema de autenticação.
+
+4. Design e usabilidade: Enfrentamos desafios ao criar uma interface de usuário intuitiva e atraente. Foi necessário considerar a experiência do usuário e garantir que a navegação pelo site e a interação com os recursos fossem simples e agradáveis.
+
+5. Testes e depuração: Realizamos testes abrangentes em todas as funcionalidades do sistema e enfrentamos desafios na identificação e correção de bugs. Garantir que o sistema estivesse livre de erros e funcionasse corretamente foi um objetivo importante para garantir a satisfação dos usuários.
 
 

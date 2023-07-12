@@ -3,53 +3,32 @@
     <div class="container">
         <div class="box">
             <h2>Register Admin</h2>
-            
+
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input
-                type="text"
-                id="username"
-                placeholder="Enter username"
-                v-model="username"
-                />
+                <input type="text" id="username" placeholder="Enter username" v-model="username" />
             </div>
-            
+
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input
-                type="password"
-                id="password"
-                placeholder="Enter password"
-                v-model="password"
-                />
+                <input type="password" id="password" placeholder="Enter password" v-model="password" />
             </div>
-            
+
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input
-                type="email"
-                id="email"
-                placeholder="Enter email"
-                v-model="email"
-                />
+                <input type="email" id="email" placeholder="Enter email" v-model="email" />
             </div>
-            
+
             <div class="form-group">
                 <label for="telephone">Telephone:</label>
-                <input
-                type="telephone"
-                id="telephone"
-                placeholder="Enter telephone"
-                v-model="telephone"
-                @input="formatPhoneNumber"
-                maxlength="15"
-                />
+                <input type="telephone" id="telephone" placeholder="Enter telephone" v-model="telephone"
+                    @input="formatPhoneNumber" maxlength="15" />
             </div>
-            
+
             <p class="warning-text" v-show="showWarning">
                 Email or username already exists.
             </p>
-            
+
             <button class="submit-button" @click="submitForm">Submit</button>
         </div>
     </div>
@@ -75,6 +54,14 @@ export default {
             showWarning: false,
         };
     },
+    mounted() {
+        this.loadAdmin();
+    },
+    props: {
+        item_id: {
+            default: -1
+        }
+    },
     methods: {
         formatPhoneNumber() {
             let value = this.telephone;
@@ -83,85 +70,116 @@ export default {
             value = value.replace(/(\d)(\d{4})$/, "$1-$2");
             this.telephone = value;
         },
-        submitForm() {
-            if (
-            this.username != "" &&
-            this.password != "" &&
-            this.email != "" &&
-            this.telephone != ""
-            ) {
-                console.log("username = ", this.username);
-                console.log("password = ", this.password);
-                console.log("email = ", this.email);
-                console.log("telephone = ", this.telephone);
-                const newAdmin = {
-                    username: this.username,
-                    password: this.password,
-                    email: this.email,
-                    telephone: this.telephone,
-                };
-                
-                axios
-                .get("http://localhost:3000/admin")
+        loadAdmin() {
+            axios
+                .get(`http://localhost:3000/admin/${this.item_id}`)
                 .then((response) => {
-                    const admins = response.data;
-                    const adminExists = admins.some(
-                    (admin) =>
-                    admin.username === newAdmin.username ||
-                    admin.email === newAdmin.email
-                    );
-                    if (adminExists) {
-                        console.error(
-                        "Admin with the same username or email already exists."
-                        );
-                        this.showWarning = true;
-                        return;
-                    }
-                    
-                    axios
-                    .get("http://localhost:3000/users")
-                    .then((response) => {
-                        const users = response.data;
-                        const userExists = users.some(
-                        (user) =>
-                        user.username === newAdmin.username ||
-                        user.email === newAdmin.email
-                        );
-                        if (userExists) {
-                            console.error(
-                            "User with the same username or email already exists."
-                            );
-                            this.showWarning = true;
-                            return;
-                        }
-                        
-                        axios
-                        .post("http://localhost:3000/admin", newAdmin)
-                        .then((response) => {
-                            console.log(
-                            "Admin registered successfully:",
-                            response.data
-                            );
-                            this.username = "";
-                            this.password = "";
-                            this.email = "";
-                            this.telephone = "";
-                            this.showWarning = false;
-                        })
-                        .catch((error) => {
-                            console.error("Error registering admin:", error);
-                        });
-                    })
-                    .catch((error) => {
-                        console.error("Error retrieving users:", error);
-                    });
+                    this.username = response.data.username;
+                    this.password = response.data.password;
+                    this.email = response.data.email;
+                    this.telephone = response.data.telephone;
+
+
                 })
                 .catch((error) => {
-                    console.error("Error retrieving admins:", error);
+                    console.error("Error retrieving users:", error);
                 });
+        },
+        submitForm() {
+            const newAdmin = {
+                username: this.username,
+                password: this.password,
+                email: this.email,
+                telephone: this.telephone,
+            };
+            if (this.id == -1) {
+                if (
+                    this.username != "" &&
+                    this.password != "" &&
+                    this.email != "" &&
+                    this.telephone != ""
+                ) {
+                    console.log("username = ", this.username);
+                    console.log("password = ", this.password);
+                    console.log("email = ", this.email);
+                    console.log("telephone = ", this.telephone);
+
+
+                    axios
+                        .get("http://localhost:3000/admin")
+                        .then((response) => {
+                            const admins = response.data;
+                            const adminExists = admins.some(
+                                (admin) =>
+                                    admin.username === newAdmin.username ||
+                                    admin.email === newAdmin.email
+                            );
+                            if (adminExists) {
+                                console.error(
+                                    "Admin with the same username or email already exists."
+                                );
+                                this.showWarning = true;
+                                return;
+                            }
+
+                            axios
+                                .get("http://localhost:3000/users")
+                                .then((response) => {
+                                    const users = response.data;
+                                    const userExists = users.some(
+                                        (user) =>
+                                            user.username === newAdmin.username ||
+                                            user.email === newAdmin.email
+                                    );
+                                    if (userExists) {
+                                        console.error(
+                                            "User with the same username or email already exists."
+                                        );
+                                        this.showWarning = true;
+                                        return;
+                                    }
+
+                                    axios
+                                        .post("http://localhost:3000/admin", newAdmin)
+                                        .then((response) => {
+                                            console.log(
+                                                "Admin registered successfully:",
+                                                response.data
+                                            );
+                                            this.username = "";
+                                            this.password = "";
+                                            this.email = "";
+                                            this.telephone = "";
+                                            this.showWarning = false;
+                                        })
+                                        .catch((error) => {
+                                            console.error("Error registering admin:", error);
+                                        });
+                                })
+                                .catch((error) => {
+                                    console.error("Error retrieving users:", error);
+                                });
+                        })
+                        .catch((error) => {
+                            console.error("Error retrieving admins:", error);
+                        });
+                }
+                else {
+                    alert("Fill in all necessary information");
+                }
             }
             else {
-                alert("Fill in all necessary information");
+
+                axios.put(`http://localhost:3000/admin/${this.item_id}`, newAdmin)
+                    .then(response => {
+                        this.$router.push("/crud?crud=admin")
+                        // Faça algo com a resposta
+                    })
+                    .catch(error => {
+                        console.error('Erro ao atualizar o item:', error);
+                        // Trate o erro adequadamente
+                    });
+
             }
         },
     },

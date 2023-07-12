@@ -155,7 +155,7 @@ export default {
             this.focused = item
         },
         handle_link(add_or_edit) {
-            if (this.focused === {}) {
+            if (JSON.stringify(this.focused) === "{}") {
                 alert("Selecione um item")
                 return -1
             }
