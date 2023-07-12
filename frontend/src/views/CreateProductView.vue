@@ -113,11 +113,13 @@ export default {
         !this.productPrice ||
         !this.productShortDescription ||
         !this.productDescription ||
-        !this.quantityInStock && this.quantityInStock >= 0
-      ) {
+        !this.quantityInStock
+      ) 
+      {
         this.showEmptyFieldsWarning = true;
         return;
       }
+
 
       // Create the JSON object
       const newProduct = {
