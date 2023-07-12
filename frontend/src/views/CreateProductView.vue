@@ -113,7 +113,7 @@ export default {
         !this.productPrice ||
         !this.productShortDescription ||
         !this.productDescription ||
-        !this.quantityInStock
+        !this.quantityInStock && this.quantityInStock >= 0
       ) {
         this.showEmptyFieldsWarning = true;
         return;
