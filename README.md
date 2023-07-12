@@ -1,4 +1,4 @@
-# Milestone 2
+# Milestone 3
 
 # Purrfect Paradise
 
@@ -221,27 +221,51 @@ Resultado:
 Os resultados foram obtidos com perfeição e maestria.
 
 ## Instalação
-### IDE recomendada
+### Clonar o projeto
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Abra o terminal e execute o seguinte comando para clonar o projeto : 
+``` 
+git clone 
+```
 
 ### Setup do Projeto
 
-```sh
-npm install
+#### Setup do Banco de Dados
+Primeiramente baixe o mongoDB em sua máquina utilizando este [link](https://www.mongodb.com/try/download/community)
+Rode o banco com o seguinte comando : 
+```
+sudo service mongod start
+```
+Se você quiser observar o status do banco insira : 
+```
+sudo service mongod status
 ```
 
-#### Compilar e simular
+Após isso abra o terminal e entre na shell do mongodb com o seguinte comando :
+```
+mongosh
+```
+Copie o conteúdo do arquivo createMongoDatabase.txt na pasta /backend e cole na shell do mongodb, isso preencherá o banco de dados com as informações necessárias. Para sair basta escrever :
+```
+exit
+```
+
+#### Rodando a aplicação
+Abra dois terminais. No primeiro entre na pasta backend e rode o banco de dados com os seguintes comandos : 
 
 ```sh
+cd backend
+npm install
+npm start
+```
+
+No segundo terminal, entre na pasta frontend e rode o banco de dados com os seguintes comandos : 
+
+```sh
+cd frontend
+npm install
 npm run dev
 ```
-
-```sh
-npm run backend
-```
-
-É necessário executar os dois comandos simultaneamente para usar o aplicativo.
 
 ## Dificuldades
 ## Comentários
