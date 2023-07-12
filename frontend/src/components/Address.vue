@@ -36,11 +36,11 @@ export default {
 	data() {
 		return {
 			infos: {
-				"firstName": "Alan",
-				"lastName": "Turing",
-				"address": "Street Linus Torvalds",
-				"complement": "1337",
-				"cep": "1234567",
+				"firstName": "",
+				"lastName": "",
+				"address": "",
+				"complement": "",
+				"cep": "",
 			},
 
 		};
