@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 
 // MongoDB connection URL
-const mongoURL = 'mongodb://localhost:27017';
+const mongoURL = 'mongodb://127.0.0.1:27017';
 const dbName = 'pet_the_shop';
 
 let db;
