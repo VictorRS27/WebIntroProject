@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label for="price">Price:</label>
-        <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" class="styled-input" />
+        <input type="number" id="price" placeholder="Enter product price" v-model="productPrice" class="styled-input" min="0" step="any" required />
       </div>
 
       <div class="form-group">
@@ -52,7 +52,7 @@
       <div class="form-group">
         <label for="quantity">Quantity in Stock:</label>
         <input type="number" id="quantity" placeholder="Enter quantity in stock" v-model="quantityInStock"
-          class="styled-input" />
+          class="styled-input" min="0" step="any" required />
       </div>
 
       <button class="submit-button" @click="submitForm">Submit</button>
