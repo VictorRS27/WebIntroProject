@@ -226,7 +226,7 @@ Os resultados foram obtidos com perfeição e maestria.
 
 Abra o terminal e execute o seguinte comando para clonar o projeto : 
 ``` 
-git clone 
+git clone git@github.com:VictorRS27/WebIntroProject.git
 ```
 
 #### Setup do Banco de Dados
